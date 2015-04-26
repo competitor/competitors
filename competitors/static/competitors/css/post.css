@@ -1,0 +1,48 @@
+.pc_area>div{
+	display: inline-block;
+	height: 200px;
+	vertical-align: top;
+}
+
+.pc_info{
+	width: 150px;
+	text-align: center;
+}
+
+.pc_info>img{
+	width: 100px;
+	height: 100px;
+}
+.pc_info>button{
+	width: 100px;
+}
+
+.pc_content{
+	width: 800px;
+}
+.pc_content>p{
+	margin: 10px 0 0 30px;
+}
+
+#comment_form *{
+	text-align: left;
+}
+#comment_form button{
+	text-align: center;
+}
+
+#comment_form button{
+	margin-top: 10px;
+}
+
+.pc_area .delete{
+	display: inline;
+	float: right;
+	right: 20px;
+	bottom: 20px;
+	vertical-align: bottom;
+}
+
+a:hover{
+	cursor: pointer;
+}

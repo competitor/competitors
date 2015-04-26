@@ -1,0 +1,175 @@
+#imageCanvas{
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 500px;
+	z-index: 1;
+}
+#imageCanvas2{
+	position: absolute;
+	top:0;
+	left: 500px;
+	width: 200px;
+	height: 200px;
+	z-index: 10;
+	display: inline-block;
+	margin-left: 300px;
+}
+
+#log {
+	display: none;
+	margin: 20px 0 50px;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    left: 0;
+    top: 0;
+  }
+#instruction{
+	margin: 20px 0 50px;
+	display: none;
+	height: 30px;
+	vertical-align: top;
+}
+
+#instruction>*{
+	line-height: 30px;
+	display: inline;
+	margin: 10px;
+}
+
+
+#drag{
+
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100px;
+	width: 100px;
+
+}
+
+#drag1 {
+	
+	z-index: 9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0px;
+	height: 500px;
+	background: rgba(160,160,160,0.7);
+
+}
+
+#drag2{
+	
+	z-index: 9;
+	position: absolute;
+	top: 0;
+	left: 100px;
+	width: 400px;
+	height: 500px;
+	background: rgba(160,160,160,0.7);
+}
+#drag3{
+	
+	z-index: 9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 0;
+	background: rgba(160,160,160,0.7);
+}
+#drag4{
+	z-index: 9;
+	position: absolute;
+	top: 100px;
+	left: 0;
+	width: 100px;
+	height: 400px;
+	background: rgba(160,160,160,0.7);
+}
+
+#upload{
+	position: absolute;
+	top:210px;
+	left: 500px;
+	width: 200px;
+	z-index: 10;
+	margin-left: 300px;
+}
+
+#hint{
+	position: absolute;
+	top:510px;
+	left: 0;
+	z-index: 10;
+}
+
+
+#info{
+	margin: 30px 0;
+	padding: 20px;
+}
+
+#info>div{
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px;
+}
+#image{
+	width: 160px;
+}
+#image button{
+	margin-top: 10px;
+	width: 150px;
+}
+#personal h4{
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+
+#bio h4{
+	margin-top:0;
+	margin-bottom: 10px;
+}
+
+.personal_follows .panel{
+  height: 100px;
+  width: auto;
+  padding-right: 10px;
+  background: rgba(160,160,160,0.5);
+}
+
+.personal_follows{
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.recommend_each{
+  margin: 10px;
+  display: inline;
+}
+
+.recommend_each *{
+  color: black;
+  text-align: left;
+}
+
+.recommend_each div{
+  display: inline-block;
+
+}
+
+.recommend_each img{
+  margin: 10px 5px;
+  width: 80px;
+  height: 80px;
+}
+
+
+
+

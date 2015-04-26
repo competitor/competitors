@@ -1,0 +1,68 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/match.css">
+	<input type="hidden" id="matchid" value="{{match.id}}">
+	<div id="match_head">
+		<div>
+			<img src="{{match.home.icon_url}}">
+			<h4>{{match.home.name}}</h4>
+		</div>
+		<div>  
+			<h2>{{match.score}}</h2>
+		</div>
+		<div>
+			<img src="{{match.away.icon_url}}">
+		  	<h4>{{match.away.name}}</h4>
+		</div>
+	</div>
+	{% if can_broadcast == True %}
+		<div>
+			<form method="POST" action="{% url 'change_score' match.id %}">
+				<label>Change Score</label>
+				<input type="text" name="score">
+				{% csrf_token %}
+				<button class="btn btn-primary">Change</button>
+			</form>
+			<form method="POST" action="{% url 'add_events' match.id %}">
+				<label>Event Content</label>
+				<input style="width:500px;" type="text" name="content">
+				<label>Event Time</label>
+				<input type="text" name="time">
+				{% csrf_token %}
+				<button class="btn btn-primary">Add</button>
+			</form>
+		</div>
+	{% endif %}
+	<div id="match_ec">
+		<div id="match_events">
+			{% for event in events %}
+				<div class="panel match_event" value="{{event.id}}">
+					<h5>{{event.content}}</h5>
+					<h5>{{event.time}}</h5> 
+				</div>
+			{% endfor %}
+		</div>
+		<div id="match_comments">
+			<div id="comment_form">
+					<input type="text" id="id_content" class="form-control" placeholder="Add some comments" required>
+					<input type="hidden" name="redirecturl" value="{% firstof request.path '/' %}">
+					{% csrf_token %}
+					<button class="btn btn-success btn" onclick="addlivecomments()">POST</button>
+			</div>
+			<div id="match_commentsarea">
+				{% for comment in comments %}
+					<div class="panel match_comments_item" value="{{comment.id}}">
+						<p><a href="{% url 'see_profile' user.username %}">{{comment.user}}</a>:   {{comment.content}}</p>
+						{% load tz %}
+						{% load l10n %}
+						<p>{{comment.time|timezone:local_tz}}</p>
+
+						
+						
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/match.js"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+
+var ftGUID_1092842="258897CD04D1AD";
+var ftConfID_1092842="1822058";
+var ftParams_1092842="ftx=&fty=&ftadz=&ftscw=&ft_custom=114281911&ftOBA=1&ft_ifb=1&ft_domain=www.sitepoint.com&ft_referrer=http%3A%2F%2Fwww.sitepoint.com%2Fjquery-set-innertext-2%2F&cachebuster=430396.83997631073";
+var ftKeyword_1092842="";
+var ftCustom_1092842="114281911";
+var ftSection_1092842="";
+var ftSegment_1092842="f4m,fmk,fe6";
+var ftSegmentList_1092842=[{s:'f4m'},{s:'fmk'},{s:'fe6'}];
+var ftRuleMatch_1092842="0";
+var ftTimestamp_1092842="1428009956";
+var ftImp1092842 = {};
+ftImp1092842.privacy = "x";
+ftImp1092842.guidAge = "60";
+
+document.write('<scr'+'ipt src="https://secure.flashtalking.com/xre/109/1092842/974275/js/j-1092842-974275.js" id="ftscript_m1092842" name="ftscript_m1092842"></scr'+'ipt>');
+                    

@@ -1,0 +1,14 @@
+#news_display{
+	width: 100%;
+	background: rgba(230,230,230,0.5);
+	padding: 0 20px;
+}
+#news_content {
+	width: 100%;
+	word-break:keep-all;
+}
+
+.cke_editable_themed{
+	background: red;
+	margin: 0;
+}

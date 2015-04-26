@@ -1,0 +1,17 @@
+[
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Pero Antic","role":"PF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Kent Bazemore","role":"FG"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Elton Brand","role":"PF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"DeMarre Carroll","role":"SF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Austin Daye","role":"SF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Al Horford", "role":"C"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"John Jenkins","role":"SG"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Kyle Korver","role":"SG"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Shelvin Mack","role":"PG"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Paul Millsap","role":"PF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Mike Muscala","role":"PF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Dennis Schroder","role":"PG"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Mike Scott", "role":	"PF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Thabo Sefolosha", "role":"SF"},"model":"competitors.player"},
+{"fields":{"category":2,"nationality":1,"team":200100101,"icon_url":"/static/competitors/img/basketball/nba/default.png","name":"Jeff Teague", "role":"PG"},"model":"competitors.player"}
+]

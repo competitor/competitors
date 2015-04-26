@@ -1,0 +1,100 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/search.css">
+	<input id="search_cid" type="hidden" value="{{cid}}">
+	<input id="search_cat" type="hidden" value="{{cat}}">
+	<input id="search_country" type="hidden" value="{{country}}">
+	<input id="search_league" type="hidden" value="{{league}}">
+	<input id="search_team" type="hidden" value="{{team}}">
+	<input id="search_nation" type="hidden" value="{{nation}}">
+	<div id="main">
+	<div id="tp">
+		<a id="tp_t" onclick="tp_select('1')">
+			<img src="{{STATIC_URL}}competitors/img/team.png">
+			<button class="btn btn-primary">TEAM</button>
+		</a>
+		<a id="tp_p" onclick="tp_select(2)">
+			<img src="{{STATIC_URL}}competitors/img/player.png">
+			<button class="btn btn-primary">PLAYER</button>
+		</a>
+	</div>
+
+	<div id="category">
+		<div id="category_sub">
+			<div class="category_icon" id="Soccer_icon">
+				<a onclick="createSub('Soccer')" value="Soccer">
+					<img src="{{STATIC_URL}}competitors/img/soccer.png" width="100px" height="100px">
+					<p>Soccer</p>
+				</a>
+			</div>
+			<div class="category_icon" id="Basketball_icon">
+				<a onclick="createSub('Basketball')" value="Basketball">
+					<img src="{{STATIC_URL}}competitors/img/basketball.png" width="100px" height="100px">
+					<p>Basketball</p>
+				</a>
+			</div>
+			<div class="category_icon"id="Football_icon">
+				<a onclick="createSub('Football')" value="Football">
+					<img src="{{STATIC_URL}}competitors/img/football.png" width="100px" height="100px">
+					<p>Football</p>
+				</a>
+			</div>
+			<div class="category_icon"id="Tennis_icon">
+				<a onclick="createSub('Tennis')" value="Tennis">
+					<img src="{{STATIC_URL}}competitors/img/tennis.png" width="100px" height="100px">
+					<p>Tennis</p>
+				</a>
+			</div>
+			<div class="category_icon"id="Ice_hockey_icon">
+				<a onclick="createSub('Ice_hockey')" value="Ice_hockey">
+					<img src="{{STATIC_URL}}competitors/img/hockey.png" width="100px" height="100px">
+					<p>Ice Hockey</p>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="search_area">
+		<div id="search_help">
+			<div id="search_team">
+				<div id="search_area_country">
+					<label for="search_area_country_scroll">Country of League of Team</label>
+					<select class="form-control" id="search_area_country_scroll" onchange="createSub_all('country')">
+						<option value="0">Country of League</option>
+					</select>
+					
+				</div>
+				<div id="search_area_league">
+					<label for="search_area_league_scroll">League of Team</label>
+					<select class="form-control" id="search_area_league_scroll" onchange="createSub_all('league')">
+						<option value="0">Leauge of Team</option>
+					</select>
+					
+				</div>
+				{% csrf_token %}
+			</div>
+			<div id="search_player">
+				<div id="search_team_nation">
+					<label for="search_area_team_scroll">Team of Player</label>
+					<select class="form-control" id="search_area_team_scroll" onchange="createSub_all('team')">
+						<option value="0">Team of Player</option>
+					</select>
+				</div>
+				<div id="search_area_nation">
+					<label for="search_area_nation_scroll">Nationality of Player</label>
+					<select class="form-control" id="search_area_nation_scroll" onchange="createSub_all('nation')">
+						<option value="0">Nationality of Player</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div id="search_result">
+		</div>
+	</div>
+	
+	<div>
+		<a id="team_link" class="pagelink" href="#">See Team</a>
+		<a id="player_link" class="pagelink" href="#">See Player</a>
+	</div>
+</div>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/search.js"></script>	
+{% endblock %}

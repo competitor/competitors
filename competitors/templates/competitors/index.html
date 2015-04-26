@@ -1,0 +1,56 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/index.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/index.js"></script>
+
+	<div id = "head">
+		<h1>COMPETITORS</h1>
+	</div>
+	{{errors}}
+	<div id="search_bar">
+		<form class="form-inline" method="POST" action="{% url 'search' %}">
+  			<div class="form-group">
+  				<label class="sr-only" for="search">Search: </label>
+  				<input type="text" class="form-control input-lg" id="search" name="search" required="required" placeholder="Search Your Favorite">
+  			</div>
+  			<button type="submit" class="btn btn-success btn-lg">Find</button>
+  			{% csrf_token %}
+		</form>
+		
+	</div>
+	
+
+	<div id="recommend_team">
+		{% for team in teams %}
+			<div class="recommend_team_each">
+				<a href="{% url 'team_page' team.id %}">
+					<img src="{{team.icon_url}}">
+					<h6>{{team.name}}</h6>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div id="recommend_player">
+		{% for player in players %}
+			<div class="recommend_player_each">
+				<a href="{% url 'player_page' player.id %}">
+					<div class="panel">
+						<div class="recommend_player_each_img">
+							<img src="{{player.icon_url}}">
+						</div>
+						<div class="recommend_player_each_info">
+							<h6>{{player.name}}</h6>
+							<h6>{{player.followers.count}}
+						</div>
+					</div>
+				</a>
+			</div>	
+		{% endfor %}
+	</div>
+
+
+{% endblock %}

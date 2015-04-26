@@ -1,0 +1,39 @@
+#panel>div{
+	display: none;
+}
+#logo{
+	width: 200px;
+}
+#logo *{
+	text-align: center;
+}
+
+#icon_img{
+	width: 200px;
+	height: 200px;
+}
+
+#logo>a{
+	display: block;
+	margin: 0 auto;
+}
+
+#logo button{
+	width: 150px; 	
+	margin: 0 auto;
+}
+
+/*.ui-tabs-nav>*{
+	width: 32%;
+}*/
+
+/*.ul-tabs-nav li{
+	padding: 0;
+}
+
+.ui-tabs-nav a{
+	padding-left: 0;
+
+	text-align: center;
+		
+}*/

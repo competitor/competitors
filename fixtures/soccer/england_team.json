@@ -1,0 +1,172 @@
+<C id="1" n="Arsenal"/>
+<C id="2" n="Aston Villa"/>
+<C id="3" n="Barnsley"/>
+<C id="4" n="Birmingham City"/>
+<C id="5" n="Blackburn Rovers"/>
+<C id="6" n="Blackpool"/>
+<C id="7" n="Bolton Wanderers"/>
+<C id="8" n="Boston United"/>
+<C id="9" n="AFC Bournemouth"/>
+<C id="10" n="Bradford City"/>
+<C id="11" n="Brentford"/>
+<C id="12" n="Brighton and Hove Albion"/>
+<C id="13" n="Bristol City"/>
+<C id="14" n="Bristol Rovers"/>
+<C id="15" n="Burnley"/>
+<C id="16" n="Bury"/>
+<C id="17" n="Cambridge United"/>
+<C id="19" n="Carlisle United"/>
+<C id="20" n="Charlton Athletic"/>
+<C id="21" n="Chelsea"/>
+<C id="22" n="Cheltenham Town"/>
+<C id="23" n="Chesterfield"/>
+<C id="24" n="Colchester United"/>
+<C id="25" n="Coventry City"/>
+<C id="26" n="Crewe Alexandra"/>
+<C id="27" n="Crystal Palace"/>
+<C id="28" n="Darlington 1883"/>
+<C id="29" n="Derby County"/>
+<C id="30" n="Doncaster Rovers"/>
+<C id="31" n="Everton"/>
+<C id="32" n="Fulham"/>
+<C id="33" n="Gillingham"/>
+<C id="34" n="Grimsby Town"/>
+<C id="35" n="Hartlepool United"/>
+<C id="36" n="Huddersfield Town"/>
+<C id="37" n="Hull City"/>
+<C id="38" n="Ipswich Town"/>
+<C id="39" n="Kidderminster Harriers"/>
+<C id="40" n="Leeds United"/>
+<C id="41" n="Leicester City"/>
+<C id="42" n="Leyton Orient"/>
+<C id="43" n="Lincoln City"/>
+<C id="44" n="Liverpool"/>
+<C id="45" n="Luton Town"/>
+<C id="46" n="Macclesfield Town"/>
+<C id="47" n="Manchester City"/>
+<C id="48" n="Mansfield Town"/>
+<C id="49" n="Manchester United"/>
+<C id="50" n="Middlesbrough"/>
+<C id="51" n="Millwall"/>
+<C id="52" n="Newcastle United"/>
+<C id="53" n="Northampton Town"/>
+<C id="54" n="Norwich City"/>
+<C id="55" n="Nottingham Forest"/>
+<C id="56" n="Notts County"/>
+<C id="57" n="Oldham Athletic"/>
+<C id="58" n="Oxford United"/>
+<C id="59" n="Peterborough United"/>
+<C id="60" n="Plymouth Argyle"/>
+<C id="61" n="Preston North End"/>
+<C id="62" n="Portsmouth"/>
+<C id="63" n="Port Vale"/>
+<C id="64" n="Queens Park Rangers"/>
+<C id="65" n="Reading"/>
+<C id="66" n="Rochdale"/>
+<C id="67" n="Rotherham United"/>
+<C id="68" n="Rushden & Diamonds"/>
+<C id="69" n="Scunthorpe United"/>
+<C id="70" n="Sheffield United"/>
+<C id="71" n="Sheffield Wednesday"/>
+<C id="72" n="Southampton"/>
+<C id="73" n="Southend United"/>
+<C id="74" n="Stockport County"/>
+<C id="75" n="Stoke City"/>
+<C id="76" n="Sunderland"/>
+<C id="78" n="Swindon Town"/>
+<C id="79" n="Torquay United"/>
+<C id="80" n="Tottenham Hotspur"/>
+<C id="81" n="Tranmere Rovers"/>
+<C id="82" n="Walsall"/>
+<C id="83" n="Watford"/>
+<C id="84" n="West Bromwich Albion"/>
+<C id="85" n="West Ham United"/>
+<C id="86" n="Wigan Athletic"/>
+<C id="87" n="Milton Keynes Dons"/>
+<C id="88" n="Wolverhampton Wanderers"/>
+<C id="90" n="Wycombe Wanderers"/>
+<C id="91" n="Yeovil Town"/>
+<C id="92" n="York City"/>
+<C id="480" n="Chester FC"/>
+<C id="487" n="Shrewsbury Town"/>
+<C id="557" n="Accrington Stanley"/>
+<C id="614" n="Barnet"/>
+<C id="632" n="Hereford United"/>
+<C id="736" n="Burton Albion"/>
+<C id="737" n="Grays Athletic"/>
+<C id="755" n="Aldershot Town"/>
+<C id="777" n="Berwick Rangers"/>
+<C id="837" n="Altrincham"/>
+<C id="838" n="Crawley Town"/>
+<C id="839" n="Dagenham & Redbridge"/>
+<C id="840" n="Exeter City"/>
+<C id="841" n="Forest Green Rovers"/>
+<C id="842" n="Ebbsfleet United"/>
+<C id="843" n="FC Halifax Town"/>
+<C id="844" n="Morecambe"/>
+<C id="845" n="Northwich Victoria"/>
+<C id="846" n="Southport"/>
+<C id="847" n="St. Albans City"/>
+<C id="848" n="Stafford Rangers"/>
+<C id="849" n="Stevenage"/>
+<C id="850" n="Tamworth"/>
+<C id="851" n="Weymouth"/>
+<C id="852" n="Woking"/>
+<C id="1191" n="Salisbury City"/>
+<C id="1195" n="Droylsden"/>
+<C id="1224" n="Histon"/>
+<C id="1225" n="Farsley AFC"/>
+<C id="1321" n="Lewes"/>
+<C id="1322" n="Kettering Town"/>
+<C id="1325" n="Eastbourne Borough"/>
+<C id="1326" n="Barrow AFC"/>
+<C id="1445" n="AFC Wimbledon"/>
+<C id="1541" n="Gateshead"/>
+<C id="1570" n="Hayes & Yeading United"/>
+<C id="1604" n="Fleetwood Town"/>
+<C id="1605" n="Bath City"/>
+<C id="1725" n="AFC Telford United"/>
+<C id="1726" n="Alfreton Town"/>
+<C id="1727" n="Braintree Town"/>
+<C id="2016" n="Hyde"/>
+<C id="2038" n="Nuneaton Town"/>
+<C id="2039" n="Dartford"/>
+<C id="2213" n="Guiseley AFC"/>
+<C id="2404" n="Welling United"/>
+<C id="2856" n="Vauxhall Motors"/>
+<C id="2857" n="Chelmsford City"/>
+<C id="2858" n="Hednesford Town"/>
+<C id="2859" n="Harrogate Town"/>
+<C id="2860" n="Stalybridge Celtic"/>
+<C id="2861" n="Gloucester City"/>
+<C id="2862" n="Tonbridge Angels"/>
+<C id="2876" n="Boreham Wood"/>
+<C id="2900" n="Havant & Waterlooville"/>
+<C id="2974" n="Basingstoke Town"/>
+<C id="2975" n="Brackley Town"/>
+<C id="2976" n="Sutton United"/>
+<C id="2977" n="Bradford Park Avenue"/>
+<C id="3030" n="Eastleigh FC"/>
+<C id="3044" n="Worcester City"/>
+<C id="3084" n="Dover Athletic"/>
+<C id="3203" n="North Ferriby United"/>
+<C id="3209" n="Chorley FC"/>
+<C id="3220" n="AFC Fylde"/>
+<C id="3221" n="Gainsborough Trinity"/>
+<C id="3222" n="Leamington FC"/>
+<C id="3223" n="Oxford City"/>
+<C id="3224" n="Solihull Moors"/>
+<C id="3225" n="Bishop's Stortford"/>
+<C id="3226" n="Bromley FC"/>
+<C id="3227" n="Concord Rangers"/>
+<C id="3228" n="Farnborough FC"/>
+<C id="3229" n="Gosport Borough"/>
+<C id="3230" n="Hemel Hempstead Town"/>
+<C id="3231" n="Lowestoft Town"/>
+<C id="3232" n="Maidenhead United"/>
+<C id="3233" n="Staines Town"/>
+<C id="3234" n="Wealdstone FC"/>
+<C id="3235" n="Weston-super-Mare"/>
+<C id="3236" n="Whitehawk FC"/>
+<C id="3565" n="Blyth Spartans"/>
+<C id="3570" n="FC United of Manchester"/>

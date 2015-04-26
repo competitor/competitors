@@ -1,0 +1,66 @@
+[
+  {
+    "model": "competitors.Country",
+    "pk":1,
+    "fields": {
+      "name":"United States",
+      "sports":[1,2,3,4,5]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":2,
+    "fields": {
+      "name":"England",
+      "sports":[1,5]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":3,
+    "fields": {
+      "name":"Germany",
+      "sports":[1,2]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":4,
+    "fields": {
+      "name":"France",
+      "sports":[1,2]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":5,
+    "fields": {
+      "name":"Japan",
+      "sports":[1,2,3]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":6,
+    "fields": {
+      "name":"Spain",
+      "sports":[1,2]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":7,
+    "fields": {
+      "name":"Italy",
+      "sports":[1,2]
+    }
+  },
+  {
+    "model": "competitors.Country",
+    "pk":8,
+    "fields": {
+      "name":"China",
+      "sports":[1,2]
+    }
+  }
+]

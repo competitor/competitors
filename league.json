@@ -1,0 +1,65 @@
+[
+  {
+    "model": "competitors.League",
+    "pk":1001001,
+    "fields": {
+      "name":"Major League Soccer",
+      "country":1,
+      "category":1
+    }
+  },
+  {
+    "model": "competitors.League",
+    "pk":1001002,
+    "fields": {
+      "name":"North American Soccer League",
+      "country":1,
+      "category":1
+    }
+  },
+  {
+    "model": "competitors.League",
+    "pk":1002001,
+    "fields": {
+      "name":"Premier League",
+      "country":2,
+      "category":1
+    }
+  },
+  {
+    "model": "competitors.League",
+    "pk":1002002,
+    "fields": {
+      "name":"Football League Championship",
+      "country":2,
+      "category":1
+    }
+  },
+  {
+    "model": "competitors.League",
+    "pk":1002003,
+    "fields": {
+      "name":"Football League One",
+      "country":2,
+      "category":1
+    }
+  },
+  {
+    "model": "competitors.League",
+    "pk":1002004,
+    "fields": {
+      "name":"Football League Two",
+      "country":2,
+      "category":1
+    }
+  },
+  {
+  "model": "competitors.League",
+  "pk":2001001,
+  "fields": {
+    "name":"NBA",
+    "country":1,
+    "category":2
+  }
+  }
+]

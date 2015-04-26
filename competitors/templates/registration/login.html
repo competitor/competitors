@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/bootstrap-3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL}}competitors/css/login.css">
+    <title>Login</title>
+
+</head>
+
+<body>
+            <div id="container">
+            <div id="navbar">
+                <div id="title">
+                    <a href="{% url 'home' %}"><h1 id="home">Welcome to Competitors</h1></a>
+                </div>
+            </div>
+            <div id="main">
+<!--     
+    <h1>
+        Welcome Back
+    </h1> -->
+
+
+    <div id="loginform">
+        <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+            <table>
+                <tr>
+                    <td><input type="text" name="username" class="input input-lg" placeholder="username" required></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="password" class="input input-lg" placeholder="password" required></td>
+                </tr>
+            </table>
+            {% if form.errors %}
+            <span>
+                    Incorrect username or password.
+            </span>
+            {% endif %}
+
+            <button class="btn btn-success" type="submit" value="Login">Login</button>
+            <input class="btn btn-default"type="hidden" name="next" value="{{ next }}" />
+            {% csrf_token %}
+        </form>
+        <div id="other-links">
+
+        <a href="{% url 'register' %}" id ="registerbutton">Register</a>
+        <a href="{% url 'change_password' %}" id ="registerbutton">Find Back My Username/Password</a>
+    </div>
+
+    </div>
+    </div>
+</div>
+
+</body>
+</html>
+

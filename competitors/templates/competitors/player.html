@@ -1,0 +1,19 @@
+{% extends "competitors/tpbase.html" %}
+{% block tp %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/player.css">
+
+<div id="logo">
+{% if player %}
+	<img id="icon_img" src="{{player.icon_url}}">
+	<h4>{{ player.name }}</h4>
+	{% if not_follow %}
+		<a href="{% url 'follow' 'player' player.id %}"><button class="btn btn-danger">Follow</button></a>
+	{% endif %}
+	{% if follow %}
+		<a href="#"><button class="btn-success">{{follow.credits}}</button></a>
+		<a href="#"><button class="btn-success">APPLY TO BE THE MANAGER</button></a>
+	{% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

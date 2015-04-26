@@ -1,0 +1,118 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/tpbase.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="{{STATIC_URL}}competitors/js/jquery.twbsPagination.min.js"></script>
+	<input id="cid" type="hidden" value="{{cid}}">
+	<input id="totalposts" type="hidden" value="{{totalposts}}">
+	<input id="page" type="hidden" value="{{page}}">
+	<div id="main">
+	{% block tp %}
+	{% endblock%}
+	<div id="tabs">
+	  	<ul>
+		    <li><a href="#news">News</a></li>
+		    <li><a href="#data">Data</a></li>
+		    <li><a href="#schedule">Schedule</a></li>
+		    <li><a href="#forum">Forum</a></li>
+	  	</ul>
+	  	<div id="news">
+	  		{% if editor %}
+	  			<a href="{% firstof request.path '/' %}/add_news"><input type='button' class="btn btn-primary" value="Add News"></a>
+	  		{% endif %}
+	  			{% for item in news %}
+	  			<div class="panel">
+	  				<a href="{% url 'get_news' item.id %}"><h4>{{item.title}}</h4></a>
+	  			</div>
+	  			{% endfor %}
+
+	  	</div>
+	  	<div id="data">
+	  		<div id="basic_info">
+	    
+			</div>
+			<div id="player_list">
+				{% for player in players %}
+					<div class="recommend_each">
+	                    <a href="{% url 'player_page' player.id %}">
+	                        <div class="panel">
+	                            <div class="recommend_each_img">
+	                                <img src="{{player.icon_url}}"/>
+	                            </div>
+	                            <div class="recommend_each_info">
+	                                <h6>{{player.name}}</h6>
+	                                <h6>{{player.followers.count}}</h6>
+	                            </div>
+	                        </div>
+	                    </a>
+	                </div>  
+				{% endfor %}
+			</div>
+			<div id="records">
+			</div>
+	  	</div>
+	  	<div id="schedule">
+	  		{% for match in matches %}
+	  			<div class="panel">
+	  				<div>
+	  					<img id="match_img" src="{{match.home.icon_url}}">
+	  					<h5>{{match.home}}</h5>
+	  				</div> 
+	  				<div>
+	  					<p>vs</p>
+	  					<p>{{match.time}}</p>
+	  					<a href="{% url 'live_page' match.id %}">Watch LIVE</a>
+	  				</div> 
+	  				<div>
+	  					<img id="match_img" src="{{match.away.icon_url}}">
+	  					<h5>{{match.away}}<h5>
+	  				</div>
+	  			</div>
+	  		{% endfor %}
+	  	</div>
+	  	<div id="forum">
+	  		<div id="forum-posts">
+			{% for post in posts %}
+				<div class="panel">
+					<div class="panel">
+						{{post.comments.count}}
+					</div>
+					<a href="{% url 'get_post' post.id %}" target="_blank">{{post.title}}</a>
+					<div class="postinfo">
+						<p>{{post.user}}</p>
+						{% if can_manage == True %}
+							<a class="btn btn-link" onclick="deleteit({{post.id}})"><p>Delete</p></a>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+			<form method="POST" action="{% url 'add_post' %}">
+				<input type="hidden" name="redirecturl" value="{% firstof request.path '/' %}">
+				{% if team %}
+					<input type="hidden" name="cat" value="team">
+					<input type="hidden" name="id" value="{{ team.id }}">
+				{% endif %}
+				{% if player %}
+					<input type="hidden" name="cat" value="player">
+					<input type="hidden" name="id" value="{{player.id}}">
+				{% endif %}
+				{{form}}
+				{% csrf_token %}
+				{% if user.is_authenticated %} 
+					<button type="submit" class="btn btn-success">POST</button>
+				{% else %}
+					<button type="submit" class="btn btn-success" disabled>SIGN IN TO POST</button>
+				{% endif %}
+			</form>
+	  	</div>
+	</div>
+</div>
+	
+	<script>
+		$( "#tabs" ).tabs();
+	</script>
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/tpbase.js"></script>
+	{% endblock %}

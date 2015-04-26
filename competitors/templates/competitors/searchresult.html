@@ -1,0 +1,10 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+	{{errors}}
+	{% for team in teams %}
+		{{team.name}}
+	{% endfor %}
+	{% for player in players %}
+		{{player.name}}
+	{% endfor %}
+{% endblock %}

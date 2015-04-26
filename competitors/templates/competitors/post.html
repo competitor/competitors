@@ -1,0 +1,76 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/post.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="{{STATIC_URL}}competitors/js/jquery.twbsPagination.min.js"></script>
+	{% csrf_token %}
+	<input type="hidden" id="totalposts" value="{{totalposts}}">
+	<input type="hidden" id="page" value="{{page}}">
+	<div class="panel">
+		<h3>{{post.title}}</h3>
+	</div>
+	<div id="pc_body">
+		<div class="panel pc_area">
+			<div class="pc_info">
+				<img src="{{post.user.img_url}}">
+				<p>{{post.user.user.username}}</p>
+				{% for follow in follows %}
+					{% if follow.user == post.user %}
+						<button>{{follow.credits}}</button>
+					{% endif %}
+				{% endfor %}
+				<p>{{post.time}}</p>
+			</div>
+			<div class="pc_content">
+				<p>{{post.content}}</p>
+			</div>
+		</div>
+		<div id="comment_body">
+		{% for comment in comments %}
+			<div class="panel pc_area">
+				<div class="pc_info">
+					<img src="{{comment.user.img_url}}">
+					<p>{{comment.user.user.username}}</p>
+					{% for follow in follows %}
+						{% if follow.user == comment.user %}
+							<button>{{follow.credits}}</button>
+						{% endif %}
+					{% endfor %}
+					<p>{{comment.time}}</p>
+				</div>
+				<div class="pc_content">
+					<p>{{comment.content}}</p>
+				</div>
+				{% if can_manage == True %}
+				<div class="delete">
+					<a onclick="deleteit({{comment.id}});">delete</a>
+				</div>
+				{% endif %}
+			</div>
+		{% endfor %}
+		</div>
+		<div id="comment_form">
+			<form method="POST" action="{% url 'add_comment' post.id %}">
+				{{form}}
+				<input type="hidden" name="redirecturl" value="{% firstof request.path '/' %}">
+				{% csrf_token %}
+				{% if user.is_authenticated %}
+					<button class="btn btn-success btn-lg" type="submit">COMMENT</button>
+				{% else %}
+					<button class="btn btn-success btn-lg" type="submit">SIGN IN TO COMMENT</button>
+				{% endif %}
+			</form>
+		</div>
+
+
+	</div>
+
+	<script>
+	$( "#tabs" ).tabs();
+	</script>
+
+	
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/post.js"></script>
+{% endblock %}

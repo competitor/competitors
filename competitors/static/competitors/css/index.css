@@ -1,0 +1,77 @@
+body{
+  margin: 0;
+  min-width: 1024px;
+  background: url("/static/competitors/img/bg.jpeg") fixed;
+  background-size:100% 100%;
+}
+#search_bar{
+  text-align: center;
+  margin-bottom: 20px;
+}
+#search{
+  width: 500px;
+  margin: 0 auto;
+}
+
+
+#head{
+	text-align: center;
+	/*width: 1000px;*/
+	margin: 0 auto;
+	color: rgb(255,255,255);
+}
+
+
+
+#recommend_team{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.recommend_team_each{
+  display: inline-block;
+  margin: 10px;
+}
+
+.recommend_team_each *{
+  color: white;
+  text-align: center;
+}
+
+.recommend_team_each img{
+  width: 100px;
+  height: 100px;
+}
+
+.panel{
+  height: 100px;
+  width: 200px;
+  background: rgba(160,160,160,0.5);
+}
+
+#recommend_player{
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.recommend_player_each{
+  margin: 10px;
+  display: inline;
+}
+
+.recommend_player_each *{
+  color: black;
+  text-align: left;
+}
+
+.recommend_player_each div{
+  display: inline-block;
+}
+
+.recommend_player_each img{
+  margin: 10px 5px;
+  width: 80px;
+  height: 80px;
+}
+

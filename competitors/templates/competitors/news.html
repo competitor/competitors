@@ -1,0 +1,21 @@
+{% extends "competitors/base.html" %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/news.css">
+	
+	<div id="news_display">
+		<h3>{{news.title}}</h3>
+		<div id="news_content" class="panel">
+			{{news.content|safe}}
+		</div>
+	</div>
+	<div id="news_editor">
+		<form id="editor_panel" method="post" action="{% firstof request.path '/' %}">
+    		{{form.media}}
+    		{{form}}
+    		<button type="submit" class="btn btn-lg btn-primary">ADD</button>
+    		{% csrf_token %}
+		</form>
+	</div>
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/news.js"></script>
+	
+{% endblock %}
