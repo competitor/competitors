@@ -35,11 +35,11 @@ def home(request):
 	count1 = Team.objects.all().count()-5
 	count2 = Player.objects.all().count()-5
 	print request.user
-	if request.user.id > 0:
+	if request.user.id > 0: # If user has logged in
 		userprofile = UserProfile.objects.get(user=request.user)
 		teams = Team.objects.filter(followers__user=userprofile,followers__is_active=True)
 		players = Player.objects.filter(followers__user=userprofile,followers__is_active=True)
-	else:
+	else: # Anonymous user
 		start1=randint(0,max(count1,1))
 		end1 = start1+5;
 		start2 = randint(0,max(count2,1))
