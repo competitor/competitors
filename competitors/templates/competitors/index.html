@@ -25,10 +25,11 @@
 			<form role="search" method="POST" action="{% url 'search' %}">
 			    <div class="input-group input-group-lg">
 			        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-				    <input type="text" class="form-control" id="search" placeholder="Search Your Favourite...">
+				    <input type="text" class="form-control" id="search" name="search" required placeholder="Search Your Favourite...">
 				    <span class="input-group-btn">
-				    	<button class="btn btn-warning" type="button">Find!</button>
+				    	<button type="submit" class="btn btn-warning" type="button">Find!</button>
 				    </span>
+				    {% csrf_token %}
 				</div>
 		    </form>
 		</div>

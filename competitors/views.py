@@ -840,6 +840,7 @@ def add_events(request,id):
 def search(request):
 	context = {}
 	print request.POST
+	print 1111
 	if 'search' in request.POST and request.POST['search']:
 		name = request.POST['search'].strip()
 		teams = Team.objects.filter(name__contains=name)
@@ -861,6 +862,7 @@ def search(request):
 			context['players'] = players
 			return render(request,'competitors/searchresult.html',context)
 	else:
+		print 222
 		context['errors'] = 'request fault'
 		return render(request,'competitors/index.html',context)
 def search_autocomplete(request):
