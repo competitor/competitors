@@ -1,0 +1,23 @@
+#footer {
+	font-weight: bold;
+	color: white;
+	background: #494949;
+}
+
+#footer-text {
+	padding-top: 2em;
+}
+
+
+/*#team1 {
+	margin-top: 10px; 
+	padding-left: 20px;
+	width: 100px;
+	height: 90px;
+	background-image: url("../media/whu.png");
+	background-repeat: no-repeat;
+}*/
+
+#facebool-wrapper, #twitter-wrapper, #rss-wrapper {
+	margin-left: 1em;
+}

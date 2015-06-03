@@ -17,91 +17,23 @@
 	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/jquery.fullPage.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#fullpage').fullpage({
-				sectionsColor: ['#A9A9A9', '#A9A9A9'],
-				anchors: ['firstPage', 'secondPage'],
-				menu: '#menu',
-				css3: true,
-				scrollingSpeed: 600,
-				scrollBar: true,
-				scrollOverflow: true
-			});
 
-			// myvideo = $("video")[0];
-			// myvideo.muted = true;
-			// myvideo.play();
-
-			$('#mute').click(function(e) {
-				if (myvideo.muted === true) {
-					myvideo.muted = false;
-					$(this).text('Mute');
-				}
-				else {
-					myvideo.muted = true;
-					$(this).text('Unmute');
-				}
-			});
-		});
-	</script>
 
 </head>
 <body>
 	<div id="fullpage">
 	
 	<!-- New Nav area -->
-	<div class="section" id="section0" data-anchor="firstPage">
-		<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
-		<nav id="menu" class="navbar">
-		  <div class="container-fluid">
-		    <div class="navbar-header" id="logo-wrapper">
-		      <a class="navbar-brand" href="#" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
-		    </div>
-		  <!--   <div>
-	    		<ul >
-					<li data-menuanchor="firstPage" class=""><a href="#firstPage">Search</a></li>
-					<li data-menuanchor="secondPage" class=""><a href="#secondPage">More</a></li>
-				</ul>
-		    </div> -->
-		    <div class="collapse navbar-collapse" id="sign">
-		    	{% if user.is_authenticated %} 
-			    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
-			    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
-				{% else %} 
-		    		<button type="button" class="btn btn-warning btn-sm"> Sign in </button>
-					<a href="{% url 'register' %}"><button type="button" class="btn btn-default btn-sm"> Sign up </button></a>
-				{% endif %}
-		    </div>
-		  </div>
-		</nav>
-	{% csrf_token %} 
-	
-	{% block main %}
-	{% endblock %}
-	<div class="container-fluid" id="footer">
-		<div class="container">
-			<div class="col-md-6 col-sm-12" id="footer-text">
-				<p>anchors: (default []) Defines the anchor links (#example) to be shown on the URL for each section. The position of the anchors in the array will define to which sections the anchor is applied. (second position for second section and so on). Using anchors forward and backward navigation will also be possible through the browser.</p>
-				<br>
-				<div id="social-wrapper">
-					<span id="facebook-wrapper">
-						<a href="https://facebook.com" target="_blank" id="facebook"><img src="{{STATIC_URL}}competitors/img/Facebook.png" alt="facebook" width="40" height="40"></a>
-					</span>
-					<span id="twitter-wrapper">
-						<a href="https://twitter.com" target="_blank" id="facebook"><img src="{{STATIC_URL}}competitors/img/Twitter.png" alt="twitter" width="40" height="40"></a>
-					</span>
-					<span id="rss-wrapper">
-						<a href="https://rss.com" target="_blank" id="rss"><img src="{{STATIC_URL}}competitors/img/Rss.png" alt="facebook" width="40" height="40"></a>
-					</span>
-				</div>
-				<br>
-				<p>Competitors &#169; Copyright</p>
-			</div>
-		</div>	
+		<div class="section" id="section0" data-anchor="firstPage">
+			<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
+		{% include 'competitors/navbar.html' %}
+		{% csrf_token %} 
+		
+		{% block main %}
+		{% endblock %}
+		{% include 'competitors/footer.html' %}
+		</div>
 	</div>
-</div>
-</div>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/loginajax.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/login.js"></script>	

@@ -1,9 +1,65 @@
-{% extends "competitors/base.html" %}
-{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Competitors</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/jquery.fullPage.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}competitors/js/jquery.easings.min.js"></script>
+	<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/jquery.fullPage.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+	<div id="fullpage">
+	
+	<!-- New Nav area -->
+		<div class="section" id="section0" data-anchor="firstPage">
+			<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
+		{% include 'competitors/navbar.html' %}
+		{% csrf_token %} 
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/index.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#A9A9A9', '#A9A9A9'],
+				anchors: ['firstPage', 'secondPage'],
+				menu: '#menu',
+				css3: true,
+				scrollingSpeed: 600,
+				scrollBar: true,
+				scrollOverflow: true
+			});
+
+			// myvideo = $("video")[0];
+			// myvideo.muted = true;
+			// myvideo.play();
+
+			$('#mute').click(function(e) {
+				if (myvideo.muted === true) {
+					myvideo.muted = false;
+					$(this).text('Mute');
+				}
+				else {
+					myvideo.muted = true;
+					$(this).text('Unmute');
+				}
+			});
+		});
+	</script>
 
 <!-- 	<div id = "head">
 		<h1>COMPETITORS</h1>
@@ -74,4 +130,11 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="{{STATIC_URL}}competitors/js/index.js"></script>
-{% endblock %}
+		{% include 'competitors/footer.html' %}
+		</div>
+	</div>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/loginajax.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/login.js"></script>	
+</body>
+</html>

@@ -89,8 +89,9 @@ def loginself(request):
 @transaction.atomic
 def register(request):
     context = {}
-
+    context['signuppage'] = True
     if request.method == 'GET':
+
         context['form'] = RegistrationForm()
         return render(request, 'registration/register.html', context)
 
