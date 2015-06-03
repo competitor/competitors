@@ -1,77 +1,139 @@
-body{
+/*body{
   margin: 0;
   min-width: 1024px;
   background: url("/static/competitors/img/bg.jpeg") fixed;
   background-size:100% 100%;
-}
-#search_bar{
-  text-align: center;
-  margin-bottom: 20px;
-}
-#search{
-  width: 500px;
-  margin: 0 auto;
-}
+}*/
 
-
-#head{
-	text-align: center;
-	/*width: 1000px;*/
-	margin: 0 auto;
-	color: rgb(255,255,255);
+#section0 {
+/*  height: 1000px;*/
+  background-image: url("/static/competitors/img/index-2.jpg");
+  -webkit-background-size: cover;
+    background-size: cover;  
+    background-position:center; 
 }
 
-
-
-#recommend_team{
-  margin: 0 auto;
-  text-align: center;
+#live-wrapper {
+  height: 40px;
+  width: 100%;
+  padding: 0;
+  margin: 2em 0 0 0;
+  background: #FF8C00;
 }
 
-.recommend_team_each{
-  display: inline-block;
-  margin: 10px;
-}
-
-.recommend_team_each *{
+#live-text {
+  margin-top: 8px;
+  font-weight: bold;
   color: white;
-  text-align: center;
+  border-right: 1px solid #ffffff;
+  text-align: right;
+  padding-right: 2em;
 }
 
-.recommend_team_each img{
-  width: 100px;
-  height: 100px;
+#match {
+  padding-left: 2em;
+  margin-top: 8px;
+  font-weight: bold;
+  color: white;
 }
 
-.panel{
-  height: 100px;
-  width: 200px;
-  background: rgba(160,160,160,0.5);
+#match a {
+  text-decoration: none;
+  color: white;
 }
 
-#recommend_player{
-  margin: 0 auto;
-  text-align: center;
+#match a:hover {
+  color: #000;
+}
+
+#score {
+  margin-left: 4em;
+}
+
+#body-wrapper2 a {
+  font-size: 0.7em;
+  text-decoration: none;
+/*  position: absolute;
+  right: 1em;*/
+  color: white;
+}
+
+#body-wrapper2 h4 {
+  color: white;
+}
+
+.player-box {
+  height: 200px;
+  background: white;
+  padding: 5px !important;
+  margin-bottom: 25px;
+}
+
+.player-image {
+  width: 100%;
+  height: 80%;
+  background-size: cover;
+}
+
+.player-image img{
+  width: 100%;
+  height: 100%;
+}
+
+#player-wrapper, #team-wrapper {
+  margin: 2em 0 2em 0;
+  padding: 2em 3em 2em 3em; 
+}
+
+#player-wrapper {
+  border-right: 1px solid #ffffff;
+}
+
+#player-wrapper p {
+  font-weight: bold;
+  color: #C0C0C0;
+  margin-top: 1em;
+}
+
+#row2, #row3 {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#team-wrapper {
+  padding-left: 0;
+}
+
+#team-wrapper h4 {
+  padding-left: 1em;
+}
+
+.team-box {
+  height: 90px;
+  background: white;
+  margin-bottom: 20px;
+  padding-left: 3em;
+  padding-top: 5px;
+  background: -webkit-linear-gradient(left,#A9A9A9, #ffffff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #A9A9A9, #ffffff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #A9A9A9, #ffffff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(left, #A9A9A9, #ffffff); /* Standard syntax */
+}
+
+.team-image p{
+  padding: 30px;
+  font-weight: bold;
+  color: #C0C0C0;
 }
 
 
-.recommend_player_each{
-  margin: 10px;
-  display: inline;
-}
 
-.recommend_player_each *{
-  color: black;
-  text-align: left;
-}
 
-.recommend_player_each div{
-  display: inline-block;
-}
 
-.recommend_player_each img{
-  margin: 10px 5px;
-  width: 80px;
-  height: 80px;
-}
+
+
+
+
+
+
 

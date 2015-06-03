@@ -1,12 +1,11 @@
 {% extends "competitors/base.html" %}
 {% block main %}
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/index.css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/index.js"></script>
 
-	<div id = "head">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/index.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<!-- 	<div id = "head">
 		<h1>COMPETITORS</h1>
 	</div>
 	{{errors}}
@@ -20,37 +19,58 @@
   			{% csrf_token %}
 		</form>
 		
-	</div>
-	
+	</div> -->
 
-	<div id="recommend_team">
-		{% for team in teams %}
-			<div class="recommend_team_each">
-				<a href="{% url 'team_page' team.id %}">
-					<img src="{{team.icon_url}}">
-					<h6>{{team.name}}</h6>
-				</a>
-			</div>
-		{% endfor %}
+ 		<div class="col-md-offset-3 col-md-6" id="search_bar">
+			<form role="search" method="POST" action="{% url 'search' %}">
+			    <div class="input-group input-group-lg">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+				    <input type="text" class="form-control" id="search" placeholder="Search Your Favourite...">
+				    <span class="input-group-btn">
+				    	<button class="btn btn-warning" type="button">Find!</button>
+				    </span>
+				</div>
+		    </form>
+		</div>
 	</div>
-
-	<div id="recommend_player">
-		{% for player in players %}
-			<div class="recommend_player_each">
-				<a href="{% url 'player_page' player.id %}">
-					<div class="panel">
-						<div class="recommend_player_each_img">
-							<img src="{{player.icon_url}}">
-						</div>
-						<div class="recommend_player_each_info">
-							<h6>{{player.name}}</h6>
-							<h6>{{player.followers.count}}
-						</div>
-					</div>
-				</a>
+	<div class="section" id="section1" data-anchor="secondPage">
+		<div class="container-fluid" id="live-wrapper">
+			<div class="row">
+				<div class="col-md-3 col-sm-12" id="live-text">
+					LIVE
+				</div>
+				<div class="col-md-9 col-sm-12" id="match">
+					<a href="javascript:;">Washington Wizard vs Atlanta Hawks</a>
+					<span id="score">90:106</span>
+				</div>
 			</div>	
-		{% endfor %}
-	</div>
+		</div>
+		<div class="container"  id="body-wrapper2">
+			<div class="col-md-6 col-sm-12" id="player-wrapper">
+				<h4>Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
+				{% for player in players %}
+					<div class="col-sm-5 player-box player-left-column" id="player1">
+						<a href="{% url 'player_page' player.id %}">
+							<div class="player-image" id="img1"><img src="{{player.icon_url}}"></div>
+							<p>{{player.name}} <span class="pull-right"> {{player.followers.count}} </span></p>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
 
-
+			<div class="col-md-6 col-sm-12" id="team-wrapper">
+				<h4>Team<span class="pull-right"><a href="#">More</a></span></h4>
+				{% for team in teams %}
+				<div class="team-box">
+					<div class="team-image" id="team1">
+						<a href="{% url 'team_page' team.id %}">
+							<img src="{{team.icon_url}}" alt="" width="80" height="80">
+							<p class="pull-right">{{team.name}}</p>
+						</a>
+					</div>
+				</div>
+				{% endfor %} 
+			</div>
+		</div>
+		<!--<script type="text/javascript" src="{{STATIC_URL}}competitors/js/index.js"></script>-->
 {% endblock %}

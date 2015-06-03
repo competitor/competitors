@@ -1,56 +1,107 @@
-<!doctype HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+	<title>Competitors</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/jquery.fullPage.css">
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/bootstrap-3.3.4/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/bootstrap-3.3.4/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
-	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/jquery-2.1.3.min.js"></script>
-	
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script src="{{STATIC_URL}}competitors/js/jquery.twbsPagination.min.js"></script>
-	
-	
-	<title>Competitor</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}competitors/js/jquery.easings.min.js"></script>
+	<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}competitors/js/jquery.fullPage.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#A9A9A9', '#A9A9A9'],
+				anchors: ['firstPage', 'secondPage'],
+				menu: '#menu',
+				css3: true,
+				scrollingSpeed: 600,
+				scrollBar: true,
+				scrollOverflow: true
+			});
+
+			// myvideo = $("video")[0];
+			// myvideo.muted = true;
+			// myvideo.play();
+
+			$('#mute').click(function(e) {
+				if (myvideo.muted === true) {
+					myvideo.muted = false;
+					$(this).text('Mute');
+				}
+				else {
+					myvideo.muted = true;
+					$(this).text('Unmute');
+				}
+			});
+		});
+	</script>
+
 </head>
 <body>
-	<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
-	<div id="navbar">
-		<div id="title">
-			{% if homepage != True %}
-				<a href="{% url 'home' %}"><h2>Competitors</h2></a>
-				<div class="navbar_search">
-					<form class="form-inline" method="POST" action="{% url 'search' %}">
-							<div class="form-group">
-								<label class="sr-only" for="nav_search">Search: </label>
-								<input type="text" class="form-control" id="nav_search" name="search" required="required" placeholder="Search Your Favorite">
-							</div>
-							<button type="submit" class="btn btn-success">Find</button>
-							{% csrf_token %}
-					</form>
-				</div>
-			{% endif %}
-			<div>
-				<a id="search_link" href="{% url 'search_page' %}">Search By Category</a>
-			</div>
-			{% if user.is_authenticated %} 
-			    <a id="sign" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
-			    <a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
-			{% else %} 
-			    <a id="sign" href="{% url 'register' %}"><button class="btn btn-info">Sign Up</button></a>
-			    <a id="redirect" href="#" onclick="popSignFlow(1)"><button class="btn btn-primary">Sign In</button></a>
-			{% endif %} 
-		</div>
-	</div>
-	<div id="main">
+	<div id="fullpage">
+	
+	<!-- New Nav area -->
+	<div class="section" id="section0" data-anchor="firstPage">
+		<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
+		<nav id="menu" class="navbar">
+		  <div class="container-fluid">
+		    <div class="navbar-header" id="logo-wrapper">
+		      <a class="navbar-brand" href="#" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
+		    </div>
+		  <!--   <div>
+	    		<ul >
+					<li data-menuanchor="firstPage" class=""><a href="#firstPage">Search</a></li>
+					<li data-menuanchor="secondPage" class=""><a href="#secondPage">More</a></li>
+				</ul>
+		    </div> -->
+		    <div class="collapse navbar-collapse" id="sign">
+		    	{% if user.is_authenticated %} 
+			    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
+			    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
+				{% else %} 
+		    		<button type="button" class="btn btn-warning btn-sm"> Sign in </button>
+					<a href="{% url 'register' %}"><button type="button" class="btn btn-default btn-sm"> Sign up </button></a>
+				{% endif %}
+		    </div>
+		  </div>
+		</nav>
 	{% csrf_token %} 
 	
 	{% block main %}
 	{% endblock %}
+	<div class="container-fluid" id="footer">
+		<div class="container">
+			<div class="col-md-6 col-sm-12" id="footer-text">
+				<p>anchors: (default []) Defines the anchor links (#example) to be shown on the URL for each section. The position of the anchors in the array will define to which sections the anchor is applied. (second position for second section and so on). Using anchors forward and backward navigation will also be possible through the browser.</p>
+				<br>
+				<div id="social-wrapper">
+					<span id="facebook-wrapper">
+						<a href="https://facebook.com" target="_blank" id="facebook"><img src="{{STATIC_URL}}competitors/img/Facebook.png" alt="facebook" width="40" height="40"></a>
+					</span>
+					<span id="twitter-wrapper">
+						<a href="https://twitter.com" target="_blank" id="facebook"><img src="{{STATIC_URL}}competitors/img/Twitter.png" alt="twitter" width="40" height="40"></a>
+					</span>
+					<span id="rss-wrapper">
+						<a href="https://rss.com" target="_blank" id="rss"><img src="{{STATIC_URL}}competitors/img/Rss.png" alt="facebook" width="40" height="40"></a>
+					</span>
+				</div>
+				<br>
+				<p>Competitors &#169; Copyright</p>
+			</div>
+		</div>	
 	</div>
-	<div id="footer">
-		<h6>maot@copyright</h6>
-	</div>
+</div>
+</div>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/loginajax.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/login.js"></script>	

@@ -44,8 +44,8 @@ def home(request):
 		end1 = start1+5;
 		start2 = randint(0,max(count2,1))
 		end2 = start2+5
-		teams = Team.objects.annotate(num=(Count('followers'))).order_by('-num')[0:5]
-		players = Player.objects.annotate(num=(Count('followers'))).order_by('-num')[start2:end2]
+		teams = Team.objects.annotate(num=(Count('followers'))).order_by('-num')[0:6]
+		players = Player.objects.annotate(num=(Count('followers'))).order_by('-num')[0:6]
 	context['teams'] = teams
 	context['players'] = players
 	context['homepage'] = True
