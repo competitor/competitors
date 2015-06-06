@@ -22,7 +22,7 @@
     <div id="body">
         <div class="container" id="form-wrapper">
             <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
-            <form action="#" name="signup-form" class="form-horizontal">
+            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal">
                 {% for field in form %}
                 <div class="form-group">
                     <label for="inputFirstname" class="col-sm-2 control-label">{{field.label}}</label>
