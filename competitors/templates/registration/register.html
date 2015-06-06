@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="competitorsApp">
 <head>
     <title>Sign Up for Competitors</title>
     <meta charset="UTF-8">
@@ -13,12 +13,18 @@
     <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="{{STATIC_URL}}competitors/js/app.js"></script>   
+    
 
 </head>
-<body>
+<body ng-controller="MainCtl">
     <div id="header">
         {% include 'competitors/navbar.html' %}
     </div>
+    <h1>
+       <!--  {{message}} -->
+    </h1>
     <div id="body">
         <div class="container" id="form-wrapper">
             <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
@@ -48,6 +54,16 @@
 </div>
 {% include 'competitors/footer.html' %}
 <script src="{{STATIC_URL}}competitors/js/register.js"></script>
+<script>
+    competitorsApp.controller('MainCtl',['$scope','$http',function($scope,$http){
+            console.log("123123");
+            $scope.message = "SUCCESS";
+        }
+        
+    ]);
+    console.log("123123asdasd");
+    
+</script>
 
 
 
