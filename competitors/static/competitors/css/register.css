@@ -28,8 +28,12 @@ body{
 }
 
 
-input[name="username"]{
-	background-image:url("/static/competitors/img/info.jpg"); 
+input:-webkit-autofill {
+    z-index: 1!important;
+}
+
+input[type="text"],input[type="password"]{
+	z-index: 99;
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: 25px 80%;

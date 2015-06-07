@@ -22,13 +22,10 @@
     <div id="header">
         {% include 'competitors/navbar.html' %}
     </div>
-    <h1>
-        //message//
-    </h1>
     <div id="body">
         <div class="container" id="form-wrapper">
             <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
-            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal">
+            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal" method="POST">
                 {% for field in form %}
                 <div class="form-group">
                     <label for="inputFirstname" class="col-sm-2 control-label">{{field.label}}</label>
@@ -59,42 +56,95 @@
     competitorsApp.controller('MainCtl',['$scope','$http',function($scope,$http){
             console.log("123123");
             $scope.message = "SUCCESS";
-          
+            var field;
             var validation = function(offset, size, callback){
-                var username = $('input[name=username]').val();
-                var email = $('input[name=email]').val();
+                console.log(field);
+                var data = $('input[name='+ field +']').val();
+                if (field == "username"){
+                    var para = $.param({username:data})
+                }else if (field == "email"){
+                    var para = $.param({email:data})
+                }else
+                    return;
            // var token = $("input[name=csrfmiddlewaretoken]").val();
              
                 $http({
                     method: 'POST',
-                    url: "api/valid",
-                    data: $.param({'username':username,'email':email}),
+                    url: "api/check"+field,
+                    data: para,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 })
                 .success(function(data, status, headers, config){
                     console.log(data);
                     if (!data){
-                        $('input[name=username]').css("background-image","url(\"/static/competitors/img/tick.jpg\")");
-                        $('input[name=username]').parent().parent().children(".error").remove();
+                        correctSymbol(field);
                     }else{
-                         $('input[name=username]').css("background-image","url(\"/static/competitors/img/info.jpg\")");
-                         $scope.usernameError = data;
-                         $('input[name=username]').parent().parent().append("<div class=\"col-sm-4 error\">"+data+"</div>")
-
+                        incorrectSymbol(field,data)
                     }
                 })
             }
-            var typingTimer;
-            $('input[name=username]').keyup(function() { 
-                clearTimeout(typingTimer);
+            var firstNameTimer;
+            var lastNameTimer;
+            var usernameTimer;
+            var emailTimer;
+            var password1Timer;
+            var password2Timer;
+            $('form').attr("autocomplete","off");          
+            $('input[name=username]').on('input',function() { 
+                clearTimeout(usernameTimer);
                 if ($('input[name=username]').val()){
-                    typingTimer = setTimeout(validation,2000);
+                    field = "username"
+                    usernameTimer = setTimeout(validation,2000);
                 } // get the current value of the input field.
             });
-            function doneTyping(){
-                alert($('input[name=username]').val());
+            $('input[name=email]').on('input',function() { 
+                clearTimeout(emailTimer);
+                if ($('input[name=email]').val()){
+                    field = "email"
+                    emailTimer = setTimeout(validation,2000);
+                } // get the current value of the input field.
+            });
+
+            $('input[name=password1]').keyup(function() { 
+                clearTimeout(password1Timer);
+                field = "password1";
+                var p1 = $('input[name=password1]').val()
+                if (p1) {
+                    password1Timer = setTimeout((function(){
+                        if (p1.length < 6){
+                            incorrectSymbol("password1","password should > 6");
+                        }else{
+                            correctSymbol("password1")
+                        }
+                    }),2000);
+                } // get the current value of the input field.
+            });
+
+            $('input[name=password2]').keyup(function() { 
+                clearTimeout(password2Timer);
+                var p1 = $('input[name=password1]').val()
+                var p2 = $('input[name=password2]').val()
+                if (p2) {
+                    password2Timer = setTimeout((function(){
+                        if (p2 != p1 ){
+                            incorrectSymbol("password2","passwords not match");
+                        }else{
+                            correctSymbol("password2");
+                        }
+                    }),2000);
+                } // get the current value of the input field.
+            });
+
+            var incorrectSymbol = function(field,data){
+                $('input[name='+ field +']').css("background-image","url(\"/static/competitors/img/info.jpg\")");
+                $('input[name='+ field +']').parent().parent().append("<div class=\"col-sm-4 error\">"+data+"</div>")
             }
-            //validation();
+
+            var correctSymbol = function(field){
+                $('input[name='+ field +']').css("background-image","url(\"/static/competitors/img/tick.jpg\")");
+                $('input[name='+ field +']').parent().parent().children(".error").remove();               
+            }
+
         }
         
     ]);
