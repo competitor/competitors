@@ -27,6 +27,20 @@ body{
 	padding-bottom: 2em;
 }
 
+
+input[name="username"]{
+	background-image:url("/static/competitors/img/info.jpg"); 
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 25px 80%;
+}
+
+.error{
+	color: red;
+	font-size:14px;
+	line-height: 34px;
+}
+
 .form-group {
 	padding: 2em 2em;
 }

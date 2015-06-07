@@ -88,9 +88,15 @@ def loginself(request):
 
 def valid(request):
 	context = {}
-	print 123
-	print request
-	data = "hahahahh"
+	# print 123
+	# print request
+	# data = "hahahahh"
+	username = request.POST["username"]
+	try: 
+		user = User.objects.get(username=username)
+		data = "username has been taken"
+	except ObjectDoesNotExist:
+		data = ""
 	return HttpResponse(data, content_type="text/plain")
 
 

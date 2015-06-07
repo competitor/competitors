@@ -32,8 +32,11 @@
                 {% for field in form %}
                 <div class="form-group">
                     <label for="inputFirstname" class="col-sm-2 control-label">{{field.label}}</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                       {{field}}
+                    </div>
+                    <div class="error col-sm-4">
+                        //usernameError//
                     </div>
                 </div>
                 {% endfor %}
@@ -59,18 +62,39 @@
     competitorsApp.controller('MainCtl',['$scope','$http',function($scope,$http){
             console.log("123123");
             $scope.message = "SUCCESS";
-            var form = $('form');
-            var username = $('input[name=username]').val();
-            var email = $('input[name=email]').val();
-            var token = $("input[name=csrfmiddlewaretoken]").val();
-            var postData = {'username':username,'email':email,'csrfmiddlewaretoken': token};
-            console.log(postData);
+          
             var validation = function(offset, size, callback){
-                $http.post("/api/valid",{postData}).success(function(data, status, headers, config){
+                var username = $('input[name=username]').val();
+                var email = $('input[name=email]').val();
+           // var token = $("input[name=csrfmiddlewaretoken]").val();
+             
+                $http({
+                    method: 'POST',
+                    url: "api/valid",
+                    data: $.param({'username':username,'email':email}),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+                .success(function(data, status, headers, config){
                     console.log(data);
+                    if (!data){
+                        $('input[name=username]').css("background-image","url(\"/static/competitors/img/tick.jpg\")");
+                    }else{
+                         $('input[name=username]').css("background-image","url(\"/static/competitors/img/info.jpg\")");
+                         $scope.usernameError = data;                       
+                    }
                 })
             }
-            validation();
+            var typingTimer;
+            $('input[name=username]').keyup(function() { 
+                clearTimeout(typingTimer);
+                if ($('input[name=username]').val()){
+                    typingTimer = setTimeout(validation,2000);
+                } // get the current value of the input field.
+            });
+            function doneTyping(){
+                alert($('input[name=username]').val());
+            }
+            //validation();
         }
         
     ]);
