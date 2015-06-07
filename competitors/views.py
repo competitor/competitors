@@ -86,6 +86,14 @@ def loginself(request):
 # def getCountryList(request):
 
 
+def valid(request):
+	context = {}
+	print 123
+	print request
+	data = "hahahahh"
+	return HttpResponse(data, content_type="text/plain")
+
+
 @transaction.atomic
 def register(request):
     context = {}

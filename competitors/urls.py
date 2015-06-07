@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
 	url(r'^$','competitors.views.home',name = 'home'),
+	url(r'^api/valid','competitors.views.valid',name = 'valid'),
 	url(r'^team/(?P<id>\d+)$','competitors.views.team_page',name = 'team_page'),
 	url(r'^player/(?P<id>\d+)$','competitors.views.player_page',name = 'player_page'),
 	url(r'^get_country_list$','competitors.views.get_country_list',name = 'get_country_list'),

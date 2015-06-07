@@ -23,7 +23,7 @@
         {% include 'competitors/navbar.html' %}
     </div>
     <h1>
-       <!--  {{message}} -->
+        //message//
     </h1>
     <div id="body">
         <div class="container" id="form-wrapper">
@@ -49,6 +49,7 @@
                 <div class="col-sm-2"></div>
                 <button type="submit" class="btn btn-warning">Register</button>
             </div>
+            {% csrf_token %}
         </form>
     </div>
 </div>
@@ -58,6 +59,18 @@
     competitorsApp.controller('MainCtl',['$scope','$http',function($scope,$http){
             console.log("123123");
             $scope.message = "SUCCESS";
+            var form = $('form');
+            var username = $('input[name=username]').val();
+            var email = $('input[name=email]').val();
+            var token = $("input[name=csrfmiddlewaretoken]").val();
+            var postData = {'username':username,'email':email,'csrfmiddlewaretoken': token};
+            console.log(postData);
+            var validation = function(offset, size, callback){
+                $http.post("/api/valid",{postData}).success(function(data, status, headers, config){
+                    console.log(data);
+                })
+            }
+            validation();
         }
         
     ]);
