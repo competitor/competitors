@@ -35,9 +35,6 @@
                     <div class="col-sm-6">
                       {{field}}
                     </div>
-                    <div class="error col-sm-4">
-                        //usernameError//
-                    </div>
                 </div>
                 {% endfor %}
             <div class="form-group">
@@ -78,9 +75,12 @@
                     console.log(data);
                     if (!data){
                         $('input[name=username]').css("background-image","url(\"/static/competitors/img/tick.jpg\")");
+                        $('input[name=username]').parent().parent().children(".error").remove();
                     }else{
                          $('input[name=username]').css("background-image","url(\"/static/competitors/img/info.jpg\")");
-                         $scope.usernameError = data;                       
+                         $scope.usernameError = data;
+                         $('input[name=username]').parent().parent().append("<div class=\"col-sm-4 error\">"+data+"</div>")
+
                     }
                 })
             }
