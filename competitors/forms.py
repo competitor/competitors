@@ -168,7 +168,9 @@ class ChangeImageForm(forms.ModelForm):
 
 class NewsForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorWidget())
-
+    exclude = (
+            'time',
+        )
     class Meta:
         model = News
     def clean(self):
