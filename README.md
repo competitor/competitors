@@ -2,8 +2,8 @@
 ```
 #!python
 Clone to your local
-#Install Django (Currently implemented on Django 1.8)
-pip install django
+#Install Django (Currently implemented on Django 1.7.4)
+pip install django＝1.7.4
 #Install necessary tools
 pip install django-guardian
 pip install django-easy-timezones
