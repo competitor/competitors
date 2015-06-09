@@ -14,9 +14,9 @@ pip install tzlocal
 python manage.py runserver
 # Go to localhost:8000
 # if error. install any tool as error shows.
-
+```
 # COMMIT GUIDELINE #
-## ### 1. Checkout to your (new) branch ##
+## 1. Checkout to your (new) branch ##
 git checkout -b {{branch_name}}
 ## 2.Commit to your local ##
 ### 2.1 commit message: ###
