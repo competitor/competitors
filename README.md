@@ -20,15 +20,17 @@ python manage.py runserver
 git checkout -b {{branch_name}}
 ### 2.Commit to your local ###
 **2.1 commit message:**
+```
 See #{{issue number}}  {{description}}
 
 {{details}}
-
+```
 example:
+```
 See #1 index page responsive design
 
 Have added designs for phone and tablet
- 
+```
 ### 3.Pull from master ###
 ```
 git pull origin master
