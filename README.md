@@ -16,10 +16,10 @@ python manage.py runserver
 # if error. install any tool as error shows.
 ```
 # COMMIT GUIDELINE #
-## 1. Checkout to your (new) branch ##
+### 1. Checkout to your (new) branch ###
 git checkout -b {{branch_name}}
-## 2.Commit to your local ##
-### 2.1 commit message: ###
+### 2.Commit to your local ###
+**2.1 commit message:**
 See #{{issue number}}  {{description}}
 
 {{details}}
@@ -30,9 +30,13 @@ See #1 index page responsive design
 Have added designs for phone and tablet
  
 ### 3.Pull from master ###
+```
+!bash
 git pull origin master
-
-## 4. Push to remote branch ##
+```
+### 4. Push to remote branch ###
+```
+!bash
 git push origin {{branch_name}}
-
+```
 ## 5. Assign the issue to Mao Tang ##
