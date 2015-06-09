@@ -12,6 +12,7 @@ pip install django-import-export #this will be deprecated. You don't need to ins
 pip install tzlocal
 #start server 
 python manage.py runserver
+# Go to localhost:8000
 # if error. install any tool as error shows.
 
 ```
