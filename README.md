@@ -31,12 +31,10 @@ Have added designs for phone and tablet
  
 ### 3.Pull from master ###
 ```
-!bash
 git pull origin master
 ```
 ### 4. Push to remote branch ###
 ```
-!bash
 git push origin {{branch_name}}
 ```
-## 5. Assign the issue to Mao Tang ##
+### 5. Assign the issue to Mao Tang ###
