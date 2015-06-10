@@ -34,16 +34,16 @@ class ChangePasswordForm(forms.Form):
 
 class RegistrationForm(forms.Form):
     first_name = forms.CharField(max_length=20,
-                                label='First Name')
-    last_name  = forms.CharField(max_length=20)
-    username   = forms.CharField(max_length = 20)
-    email      = forms.CharField(max_length = 200)
+                                label='First Name',widget=forms.TextInput(attrs={'autocomplete':'off'}))
+    last_name  = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'autocomplete':'off'}))
+    username   = forms.CharField(max_length = 20,widget=forms.TextInput(attrs={'autocomplete':'off'}))
+    email      = forms.CharField(max_length = 200,widget=forms.TextInput(attrs={'autocomplete':'off'}))
     password1  = forms.CharField(max_length = 200, 
                                  label='Password', 
-                                 widget = forms.PasswordInput())
+                                 widget = forms.PasswordInput(attrs={'autocomplete':'off'}))
     password2  = forms.CharField(max_length = 200, 
                                  label='Confirm password',  
-                                 widget = forms.PasswordInput())
+                                 widget = forms.PasswordInput(attrs={'autocomplete':'off'}))
    
     # Customizes form validation for properties that apply to more
     # than one field.  Overrides the forms.Form.clean function.

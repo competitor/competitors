@@ -4,6 +4,11 @@ body{
 @media screen and (min-width: 1024px){
 
 }
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
 #menu{
 	background: #FF8C00 !important;
 }
@@ -27,11 +32,6 @@ body{
 	padding-bottom: 2em;
 }
 
-
-input:-webkit-autofill {
-    z-index: 1!important;
-}
-
 input[type="text"],input[type="password"]{
 	z-index: 99;
 	background-repeat: no-repeat;
@@ -40,7 +40,7 @@ input[type="text"],input[type="password"]{
 }
 
 .error{
-	color: red;
+	color: #a94442;
 	font-size:14px;
 	line-height: 34px;
 }

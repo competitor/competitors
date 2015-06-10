@@ -25,12 +25,23 @@
     <div id="body">
         <div class="container" id="form-wrapper">
             <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
-            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal" method="POST">
+            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal" method="POST" autocomplete="off">
+                <input style="display:none">
+                <input type="password" style="display:none">
                 {% for field in form %}
-                <div class="form-group">
+<!--                  <div class="form-group has-error has-feedback">
+                    <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+                      <span class="glyphicon glyphicon-remove-sign form-control-feedback" aria-hidden="true"></span>
+                      <span id="inputSuccess3Status" class="sr-only">(success)</span>
+                    </div>
+                  </div> -->
+                <div class="form-group has-feedback">
                     <label for="inputFirstname" class="col-sm-2 control-label">{{field.label}}</label>
                     <div class="col-sm-6">
-                      {{field}}
+                        {{field}}
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                 </div>
                 {% endfor %}
@@ -136,12 +147,14 @@
             });
 
             var incorrectSymbol = function(field,data){
-                $('input[name='+ field +']').css("background-image","url(\"/static/competitors/img/info.jpg\")");
+                $('input[name='+ field +']').parent().children('.glyphicon').addClass('glyphicon-remove-sign');
+                $('input[name='+ field +']').parent().parent().removeClass('has-success').addClass('has-error');
                 $('input[name='+ field +']').parent().parent().append("<div class=\"col-sm-4 error\">"+data+"</div>")
             }
 
             var correctSymbol = function(field){
-                $('input[name='+ field +']').css("background-image","url(\"/static/competitors/img/tick.jpg\")");
+                $('input[name='+ field +']').parent().children('.glyphicon').addClass('glyphicon-ok-sign');
+                $('input[name='+ field +']').parent().parent().removeClass('has-error').addClass('has-success');
                 $('input[name='+ field +']').parent().parent().children(".error").remove();               
             }
 
