@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="competitorsApp">
 <head>
     <title>Sign Up for Competitors</title>
     <meta charset="UTF-8">
@@ -13,26 +13,30 @@
     <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="{{STATIC_URL}}competitors/js/app.js"></script>   
+    
 
 </head>
-<body>
+<body ng-controller="MainCtl">
     <div id="header">
         {% include 'competitors/navbar.html' %}
     </div>
     <div id="body">
         <div class="container" id="form-wrapper">
             <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
-            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal">
+            <form action="{% url 'register' %}" name="signup-form" class="form-horizontal" method="POST">
                 {% for field in form %}
-                <div class="form-group">
-                    <label for="inputFirstname" class="col-sm-2 control-label">{{field.label}}</label>
-                    <div class="col-sm-10">
-                      {{field}}
+                <div class="signupfield form-group has-feedback">
+                    <label class="col-sm-2 control-label">{{field.label}}</label>
+                    <div class="col-sm-6">
+                        {{field}}
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                 </div>
                 {% endfor %}
             <div class="form-group">
-                <div class="radio col-sm-offset-2">
+                <div class="agreement radio col-sm-offset-2">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios" value="agree">
                         I have read and agree with the <a href="javascript:;">Agreement</a>
@@ -41,13 +45,176 @@
             </div>
             <div id="form-action">
                 <div class="col-sm-2"></div>
-                <button type="submit" class="btn btn-warning">Register</button>
+                <button type="submit" disabled="true" class="btn btn-warning">Register</button>
             </div>
+            {% csrf_token %}
         </form>
     </div>
 </div>
 {% include 'competitors/footer.html' %}
 <script src="{{STATIC_URL}}competitors/js/register.js"></script>
+<script>
+    competitorsApp.controller('MainCtl',['$scope','$http',function($scope,$http){
+            console.log("123123");
+            $scope.message = "SUCCESS";
+            var validation = function(field){
+                console.log(field);
+                var data = $('input[name='+ field +']').val();
+                if (field == "username"){
+                    var para = $.param({username:data})
+                }else if (field == "email"){
+                    var para = $.param({email:data})
+                }else
+                    return;
+           // var token = $("input[name=csrfmiddlewaretoken]").val();
+             
+                $http({
+                    method: 'POST',
+                    url: "api/check"+field,
+                    data: para,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+                .success(function(data, status, headers, config){
+                    console.log(data);
+                    if (!data){
+                        correctSymbol(field);
+                    }else{
+                        incorrectSymbol(field,data)
+                    }
+                });
+                signupAva();
+            }
+            var firstNameTimer;
+            var lastNameTimer;
+            var usernameTimer;
+            var emailTimer;
+            var password1Timer;
+            var password2Timer;
+            $('input[name=first_name]').on('input',function() {
+                clearTimeout(firstNameTimer);
+                var firstName = $('input[name=first_name]').val();
+                if (firstName){
+                    firstNameTimer = setTimeout((function(){
+                        if (/[^A-Za-z\d]/.test(firstName)) {
+                            incorrectSymbol("first_name","Please enter only letter and numeric characters");
+                        }else{
+                            correctSymbol("first_name")
+                        }
+                        signupAva();
+                    }),1000);
+                }else{
+                    incorrectSymbol("first_name","Required");
+                }
+            });
+
+            $('input[name=last_name]').on('input',function() {
+                clearTimeout(lastNameTimer);
+                var lastName = $('input[name=last_name]').val();
+                if (lastName){
+                    lastNameTimer = setTimeout((function(){
+                        if (/[^A-Za-z\d]/.test(lastName)) {
+                            incorrectSymbol("last_name","Please enter only letter and numeric characters");
+                        }else{
+                            correctSymbol("last_name")
+                        }
+                        signupAva();
+                    }),1000);
+                }else{
+                    incorrectSymbol("last_name","Required");
+                }
+            });
+
+            $('input[name=username]').on('input',function() { 
+                clearTimeout(usernameTimer);
+                if ($('input[name=username]').val().trim()){
+                    usernameTimer = setTimeout(function(){
+                        return validation("username");
+                    },2000);
+                }else{
+                    incorrectSymbol("username","Required");
+                }
+            });
+            $('input[name=email]').on('input',function() { 
+                clearTimeout(emailTimer);
+                if ($('input[name=email]').val().trim()){
+                    emailTimer = setTimeout(function(){
+                        return validation('email');
+                    },2000);
+                }else{
+                    incorrectSymbol("email","Required");
+                }
+            });
+
+            $('input[name=password1]').keyup(function() { 
+                clearTimeout(password1Timer);
+                var p1 = $('input[name=password1]').val();
+                if (p1) {
+                    password1Timer = setTimeout((function(){
+                        if (p1.length < 6){
+                            incorrectSymbol("password1","password should > 6");
+                        }else{
+                            correctSymbol("password1")
+                        }
+                        signupAva();
+                    }),1000);
+                } else{
+                    incorrectSymbol("password1","Required");
+                }
+            });
+
+            $('input[name=password2]').keyup(function() { 
+                clearTimeout(password2Timer);
+                var p1 = $('input[name=password1]').val();
+                var p2 = $('input[name=password2]').val();
+                if (p2) {
+                    password2Timer = setTimeout((function(){
+                        if (p2 !== p1 ){
+                            incorrectSymbol("password2","passwords not match");
+                        }else{
+                            correctSymbol("password2");
+                        }
+                        signupAva();
+                    }),1000);
+                }else{
+                    incorrectSymbol("password2","Required");
+                }
+            });
+
+            var incorrectSymbol = function(field,data){
+                $('input[name='+ field +']').parent().children('.glyphicon').removeClass('glyphicon-ok-sign').addClass('glyphicon-remove-sign');
+                $('input[name='+ field +']').parent().parent().removeClass('has-success').addClass('has-error');
+                $('input[name='+ field +']').parent().parent().children(".error").remove();
+                $('input[name='+ field +']').parent().parent().append("<div class=\"col-sm-4 error\">"+data+"</div>")
+            }
+
+            var correctSymbol = function(field){
+                $('input[name='+ field +']').parent().children('.glyphicon').removeClass('glyphicon-remove-sign').addClass('glyphicon-ok-sign');
+                $('input[name='+ field +']').parent().parent().removeClass('has-error').addClass('has-success');
+                $('input[name='+ field +']').parent().parent().children(".error").remove();               
+            }
+
+            var signupAva = function(){
+                var disabled = false;
+                console.log("checking");
+                $(".signupfield").each(function(){
+                    if (!$(this).hasClass("has-success")){
+                        console.log("change-un")
+                        $('button[type=submit]').attr('disabled','disabled');
+                        disabled = true;
+                    }
+                });
+                
+                if (disabled==false){
+                    console.log("change-success")
+                    $('button[type=submit]').removeAttr('disabled');
+                }
+            }
+        }
+        
+    ]);
+    console.log("123123asdasd");
+    
+</script>
 
 
 
