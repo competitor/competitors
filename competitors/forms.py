@@ -34,8 +34,8 @@ class ChangePasswordForm(forms.Form):
 
 class RegistrationForm(forms.Form):
     first_name = forms.CharField(max_length=20,
-                                label='First Name',widget=forms.TextInput(attrs={'autocomplete':'off'}))
-    last_name  = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'autocomplete':'off'}))
+                                label='Firstname',widget=forms.TextInput(attrs={'autocomplete':'off'}))
+    last_name  = forms.CharField(max_length=20,label='Lastname',widget=forms.TextInput(attrs={'autocomplete':'off'}))
     username   = forms.CharField(max_length = 20,widget=forms.TextInput(attrs={'autocomplete':'off'}))
     email      = forms.CharField(max_length = 200,widget=forms.TextInput(attrs={'autocomplete':'off'}))
     password1  = forms.CharField(max_length = 200, 
