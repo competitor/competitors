@@ -1,7 +1,13 @@
 <nav id="menu" class="navbar">
   	<div class="container-fluid">
 	    <div class="navbar-header" id="logo-wrapper">
+
+	    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sign">
+	    	<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+			</button>
+	      	</button>
 	      <a class="navbar-brand" href="#" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
+
 	    </div>
 	  <!--   <div>
 			<ul >
@@ -9,19 +15,23 @@
 				<li data-menuanchor="secondPage" class=""><a href="#secondPage">More</a></li>
 			</ul>
 	    </div> -->
+
+
 	    <div class="collapse navbar-collapse" id="sign">
-	    	{% if user.is_authenticated %} 
-		    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
-		    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
-			{% else %}
-				{% if homepage == True %} 
-	    			<button type="button" class="btn btn-warning btn-sm"> Sign in </button>
-					<a href="{% url 'register' %}"><button type="button" class="btn btn-default btn-sm"> Sign up </button></a>
+		    	{% if user.is_authenticated %}
+
+			    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
+			    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
+				{% else %}
+					{% if homepage == True %}
+		    			<button type="button" class="btn btn-warning btn-sm"> Sign in </button>
+						<a href="{% url 'register' %}"><button type="button" class="btn btn-default btn-sm"> Sign up </button></a>
+					{% endif %}
+					{% if signuppage == True %}
+						<a href="login" id="login"><small class="pull-right">Already have an account?</small></a>
+					{% endif %}
 				{% endif %}
-				{% if signuppage == True %}
-					<a href="login" id="login"><small class="pull-right">Already have an account?</small></a>
-				{% endif %}
-			{% endif %}
+
 	    </div>
   	</div>
 </nav>

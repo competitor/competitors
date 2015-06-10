@@ -17,17 +17,17 @@ function deleteit(id){
 	if(confirm("Are you sure you want to delete this comment?")){
 		var token = $("input[name=csrfmiddlewaretoken]").val();
 		var next = $("input[name=redirect]").val();
-		$.ajax({                                                                                                                           
-		     type:"POST",                                                                                                                    
-		     url: "/delete_post/"+id,                                                                                                    
-		     data: {'csrfmiddlewaretoken': token},                                                                                     
-		     success: function(response){                                                                      
-					window.location.replace(next+"?cid=3")                                                                                                
-		     },                                                                                                                              
+		$.ajax({
+		     type:"POST",
+		     url: "/delete_post/"+id,
+		     data: {'csrfmiddlewaretoken': token},
+		     success: function(response){
+					window.location.replace(next+"?cid=3")
+		     },
 		     error: function(response){
-		      	window.location.replace(next+"?cid=3") 
-		  	}, 
-		 });  
+		      	window.location.replace(next+"?cid=3")
+		  	},
+		 });
 	}
 
 }

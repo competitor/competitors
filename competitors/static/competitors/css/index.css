@@ -9,8 +9,8 @@
 /*  height: 1000px;*/
   background-image: url("/static/competitors/img/index-2.jpg");
   -webkit-background-size: cover;
-    background-size: cover;  
-    background-position:center; 
+    background-size: cover;
+    background-position:center;
 }
 
 #live-wrapper {
@@ -63,7 +63,7 @@
 }
 
 .player-box {
-  height: 200px;
+  height: auto;
   background: white;
   padding: 5px !important;
   margin-bottom: 25px;
@@ -82,7 +82,7 @@
 
 #player-wrapper, #team-wrapper {
   margin: 2em 0 2em 0;
-  padding: 2em 3em 2em 3em; 
+  padding: 2em 3em 2em 3em;
 }
 
 #player-wrapper {

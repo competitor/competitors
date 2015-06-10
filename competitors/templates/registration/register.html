@@ -64,7 +64,7 @@
 
     <body>
         <div id="container">
-        
+
             <div id="navbar">
                 <div id="title">
                     <a href="{% url 'home' %}"><h1 id="home">Welcome to Competitors</h1></a>
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div id="main">
-            
+
                 {% for error in errors %}
                     <h4 style="color: red">
                         {{ error }}
@@ -80,11 +80,11 @@
                 {% endfor %}
                 <div id="registerform">
                     <form class="form-group" role="form" method="post" action="{% url 'register' %}">
-                        
+
                         {% for field in form %}
                             {% if field.errors %}
                                 <div class="form-group error">
-                                    <label class="control-label">{{ field.label }}</label> 
+                                    <label class="control-label">{{ field.label }}</label>
                                     <div class="controls">{{ field }}
                                         <span class="help-inline">
                                             {% for error in  field.errors %}{{ error }}{% endfor %}
@@ -93,7 +93,7 @@
                                 </div>
                             {% else %}
                                 <div class="form-group">
-                                <label class="control-label">{{ field.label }}</label> 
+                                <label class="control-label">{{ field.label }}</label>
                                     <div class="controls">{{ field }}
                                         {% if field.help_text %}
                                             <p class="help-inline"><small>{{ field.help_text }}</small></p>
@@ -104,13 +104,13 @@
                         {% endfor %}
                         <input type="checkbox" required> <span>I have read and agree with </span><a href="#">Agreement</a>
                         {% csrf_token %}
-                        
+
                                 <button type="submit" class="btn btn-success">Register</button>
-                                
-                            
-                        
+
+
+
                     </form>
-                    
+
 
                 </div>
 
