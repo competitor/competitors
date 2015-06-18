@@ -1,7 +1,8 @@
 # Quick Start #
 ```
 #!python
-Clone to your local
+#Clone to your local
+git clone https://bitbucket.org/competitor/competitors
 #Install Django (Currently implemented on Django 1.8.2)
 pip install Django
 #Install necessary tools
