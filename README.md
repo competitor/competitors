@@ -41,4 +41,5 @@ git push origin {{branch_name}}
 ```
 ### 5. Create pull request ###
 **5.1 Create a pull request for this branch to master**
+
 **5.2 Assign this issue to Mao Tang**
