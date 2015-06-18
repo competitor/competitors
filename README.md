@@ -8,7 +8,6 @@ pip install Django
 pip install django-guardian
 pip install django-easy-timezones
 pip install django-ckeditor
-pip install django-import-export #this will be deprecated. You don't need to install it. Just delete it from installed_app in settings.py
 pip install tzlocal
 #start server 
 python manage.py runserver
