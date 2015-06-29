@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/jquery.fullPage.css">
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="{{STATIC_URL}}competitors/bootstrap-3.3.4/css/bootstrap.min.css"> -->
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
@@ -87,19 +87,20 @@
 				</div>
 			</div>
 			<div class="container"  id="body-wrapper2">
-				<div class="col-md-6 col-sm-8 col-xs-12" id="player-wrapper">
+				<div class="col-md-6 col-sm-12 col-xs-12" id="player-wrapper">
 					<h4>Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
 					{% for player in players %}
-						<div class="col-md-5 col-sm-5 col-xs-6 player-box player-left-column" id="player1">
+						<div class="col-md-5 col-sm-5 self-col-xs-5 self-col-tn-5 player-box player-left-column" id="player1">
 							<a href="{% url 'player_page' player.id %}">
 								<div class="player-image" id="img1"><img src="{{player.icon_url}}"></div>
 								<p>{{player.name}} <span class="pull-right"> {{player.followers.count}} </span></p>
 							</a>
 						</div>
+
 					{% endfor %}
 				</div>
 
-				<div class="col-md-6 col-sm-4" id="team-wrapper">
+				<div class="col-md-6 col-sm-12" id="team-wrapper">
 					<h4>Team<span class="pull-right"><a href="#">More</a></span></h4>
 					{% for team in teams %}
 					<div class="team-box">

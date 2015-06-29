@@ -1,15 +1,15 @@
 {% extends "competitors/base.html" %}
 {% block main %}
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/profile.css">
-    
+
         {% for error in errors %}
         <h4 style="color: red">
             {{ error }}
         </h4>
         {% endfor %}
-        
+
         <div id="log">
-            
+
             <canvas id="imageCanvas">
             </canvas>
             <div id="drag">
@@ -21,7 +21,7 @@
             <div id="drag3">
             </div>
             <div id="drag4">
-            </div>  
+            </div>
             <canvas id="imageCanvas2"></canvas>
             <input type="hidden" name="data" id="img_url" value=""/>
             {% csrf_token %}
@@ -34,21 +34,21 @@
                 <label>
                     Image File:
                 </label>
-                <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>        
+                <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>
         </div>
-        
+
         <div id="info" class="panel">
-            
+
              <div id="image" >
                 <img src="{{currentUser.img_url}}" width="150px"/>
             {% if currentUser.user.username = user.username %}
                 <button onclick="canvasarea()" class="btn btn-primary btn-lg">Change Picture</button>
             {% endif %}
             </div>
-            
+
             <div id="personal">
                 <div id="mainpanelbody" class="panel">
-                    <h4>Username: {{currentUser.user.username}}</h4>    
+                    <h4>Username: {{currentUser.user.username}}</h4>
                     <h4>Fisrtname: {{currentUser.user.first_name}}</h4>
                     <h4>Last Name: {{currentUser.user.last_name}}</h4>
                     <h4>Age: {{currentUser.age}}</h4>
@@ -65,7 +65,7 @@
 
         <div class="personal_follows">
             {% for team in teamfollows %}
-            
+
                 <div class="recommend_each">
                     <a href="{% url 'team_page' team.id %}">
                         <div class="panel">
@@ -78,12 +78,12 @@
                             </div>
                         </div>
                     </a>
-                </div>  
+                </div>
             {% endfor %}
         </div>
         <div class="personal_follows">
             {% for player in playerfollows %}
-            
+
                 <div class="recommend_each">
                     <a href="{% url 'player_page' player.id %}">
                         <div class="panel">
@@ -96,9 +96,9 @@
                             </div>
                         </div>
                     </a>
-                </div>  
+                </div>
             {% endfor %}
         </div>
         </div>
-    <script type="text/javascript" src="{{STATIC_URL}}competitors/js/profile.js"></script>   
+    <script type="text/javascript" src="{{STATIC_URL}}competitors/js/profile.js"></script>
  {% endblock %}
