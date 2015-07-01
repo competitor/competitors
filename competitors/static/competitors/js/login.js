@@ -1,269 +1,269 @@
-function cancelSign(){
+// function cancelSign(){
 
-    G("sign_div").style.display = 'none';
+//     G("sign_div").style.display = 'none';
 
-    G("cover_div").style.display = 'none';
+//     G("cover_div").style.display = 'none';
 
-   document.body.style.overflow = '';
+//    document.body.style.overflow = '';
 
-};
+// };
 
-function G(id){
-    return document.getElementById(id);
-};
+// function G(id){
+//     return document.getElementById(id);
+// };
 
-function GC(t){
-   return document.createElement(t);
-};
+// function GC(t){
+//    return document.createElement(t);
+// };
 
-String.prototype.trim = function(){
-    return this.replace(/(^\s*)|(\s*$)/g, '');
-};
+// String.prototype.trim = function(){
+//     return this.replace(/(^\s*)|(\s*$)/g, '');
+// };
 
-function isIE(){
-      return (document.all && window.ActiveXObject && !window.opera) ? true : false;
-}
+// function isIE(){
+//       return (document.all && window.ActiveXObject && !window.opera) ? true : false;
+// }
 
-var loginDivWidth = 402; 
+// var loginDivWidth = 402; 
 
-var token = $("[name='csrfmiddlewaretoken']").val();
+// var token = $("[name='csrfmiddlewaretoken']").val();
 
-console.log(token);
+// console.log(token);
 
-var next = $("[name='redirect']").val();
+// var next = $("[name='redirect']").val();
 
-console.log(next);
+// console.log(next);
 
-var sign_in_flow = '<div id="login_window">'
-      +'<div id="login_header">'
-      +'<h3>Login</h3>'
-      +'<a href="#" id="login_cancel" onclick="cancelSign();"><span class="glyphicon glyphicon-remove"></span></a>'
-      +'</div><form method="post" action="">'
-      +'<div><form action="login()">'
-      +'<label class="sr-only">username:*</label>'
+// var sign_in_flow = '<div id="login_window">'
+//       +'<div id="login_header">'
+//       +'<h3>Login</h3>'
+//       +'<a href="#" id="login_cancel" onclick="cancelSign();"><span class="glyphicon glyphicon-remove"></span></a>'
+//       +'</div><form method="post" action="">'
+//       +'<div><form action="login()">'
+//       +'<label class="sr-only">username:*</label>'
 
-       + '<input type="text"  name="username" required placeholder="Username"/>'
+//        + '<input type="text"  name="username" required placeholder="Username"/>'
 
-       + '</div>'
-       +'<div>'
-        +'<label class="sr-only">password:*</label>'
-        +'<input type="password" name="password" required  placeholder="Password"/>'
+//        + '</div>'
+//        +'<div>'
+//         +'<label class="sr-only">password:*</label>'
+//         +'<input type="password" name="password" required  placeholder="Password"/>'
 
-        + '</div>'
-        +'<div id="login_window_buttons">'
-        +'<div>'
-        +'<button id="signin" value="login" class="btn btn-success"  >Sign In</button>   '
-        + '<a href="/register"><input id="signup" type="button" class="btn btn-primary" value="Sign Up"/</a>  '
+//         + '</div>'
+//         +'<div id="login_window_buttons">'
+//         +'<div>'
+//         +'<button id="signin" value="login" class="btn btn-success"  >Sign In</button>   '
+//         + '<a href="/register"><input id="signup" type="button" class="btn btn-primary" value="Sign Up"/</a>  '
 
-        + '</div><div>'
+//         + '</div><div>'
 
-        + '<a href="/change_password"><input type="button" id="forget" class="btn btn-danger" value="Forget Username/Password"/></a></div>'
+//         + '<a href="/change_password"><input type="button" id="forget" class="btn btn-danger" value="Forget Username/Password"/></a></div>'
 
-        + '<input type="hidden" name="csrfmiddlewaretoken" value="'+token+'">'
+//         + '<input type="hidden" name="csrfmiddlewaretoken" value="'+token+'">'
 
-        + '<input type="hidden" name="next" value="'+next+'">'
-        + '</form></div>';
-
-        
+//         + '<input type="hidden" name="next" value="'+next+'">'
+//         + '</form></div>';
 
         
 
+        
 
 
 
-function signFlow(isSignIn){
 
-    var error = '';
+// function signFlow(isSignIn){
 
-    var htmlText = null;
+//     var error = '';
 
-    if (isSignIn == 1) {
+//     var htmlText = null;
 
-     if (error == ''){
+//     if (isSignIn == 1) {
 
-      error = checkPwd();
+//      if (error == ''){
 
-     }
+//       error = checkPwd();
 
-     htmlText = sign_in_flow;
+//      }
 
-    } else if (isSignIn == 0) {
+//      htmlText = sign_in_flow;
 
-     if (error == ''){
+//     } else if (isSignIn == 0) {
 
-      error = checkPwd();
+//      if (error == ''){
 
-      if (error == ''){
+//       error = checkPwd();
 
-       error = checkRePwd();
+//       if (error == ''){
 
-      }
+//        error = checkRePwd();
 
-     }
+//       }
 
-     htmlText = sign_up_flow;
+//      }
 
-    } else if (isSignIn == 2) {
+//      htmlText = sign_up_flow;
 
-    htmlText = forget_pwd_flow;
+//     } else if (isSignIn == 2) {
 
-    }
+//     htmlText = forget_pwd_flow;
 
-    var eMailValue = G("sign_email").value.trim();
+//     }
 
-   if (error == '') {
+//     var eMailValue = G("sign_email").value.trim();
 
-    } else {
+//    if (error == '') {
 
-    G("sign_div").innerHTML = error + htmlText;
+//     } else {
 
-    G("sign_email").value = eMailValue;
+//     G("sign_div").innerHTML = error + htmlText;
 
-    }
+//     G("sign_email").value = eMailValue;
 
-};
+//     }
 
-function popCoverDiv(){
+// };
 
-   if (G("cover_div")) {
+// function popCoverDiv(){
 
-    G("cover_div").style.display = '';
+//    if (G("cover_div")) {
 
-   } else {
+//     G("cover_div").style.display = '';
 
-    var coverDiv = GC('div');
+//    } else {
 
-    document.body.appendChild(coverDiv);
+//     var coverDiv = GC('div');
 
-    coverDiv.id = 'cover_div';
+//     document.body.appendChild(coverDiv);
 
-    with(coverDiv.style) {
+//     coverDiv.id = 'cover_div';
 
-     position = 'absolute';
+//     with(coverDiv.style) {
 
-     background = '#CCCCCC';
+//      position = 'absolute';
 
-     left = '0px';
+//      background = '#CCCCCC';
 
-     top = '0px';
+//      left = '0px';
 
-     var bodySize = getBodySize();
+//      top = '0px';
 
-     width = '100%'
+//      var bodySize = getBodySize();
 
-     height = '100%'
+//      width = '100%'
 
-     zIndex = 98;
+//      height = '100%'
 
-     if (isIE()) {
+//      zIndex = 98;
 
-      filter = "Alpha(Opacity=60)";
+//      if (isIE()) {
 
-     } else {
+//       filter = "Alpha(Opacity=60)";
 
-      opacity = 0.6;
+//      } else {
 
-     }
+//       opacity = 0.6;
 
-    }
+//      }
 
-   }
+//     }
 
-}
+//    }
 
-function getBodySize(){
+// }
 
-   var bodySize = [];
+// function getBodySize(){
 
-   with(document.documentElement) {
+//    var bodySize = [];
 
-    bodySize[0] = (scrollWidth>clientWidth)?scrollWidth:clientWidth;
+//    with(document.documentElement) {
 
-    bodySize[1] = (scrollHeight>clientHeight)?scrollHeight:clientHeight;
+//     bodySize[0] = (scrollWidth>clientWidth)?scrollWidth:clientWidth;
 
-   }
+//     bodySize[1] = (scrollHeight>clientHeight)?scrollHeight:clientHeight;
 
-   return bodySize;
+//    }
 
-}
+//    return bodySize;
 
-function popSign(isLogin){
+// }
 
-   if (G("sign_div")) {
+// function popSign(isLogin){
 
-    G("sign_div").style.display = '';
+//    if (G("sign_div")) {
 
-   } else {
+//     G("sign_div").style.display = '';
 
-    var signDiv = GC('form');
+//    } else {
 
-    $("#navbar").append(signDiv);
+//     var signDiv = GC('form');
 
-    signDiv.id = 'sign_div';
+//     $("#navbar").append(signDiv);
 
-    signDiv.align = "center";
+//     signDiv.id = 'sign_div';
 
-    signDiv.method = "post";
+//     signDiv.align = "center";
 
-    signDiv.action = "/login"
+//     signDiv.method = "post";
 
-    signDiv.onkeypress = function(evt){
+//     signDiv.action = "/login"
 
-          var e = window.event?window.event:evt;
+//     signDiv.onkeypress = function(evt){
 
-          if (e.keyCode==13 || e.which==13) {
+//           var e = window.event?window.event:evt;
 
-           if (G("sign_button")) {
+//           if (e.keyCode==13 || e.which==13) {
 
-            G("sign_div").focus();
+//            if (G("sign_button")) {
 
-            G("sign_button").click();
+//             G("sign_div").focus();
 
-           }
+//             G("sign_button").click();
 
-          }
+//            }
 
-         };
+//           }
 
-    with (signDiv.style) {
+//          };
 
-     margin = '100px auto'
+//     with (signDiv.style) {
 
-     position = 'relative';
+//      margin = '100px auto'
 
-     width = loginDivWidth + 'px';
+//      position = 'relative';
 
-     zIndex = 99;
+//      width = loginDivWidth + 'px';
 
-     background = '#FFFFFF';
+//      zIndex = 99;
 
-     border = '#66CCFF solid 1px';
+//      background = '#FFFFFF';
 
-    }
+//      border = '#66CCFF solid 1px';
 
-   }
+//     }
 
+//    }
 
-    G("sign_div").innerHTML = sign_in_flow;
+
+//     G("sign_div").innerHTML = sign_in_flow;
 
    
 
   
 
-}
+// }
 
-function popSignFlow(isLogin) {
+// function popSignFlow(isLogin) {
 
-   popCoverDiv();  
+//    popCoverDiv();  
 
-   popSign(isLogin);  
+//    popSign(isLogin);  
 
-   document.body.style.overflow = "hidden";
+//    document.body.style.overflow = "hidden";
 
      
       
 
-}
+// }
 
 
 
