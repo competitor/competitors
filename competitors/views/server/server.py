@@ -1,4 +1,5 @@
 from competitors.models import *
+from competitors.forms import *
 from random import randint
 from django.db.models import Count
 from django.shortcuts import render

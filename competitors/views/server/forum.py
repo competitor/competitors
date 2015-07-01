@@ -1,3 +1,6 @@
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
+
 @login_required
 @transaction.atomic
 def add_post(request):
