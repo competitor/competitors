@@ -24,6 +24,7 @@ def home(request):
 	context['homepage'] = True
 	return render(request,'competitors/index.html',context)
 
+#GET Team page
 def team_page(request,id):
 	context = {}
 	print request.GET
@@ -73,6 +74,7 @@ def team_page(request,id):
 	context['posts'] = posts
 	return render(request,'competitors/team.html',context)
 
+#GET Player page
 def player_page(request,id):
 	context = {}
 	if 'cid' in request.GET and request.GET['cid']:
@@ -117,3 +119,49 @@ def player_page(request,id):
 	context['posts'] = posts
 
 	return render(request,'competitors/player.html',context)
+
+# GET profile page
+def see_profile(request, username):
+    errors = []
+    user = []
+    posts = []
+    currentUser = []
+    # Deletes item if the logged-in user has an item matching the id
+    try:
+        currentUser = UserProfile.objects.get(user__username=username)
+    except ObjectDoesNotExist:
+        errors.append('The user did not exist.')
+    try:    
+    	user = User.objects.get(username = request.user.username);
+    except ObjectDoesNotExist:
+    	user = None
+    userprofile = UserProfile.objects.get(user__username = username);
+    print 'currentUser=='+currentUser.user.username
+    form = ChangeImageForm(request.POST,request.FILES,instance=user)
+    teamfollows = Team.objects.filter(followers__user=userprofile,followers__is_active=True)
+    playerfollows = Player.objects.filter(followers__user=userprofile,followers__is_active=True)
+    print teamfollows.count()
+    print playerfollows.count()
+    context = {'user' : user, 'errors' : errors, 'posts' : posts, 'currentUser':currentUser,'userprofile':userprofile,'form':form,'teamfollows':teamfollows,'playerfollows':playerfollows}
+    return render(request, 'competitors/profile.html', context)
+
+# GET Search page
+def search_page(request):
+	context = {}
+	if 'cid' in request.GET and request.GET['cid']:
+		context['cid'] = request.GET['cid']
+	else:
+		context['cid'] = 0
+	if 'cat' in request.GET and request.GET['cat']:
+		context['cat'] = request.GET['cat']
+	if 'country' in request.GET and request.GET['country']:
+		context['country'] = request.GET['country']
+	if 'league' in request.GET and request.GET['league']:
+		context['league'] = request.GET['league']
+	if 'team' in request.GET and request.GET['team']:
+		context['team'] = request.GET['team']
+	if 'nation' in request.GET and request.GET['nation']:
+		context['nation'] = request.GET['nation']
+
+
+	return render(request,'competitors/search.html',context)
