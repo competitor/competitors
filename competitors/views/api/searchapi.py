@@ -2,6 +2,7 @@ from competitors.models import *
 from django.http import HttpResponseRedirect,HttpResponse,HttpResponseForbidden
 import json
 
+# search bar autocomplete
 def search_autocomplete(request):
 	q = request.GET.get('term', '')
 	team = []
@@ -25,3 +26,5 @@ def search_autocomplete(request):
 		results.append(resultlist)
 	data = json.dumps(results)
 	return HttpResponse(data, content_type='application/json')
+
+
