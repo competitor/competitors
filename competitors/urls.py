@@ -39,7 +39,9 @@ urlpatterns = patterns('',
 	url(r'^player/([\s\S]*)/add_news$','competitors.views.add_player_news',name = 'add_tean_news'),
 	url(r'^live_page/(?P<id>\d+)$', 'competitors.views.live_page',name = 'live_page'),
 	url(r'^change_password-done$', 'competitors.views.change_password_done',name = 'change_password_done'),
-	url(r'^search_autocomplete/', 'competitors.views.search_autocomplete',name = 'search_autocomplete'),
 	url(r'^confirm-registration/(?P<username>[a-zA-Z0-9_@\+\-]+)/(?P<token>[a-z0-9\-]+)$', 'competitors.views.confirm_registration', name='confirm'),
 	url(r'^confirm_change/(?P<username>[a-zA-Z0-9_@\+\-]+)/(?P<token>[a-z0-9\-]+)$', 'competitors.views.confirm_change', name='confirm_change'),
+
+	# api
+	url(r'^api/autocomplete/', 'competitors.views.search_autocomplete',name = 'search_autocomplete'),
 	)
