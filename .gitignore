@@ -4,3 +4,4 @@ venv/
 .git
 .gitignore
 requirements.txt
+db.sqlite3
