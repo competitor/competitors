@@ -8,6 +8,7 @@
 #section0 {
 /*  height: 1000px;*/
   background-image: url("/static/competitors/img/index-2.jpg");
+  height: 600px;
   -webkit-background-size: cover;
     background-size: cover;
     background-position:center;
