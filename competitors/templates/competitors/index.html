@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/jquery.fullPage.css">
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="{{STATIC_URL}}competitors/bootstrap-3.3.4/css/bootstrap.min.css"> -->
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
@@ -56,11 +56,11 @@
 <body ng-controller="MainCtl">
 	<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
 	<div id="fullpage">
-	
+
 	<!-- New Nav area -->
 		<div class="section" id="section0" data-anchor="firstPage">
 			{% include 'competitors/navbar.html' %}
-			{% csrf_token %} 
+			{% csrf_token %}
 			<div class="col-md-offset-3 col-md-6" id="search_bar">
 				<form role="search" method="POST" action="{% url 'search' %}">
 		    		<div class="input-group input-group-lg">
@@ -78,25 +78,26 @@
 		<div class="section" id="section1" data-anchor="secondPage">
 			<div class="container-fluid" id="live-wrapper">
 				<div class="row">
-					<div class="col-md-3 col-sm-12" id="live-text">
+					<div class="col-md-4 col-sm-3 col-xs-2" id="live-text">
 						LIVE
 					</div>
-					<div class="col-md-9 col-sm-12" id="match">
+					<div class="col-md-8 col-sm-9 col-xs-10" id="match">
 						<a href="javascript:;">Washington Wizard vs Atlanta Hawks</a>
 						<span id="score">90:106</span>
 					</div>
-				</div>	
+				</div>
 			</div>
 			<div class="container"  id="body-wrapper2">
-				<div class="col-md-6 col-sm-12" id="player-wrapper">
+				<div class="col-md-6 col-sm-12 col-xs-12" id="player-wrapper">
 					<h4>Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
 					{% for player in players %}
-						<div class="col-sm-5 player-box player-left-column" id="player1">
+						<div class="col-md-5 col-sm-5 self-col-xs-5 self-col-tn-5 player-box player-left-column" id="player1">
 							<a href="{% url 'player_page' player.id %}">
 								<div class="player-image" id="img1"><img src="{{player.icon_url}}"></div>
 								<p>{{player.name}} <span class="pull-right"> {{player.followers.count}} </span></p>
 							</a>
 						</div>
+
 					{% endfor %}
 				</div>
 
@@ -111,15 +112,15 @@
 							</a>
 						</div>
 					</div>
-					{% endfor %} 
+					{% endfor %}
 				</div>
 			</div>
 
 			{% include 'competitors/footer.html' %}
-			
+
 		</div>
 
-			
+
 	</div>
 </body>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/index.js"></script>
