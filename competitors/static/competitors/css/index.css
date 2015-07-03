@@ -8,6 +8,7 @@
 #section0 {
 /*  height: 1000px;*/
   background-image: url("/static/competitors/img/index-2.jpg");
+  height: 600px;
   -webkit-background-size: cover;
     background-size: cover;
     background-position:center;
@@ -60,6 +61,26 @@
 
 #body-wrapper2 h4 {
   color: white;
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+  .self-col-xs-5 {
+    float: left;
+    width: 41.66666667%;
+    position: relative;
+    min-height: 1px;
+    margin-left: 40px;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 600px) {
+  .self-col-tn-5 {
+    float: left;
+    width: 41.66666667%;
+    position: relative;
+    min-height: 1px;
+    margin-left: 20px;
+  }
 }
 
 .player-box {
