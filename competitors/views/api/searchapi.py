@@ -1,5 +1,6 @@
 from competitors.models import *
 from django.http import HttpResponseRedirect,HttpResponse,HttpResponseForbidden
+from django.shortcuts import render_to_response,redirect,get_object_or_404
 import json
 
 # search bar autocomplete

@@ -3,6 +3,7 @@ from competitors.forms import *
 from random import randint
 from django.db.models import Count
 from django.shortcuts import render
+from django.shortcuts import render_to_response,redirect,get_object_or_404
 
 def home(request):
 	context = {}
