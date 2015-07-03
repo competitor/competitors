@@ -169,7 +169,7 @@ body{
 }
 
 #menu{
-	position: relative;
+	position: absolute;
 	top: 1em;
 	left:0;
 	height: 70px;
