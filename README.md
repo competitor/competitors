@@ -1,14 +1,14 @@
 # Quick Start #
 ```
 #!python
-Clone to your local
+#Clone to your local
+git clone https://bitbucket.org/competitor/competitors
 #Install Django (Currently implemented on Django 1.8.2)
 pip install Django
 #Install necessary tools
 pip install django-guardian
 pip install django-easy-timezones
 pip install django-ckeditor
-pip install django-import-export #this will be deprecated. You don't need to install it. Just delete it from installed_app in settings.py
 pip install tzlocal
 #start server 
 python manage.py runserver
@@ -39,4 +39,7 @@ git pull origin master
 ```
 git push origin {{branch_name}}
 ```
-### 5. Assign the issue to Mao Tang ###
+### 5. Create pull request ###
+**5.1 Create a pull request for this branch to master**
+
+**5.2 Assign this issue to Mao Tang**

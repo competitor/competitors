@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from competitors.models import *
 from competitors.forms import *
@@ -896,29 +897,29 @@ def search(request):
 		print 222
 		context['errors'] = 'request fault'
 		return render(request,'competitors/index.html',context)
-def search_autocomplete(request):
-	q = request.GET.get('term', '')
-	team = []
-	player = []
-	items = []
-	print q
-	teams = Team.objects.filter(name__icontains=q)
-	players = Player.objects.filter(name__icontains=q)
-	print players
-	resultlist = {}
-	results = []
-	for team in teams:
-		resultlist={}
-		resultlist['label'] = team.name
-		resultlist['value'] = team.name
-		results.append(resultlist)
-	for player in players:
-		resultlist={}
-		resultlist['label'] = player.name
-		resultlist['value'] = player.name
-		results.append(resultlist)
-	data = json.dumps(results)
-	return HttpResponse(data, content_type='application/json')
+# def search_autocomplete(request):
+# 	q = request.GET.get('term', '')
+# 	team = []
+# 	player = []
+# 	items = []
+# 	print q
+# 	teams = Team.objects.filter(name__icontains=q)
+# 	players = Player.objects.filter(name__icontains=q)
+# 	print players
+# 	resultlist = {}
+# 	results = []
+# 	for team in teams:
+# 		resultlist={}
+# 		resultlist['label'] = team.name
+# 		resultlist['value'] = team.name
+# 		results.append(resultlist)
+# 	for player in players:
+# 		resultlist={}
+# 		resultlist['label'] = player.name
+# 		resultlist['value'] = player.name
+# 		results.append(resultlist)
+# 	data = json.dumps(results)
+# 	return HttpResponse(data, content_type='application/json')
 
 def see_profile(request, username):
     errors = []
