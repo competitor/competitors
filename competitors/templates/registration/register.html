@@ -67,12 +67,14 @@
                 $scope.$watch('signupform.{{field.name}}.$viewValue', 
                     function(newVal){
                         $timeout.cancel({{field.name}}_timer);
-                        {{field.name}}_timer = $timeout(function(newVal) {
+                        {{field.name}}_timer = $timeout(function() {
                             var input = $scope.signupform.{{field.name}};
-                            if (newVal == undefined && $scope.register_{{field.name}}_init == undefined){
+                            console.log(newVal);
+                            if (newVal){
+                                $scope.register_{{field.name}}_init = true;
+                            }else if (newVal == undefined && $scope.register_{{field.name}}_init == undefined){
                                 $scope.register_{{field.name}}_init = false;
-                            }
-                            else if ($scope.register_{{field.name}}_init == false){
+                            }else if ($scope.register_{{field.name}}_init == false){
                                 $scope.register_{{field.name}}_init = true;
                                 // console.log("{{field.name}}")
                             }
@@ -97,7 +99,7 @@
                                 }                                               
                             }
                             
-                        },500);
+                        },1000);
                     }
                 );
             {% endfor %}
