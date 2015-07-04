@@ -34,16 +34,43 @@ class ChangePasswordForm(forms.Form):
 
 class RegistrationForm(forms.Form):
     first_name = forms.CharField(max_length=20,
-                                label='Firstname',widget=forms.TextInput(attrs={'autocomplete':'off'}))
-    last_name  = forms.CharField(max_length=20,label='Lastname',widget=forms.TextInput(attrs={'autocomplete':'off'}))
-    username   = forms.CharField(max_length = 20,widget=forms.TextInput(attrs={'autocomplete':'off'}))
-    email      = forms.CharField(max_length = 200,widget=forms.TextInput(attrs={'autocomplete':'off'}))
+                                label='Firstname',widget=forms.TextInput(attrs={
+                                    'ng-model':'register_first_name',
+                                    'ng-pattern':'/^[a-zA-Z0-9]*$/',
+                                    'ng-required':'true',}))
+    last_name  = forms.CharField(max_length=20,label='Lastname',widget=forms.TextInput(attrs={
+                                    'ng-model':'register_last_name',
+                                    'ng-pattern':'/^[a-zA-Z0-9]*$/',
+                                    'ng-required':'true',
+                                    }))
+    username   = forms.CharField(max_length = 20,widget=forms.TextInput(attrs={
+                                    'ng-model':'register_username',
+                                    'ng-pattern':'/^[a-zA-Z0-9]*$/',
+                                    'ng-minlength':'4',
+                                    'ng-maxlength':'20',
+                                    'ng-required':'true',
+                                    'checkusername':'true',
+                                    }))
+    email      = forms.CharField(max_length = 200,widget=forms.EmailInput(attrs={
+                                    'ng-model':'register_email',
+                                    'ng-required':'true',
+                                    'checkemail':'true',
+                                    }))
     password1  = forms.CharField(max_length = 200, 
                                  label='Password', 
-                                 widget = forms.PasswordInput(attrs={'autocomplete':'off'}))
+                                 widget = forms.PasswordInput(attrs={
+                                    'ng-model':'register_password1',
+                                    'ng-required':'true',
+                                    'ng-minlength':'8',
+                                    'ng-maxlength':'20',
+                                    }))
     password2  = forms.CharField(max_length = 200, 
                                  label='Confirm password',  
-                                 widget = forms.PasswordInput(attrs={'autocomplete':'off'}))
+                                 widget = forms.PasswordInput(attrs={
+                                    'ng-model':'register_password2',
+                                    'ng-required':'true',
+                                    'pw-match':'register_password1',
+                                    }))
    
     # Customizes form validation for properties that apply to more
     # than one field.  Overrides the forms.Form.clean function.
