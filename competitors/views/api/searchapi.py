@@ -5,17 +5,22 @@ import json
 import httplib
 
 # search bar autocomplete
-def search_autocomplete(request):
-	q = request.GET.get('term', '')
-	print q
-	apiquerystr = '/alpha/teams?name='+str(q.replace(" ","%20"))
+
+def api(domain,url,q):
+	
+	apiquerystr = url+str(q.replace(" ","%20"))
 	dbquerystr = q
-	connection = httplib.HTTPConnection('api.football-data.org')
+	connection = httplib.HTTPConnection(domain)
 	headers = { 'X-Auth-Token': '24ba9245b0f7491b8aad81b0af2e330d' }
 	connection.request('GET', apiquerystr, None, headers )
 	response = json.loads(connection.getresponse().read().decode('latin-1'))
+	return response
 
-	# print response
+
+def search_autocomplete(request):
+	q = request.GET.get('term', '')
+	response = api('api.football-data.org','/alpha/teams?name=',q)
+	dbquerystr = q
 	team = []
 	player = []
 	items = []
@@ -56,25 +61,15 @@ def search(request):
 		teams = Team.objects.filter(name__contains=name)
 		players = Player.objects.filter(name__contains=name)
 
-
-		apiquerystr = '/alpha/teams?name='+str(name.replace(" ","%20"))
-		connection = httplib.HTTPConnection('api.football-data.org')
-		headers = { 'X-Auth-Token': '24ba9245b0f7491b8aad81b0af2e330d' }
-		connection.request('GET', apiquerystr, None, headers )
-		response = json.loads(connection.getresponse().read().decode('latin-1'))
-
+		response = api('api.football-data.org','/alpha/teams?name=',name)
 		if response["teams"]:
 			for team in response["teams"]:
 				if team["name"] == name and not name in teams :
 					print ("addnewteam")
 					cat = Category.objects.get(name="Soccer")
-					apiquerystr = '/alpha/teams/'+str(team["id"])
-					connection = httplib.HTTPConnection('api.football-data.org')
-					headers = { 'X-Auth-Token': '24ba9245b0f7491b8aad81b0af2e330d' }
-					connection.request('GET', apiquerystr, None, headers )
-					response111 = json.loads(connection.getresponse().read().decode('latin-1'))
-					print response111
-					new_team = Team(id=team["id"],name=name,category=cat,icon_url=response111["crestUrl"])
+					info = api('api.football-data.org','/alpha/teams/',str(team["id"]))
+					print info
+					new_team = Team(id=team["id"],name=name,category=cat,icon_url=info["crestUrl"])
 					new_team.save()
 					teams = Team.objects.filter(name__contains=name)
 
