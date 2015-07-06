@@ -16,7 +16,6 @@ from django.core.urlresolvers import reverse
 from django.db import transaction
 from django.contrib.auth.tokens import default_token_generator
 from django.db.models import Count
-from competitors.s3 import s3_upload, s3_delete, s3_get
 import base64
 from base64 import b64decode
 from django.core.files.base import ContentFile

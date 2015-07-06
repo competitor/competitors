@@ -4,7 +4,7 @@ import io
 # from boto.s3.key import Key
 
 config = ConfigParser.ConfigParser()
-config.read("config.ini")
+config.readf("config.ini")
 
 AWS_ACCESS_KEY = config.get('S3', 'AccessKey')
 AWS_SECRET_ACCESS_KEY = config.get('S3', 'SecretKey')

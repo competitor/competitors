@@ -2,17 +2,30 @@ from competitors.models import *
 from django.http import HttpResponseRedirect,HttpResponse,HttpResponseForbidden
 from django.shortcuts import render_to_response,redirect,get_object_or_404
 import json
+import httplib
 
 # search bar autocomplete
+
+def api(domain,url,q):
+	
+	apiquerystr = url+str(q.replace(" ","%20"))
+	dbquerystr = q
+	connection = httplib.HTTPConnection(domain)
+	headers = { 'X-Auth-Token': '24ba9245b0f7491b8aad81b0af2e330d' }
+	connection.request('GET', apiquerystr, None, headers )
+	response = json.loads(connection.getresponse().read().decode('latin-1'))
+	return response
+
+
 def search_autocomplete(request):
 	q = request.GET.get('term', '')
+	response = api('api.football-data.org','/alpha/teams?name=',q)
+	dbquerystr = q
 	team = []
 	player = []
 	items = []
-	print q
-	teams = Team.objects.filter(name__icontains=q)
-	players = Player.objects.filter(name__icontains=q)
-	print players
+	teams = Team.objects.filter(name__icontains=dbquerystr)
+	players = Player.objects.filter(name__icontains=dbquerystr)
 	resultlist = {}
 	results = []
 	for team in teams:
@@ -20,11 +33,22 @@ def search_autocomplete(request):
 		resultlist['label'] = team.name
 		resultlist['value'] = team.name
 		results.append(resultlist)
+	if response["teams"]:
+		for team in response["teams"]:
+			resultlist={}
+			resultlist['label'] = team["name"].encode('latin-1')
+			resultlist['value'] = team["name"].encode('latin-1')
+			if not resultlist in results:
+				print True
+				results.append(resultlist)
+			else :
+				print False
 	for player in players:
 		resultlist={}
 		resultlist['label'] = player.name
 		resultlist['value'] = player.name
 		results.append(resultlist)
+	print results
 	data = json.dumps(results)
 	return HttpResponse(data, content_type='application/json')
 
@@ -36,6 +60,22 @@ def search(request):
 		name = request.POST['search'].strip()
 		teams = Team.objects.filter(name__contains=name)
 		players = Player.objects.filter(name__contains=name)
+
+		response = api('api.football-data.org','/alpha/teams?name=',name)
+		if response["teams"]:
+			for team in response["teams"]:
+				if team["name"] == name and not name in teams :
+					print ("addnewteam")
+					cat = Category.objects.get(name="Soccer")
+					info = api('api.football-data.org','/alpha/teams/',str(team["id"]))
+					print info
+					new_team = Team(id=team["id"],name=name,category=cat,icon_url=info["crestUrl"])
+					new_team.save()
+					teams = Team.objects.filter(name__contains=name)
+
+
+
+
 		number = teams.count() + players.count()
 		if number == 0:
 			context['errors'] = "Can not find what you want"

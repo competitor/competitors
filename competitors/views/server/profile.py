@@ -59,19 +59,19 @@ def follow(request,tp,id):
 @login_required
 @transaction.atomic
 def change_img(request):
-    context = {}
-    user = UserProfile.objects.get(user__username = request.user.username) 
-    currentUser = UserProfile.objects.get(user__username=request.user.username)                     
-    form = ChangeImageForm(request.POST,request.FILES,instance=currentUser)
-    print request.POST
-    if request.POST['data']:
-    	print request.POST['data']
-    	url = s3_upload(request.POST['data'], currentUser.user.id)
-    	currentUser.picture = url
-    	currentUser.save()
-    context['form'] = ChangeImageForm()
-    context['user'] = user
-    context['currentUser'] = currentUser
+#     context = {}
+#     user = UserProfile.objects.get(user__username = request.user.username) 
+#     currentUser = UserProfile.objects.get(user__username=request.user.username)                     
+#     form = ChangeImageForm(request.POST,request.FILES,instance=currentUser)
+#     print request.POST
+#     if request.POST['data']:
+#     	print request.POST['data']
+#     	url = s3_upload(request.POST['data'], currentUser.user.id)
+#     	currentUser.picture = url
+#     	currentUser.save()
+#     context['form'] = ChangeImageForm()
+#     context['user'] = user
+#     context['currentUser'] = currentUser
 
     return render(request, 'competitors/profile.html', context)
 

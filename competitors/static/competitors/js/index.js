@@ -1,7 +1,7 @@
 $(function() {
   	$("#search").autocomplete({
     source: "api/autocomplete/",
-    minLength: 2,
+    minLength: 3,
     autoFill: true,
     mustMatch: true,
     matchContains: true,
