@@ -94,7 +94,7 @@ class Follow(models.Model):
 
 class Team(models.Model):
 	name = models.CharField(max_length=256)
-	league = models.ForeignKey(League,blank=True)
+	league = models.ForeignKey(League,blank=True,null=True)
 	icon_url = models.CharField(max_length=256,default='url')
 	posts = models.ManyToManyField(Post,blank=True)
 	news = models.ManyToManyField(News,blank=True)
