@@ -140,13 +140,13 @@ class Match(models.Model):
 			)
 class Fileofuser(models.Model):
 	description = models.CharField(max_length=100,blank=True)
-	fileuploaded = models.FileField(upload_to='competitors/static/competitors/img/users',blank=True)
+	fileuploaded = models.FileField(upload_to='img/users',blank=True)
 	def __unicode__(self):
 		return self.description
 
 class Fileofsystem(models.Model):
 	description = models.CharField(max_length=100)
-	fileuploaded = models.FileField(upload_to='competitors/static/competitors/files',blank=True)
+	fileuploaded = models.FileField(upload_to='files',blank=True)
 	url = models.CharField(max_length=99999)
 
 
