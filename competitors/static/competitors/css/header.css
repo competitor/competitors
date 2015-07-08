@@ -1,4 +1,8 @@
-#logo-wrapper {
+nav {
+	z-index: 2;
+}
+
+/*#logo-wrapper {
 	margin-top: 0.5em;
 	margin-left: 10%;	
 }
@@ -9,10 +13,6 @@
 	margin-bottom: 1%;
 	margin-right: 5%;
 	line-height: 49px;
-}
-
-#sign .btn{
-	/*line-height: 70px;*/
 }
 
 #menu{
@@ -58,4 +58,4 @@
 }
 #menu li.active a{
 	color: #fff;
-}
+}*/
