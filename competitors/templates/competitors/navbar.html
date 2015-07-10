@@ -1,4 +1,4 @@
-<nav id="menu" class="navbar">
+<nav class="navbar" id="navbar-container">
   	<div class="container-fluid">
 	    <div class="navbar-header" id="logo-wrapper">
 	      <a class="navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
@@ -8,8 +8,8 @@
 		    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
 		    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
 			{% else %}
-				{% if homepage == True %} 
-	    			<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#loginbox"> Sign in </button>
+				{% if homepage == True %}
+	    		<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#loginbox"> Sign in </button>
 					<a href="{% url 'register' %}"><button type="button" class="btn btn-default btn-sm"> Sign up </button></a>
 				{% endif %}
 				{% if signuppage == True %}
@@ -26,35 +26,34 @@
 		      		</div>
 		      		<div class="modal-body">
 		      			<form class="form-horizontal" ng-submit="submit()" id="signinForm">
-							<div class="form-group">
-							    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-							    <div class="col-sm-10">
-							      	<input type="text" name="username" class="form-control" id="inputEmail3" placeholder="username">
-							    </div>
-							</div>
-							<div class="form-group">
-							    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-							    <div class="col-sm-10">
-							      	<input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
-							    </div>
-							</div>
-							<div class="form-group">
-							    <div class="col-sm-offset-2 col-sm-10">
-							      	<div class="checkbox">
-							        	<label>
-							          		<input type="checkbox"> Remember me
-							        	</label>
-							      	</div>
-								</div>
-							</div>
-							<div class="form-group">
-							    <div class="col-sm-offset-2 col-sm-10">
-							      	<button type="submit" class="btn btn-default">Sign in</button>
-							    </div>
-							</div>
-							{% csrf_token %}
-						</form>
-									        
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+									    <div class="col-sm-10">
+									      	<input type="text" name="username" class="form-control" id="inputEmail3" placeholder="username">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+									    <div class="col-sm-10">
+									      	<input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+									    </div>
+									</div>
+									<div class="form-group">
+									    <div class="col-sm-offset-2 col-sm-10">
+									      	<div class="checkbox">
+									        	<label>
+									          		<input type="checkbox"> Remember me
+									        	</label>
+									      	</div>
+										</div>
+									</div>
+									<div class="form-group">
+									    <div class="col-sm-offset-2 col-sm-10">
+									      	<button type="submit" class="btn btn-default">Sign in</button>
+									    </div>
+									</div>
+									{% csrf_token %}
+								</form>
 		      		</div>
 		      		<div class="modal-footer">
 		        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
