@@ -1,57 +1,53 @@
-/*body{
-  margin: 0;
-  min-width: 1024px;
-  background: url("/static/competitors/img/bg.jpeg") fixed;
-  background-size:100% 100%;
-}*/
-
-#section0 {
+/*For the first section in index page*/
+#first-section {
 /*  height: 1000px;*/
   background-image: url("/static/competitors/img/index-2.jpg");
   height: 600px;
   -webkit-background-size: cover;
-    background-size: cover;
-    background-position:center;
+          background-size: cover;
+  background-position:center;
 }
 
+/*For live score*/
 #live-wrapper {
   height: 40px;
   width: 100%;
-  padding: 0;
   margin: 2em 0 0 0;
+  padding: 0;
   background: #FF8C00;
 }
 
 #live-text {
   margin-top: 8px;
-  font-weight: bold;
-  color: white;
-  border-right: 1px solid #ffffff;
-  text-align: right;
   padding-right: 2em;
+  text-align: right;
+  border-right: 1px solid #ffffff;
+  color: white;
+  font-weight: bold;
 }
 
-#match {
+/*For match info in live wrapper*/
+#live-match {
   padding-left: 2em;
   margin-top: 8px;
-  font-weight: bold;
   color: white;
+  font-weight: bold;
 }
 
-#match a {
+#live-match a {
   text-decoration: none;
   color: white;
 }
 
-#match a:hover {
+#live-match a:hover {
   color: #000;
 }
 
-#score {
+#live-score {
   margin-left: 4em;
 }
 
-#body-wrapper2 a {
+#player-team-wrapper a {
   font-size: 0.7em;
   text-decoration: none;
 /*  position: absolute;
@@ -59,12 +55,15 @@
   color: white;
 }
 
-#body-wrapper2 h4 {
+#player-team-wrapper h4 {
   color: white;
 }
 
+/*For responsive design in the player image in index page
+as there is no such support in bootstrap for xs and tn
+responsive*/
 @media (min-width: 600px) and (max-width: 768px) {
-  .self-col-xs-5 {
+  .col-xs-5 {
     float: left;
     width: 41.66666667%;
     position: relative;
@@ -74,7 +73,7 @@
 }
 
 @media (min-width: 450px) and (max-width: 600px) {
-  .self-col-tn-5 {
+  .col-tn-5 {
     float: left;
     width: 41.66666667%;
     position: relative;
@@ -86,8 +85,8 @@
 .player-box {
   height: auto;
   background: white;
-  padding: 5px !important;
   margin-bottom: 25px;
+  padding: 5px !important;
 }
 
 .player-image {
@@ -111,9 +110,9 @@
 }
 
 #player-wrapper p {
-  font-weight: bold;
-  color: #C0C0C0;
   margin-top: 1em;
+  color: #C0C0C0;
+  font-weight: bold;
 }
 
 #row2, #row3 {
@@ -146,15 +145,3 @@
   font-weight: bold;
   color: #C0C0C0;
 }
-
-
-
-
-
-
-
-
-
-
-
-

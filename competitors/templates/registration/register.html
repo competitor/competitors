@@ -10,13 +10,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
-    <script src="{{STATIC_URL}}competitors/js/app.js"></script>   
-    
-
 </head>
 <body ng-controller="MainCtl">
     <div id="header">
@@ -55,16 +48,21 @@
         </div>
     </div>
 {% include 'competitors/footer.html' %}
+<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+<script src="{{STATIC_URL}}competitors/js/app.js"></script>
 <script src="{{STATIC_URL}}competitors/js/register.js"></script>
 <script>
     competitorsApp.controller('MainCtl',['$scope','$http','$timeout',function($scope,$http,$timeout){
 
-            
+
             {% for field in form %}
                 var {{field.name}}_timer;
                 var timer;
                 // console.log({{field.name}}_timer);
-                $scope.$watch('signupform.{{field.name}}.$viewValue', 
+                $scope.$watch('signupform.{{field.name}}.$viewValue',
                     function(newVal){
                         $timeout.cancel({{field.name}}_timer);
                         {{field.name}}_timer = $timeout(function() {
@@ -81,30 +79,30 @@
                             $scope.register_{{field.name}}_has_error = input.$invalid;
                             if (input.$invalid && $scope.register_{{field.name}}_init){
                                 if (input.$error.required){
-                                    $scope.register_{{field.name}}_error = "This field is required"; 
+                                    $scope.register_{{field.name}}_error = "This field is required";
                                 }else if (input.$error.pattern){
-                                    $scope.register_{{field.name}}_error = "Can only contain letters and/or numbers"; 
+                                    $scope.register_{{field.name}}_error = "Can only contain letters and/or numbers";
                                 }else if (input.$error.minlength){
-                                    $scope.register_{{field.name}}_error = "At least " + $('form[name=signupform] input[name={{field.name}}]').attr('ng-minlength') + " letters"; 
+                                    $scope.register_{{field.name}}_error = "At least " + $('form[name=signupform] input[name={{field.name}}]').attr('ng-minlength') + " letters";
                                 }else if (input.$error.maxlength){
                                     $scope.register_{{field.name}}_error = "At least " + $('form[name=signupform] input[name={{field.name}}]').attr('ng-maxlength') + " letters";
                                 }else if (input.$error.email){
-                                    $scope.register_{{field.name}}_error = "Email format incorrect"; 
+                                    $scope.register_{{field.name}}_error = "Email format incorrect";
                                 }else if (input.$error.usernameTaken){
-                                    $scope.register_{{field.name}}_error = "Username has been registered"; 
+                                    $scope.register_{{field.name}}_error = "Username has been registered";
                                 }else if (input.$error.emailTaken){
-                                    $scope.register_{{field.name}}_error = "Email has been registered"; 
+                                    $scope.register_{{field.name}}_error = "Email has been registered";
                                 }else if (input.$error.pwNotMatch){
-                                    $scope.register_password2_error = "Not match/incorrect"; 
-                                }                                               
+                                    $scope.register_password2_error = "Not match/incorrect";
+                                }
                             }
-                            
+
                         },1000);
                     }
                 );
             {% endfor %}
         }
-        
+
     ]).directive('checkusername', ['$q','$http',function($q,$http) {
         return {
             require: 'ngModel',
@@ -130,7 +128,7 @@
                     });
                     return def.promise;
                 };
-                
+
             }
         };
     }]).directive('checkemail', ['$q','$http',function($q,$http) {
@@ -158,7 +156,7 @@
                     });;
                     return def.promise;
                 };
-                
+
             }
         };
     }]).directive('pwMatch', function() {
@@ -167,7 +165,7 @@
             restrict: '',
             link: function(scope, elm, attrs, ctrl, http) {
                 var checker = function() {
-                    var e1 = scope.$eval(attrs.ngModel); 
+                    var e1 = scope.$eval(attrs.ngModel);
                     var e2 = scope.$eval(attrs.pwMatch);
                     var  match = (e1==e2)
                     return e1 == e2;
@@ -175,7 +173,7 @@
                 scope.$watch(checker, function (n) {
                     ctrl.$setValidity("pwNotMatch", n);
                 });
-                
+
             }
         };
     });

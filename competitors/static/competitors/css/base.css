@@ -147,70 +147,71 @@ body{
 
 
 
-
-
-
-
-#logo-wrapper {
-	margin-top: 0.5em;
-	margin-left: 10%;
-}
-
-#sign {
-	text-align: right;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	margin-right: 5%;
-	line-height: 49px;
-}
-
-#sign .btn{
-	/*line-height: 70px;*/
-}
-
-#menu{
+/*For the container of navbar*/
+#navbar-container {
 	position: absolute;
 	top: 1em;
-	left:0;
+	left: 0;
 	height: 70px;
 /*	z-index: 70;*/
 	width: 100%;
 	padding: 0;
-	margin:0;
+	margin: 0;
 	background: rgba(192,192,192, 0.3);
 }
 
-#menu li {
+#navbar-container li {
 	display:inline-block;
 	margin: 10px;
 	color: #000;
 	background: rgba(255,255,255, 0.1);
 	-webkit-border-radius: 10px;
-            border-radius: 10px;
+          border-radius: 10px;
 }
 
-#menu li.active{
+#navbar-container li.active{
 	background:#666;
 	background: rgba(0,0,0, 0.5);
 	color: #fff;
 }
-#menu li a{
+
+#navbar-container li a{
 	text-decoration:none;
 	color: #000;
 }
-#menu li.active a:hover{
+
+#navbar-container li.active a:hover{
 	color: #000;
 }
-#menu li:hover{
+
+#navbar-container li:hover{
 	background: rgba(255,255,255, 0.8);
 }
-#menu li a,
-#menu li.active a{
+
+#navbar-container li a,
+#navbar-container li.active a{
 	padding: 9px 18px;
 	display:block;
 }
-#menu li.active a{
+
+#navbar-container li.active a{
 	color: #fff;
+}
+
+/*For the competetitor logo*/
+#logo-wrapper {
+	margin: 0.5em 0 0 10%;
+}
+
+/*For the sign in and sign up button*/
+#sign {
+	float: right;
+	margin: 1% 5% 1%;
+	line-height: 49px;
+}
+
+#sign .btn{
+	/*line-height: 70px;*/
 }
 
 #footer {
@@ -222,7 +223,6 @@ body{
 #footer-text {
 	padding-top: 2em;
 }
-
 
 /*#team1 {
 	margin-top: 10px;
