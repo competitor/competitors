@@ -1,16 +1,10 @@
 <nav class="navbar" id="navbar-container">
   	<div class="container-fluid">
 	    <div class="navbar-header" id="logo-wrapper">
-	      <a class="navbar-brand" href="#" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
+	      <a class="navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
 	    </div>
-	  <!--   <div>
-			<ul >
-				<li data-menuanchor="firstPage" class=""><a href="#firstPage">Search</a></li>
-				<li data-menuanchor="secondPage" class=""><a href="#secondPage">More</a></li>
-			</ul>
-	    </div> -->
-	    <div class="navbar navbar-collapse" id="sign">
-	    	{% if user.is_authenticated %}
+	    <div class="collapse navbar-collapse" id="sign">
+	    	{% if user.is_authenticated %} 
 		    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
 		    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
 			{% else %}
