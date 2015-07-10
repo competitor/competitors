@@ -176,8 +176,8 @@ body{
 }
 
 #navbar-container li a{
+  color: #000;
 	text-decoration:none;
-	color: #000;
 }
 
 #navbar-container li.active a:hover{
@@ -216,8 +216,8 @@ body{
 
 #footer {
 	font-weight: bold;
+  background: #494949;
 	color: white;
-	background: #494949;
 }
 
 #footer-text {
