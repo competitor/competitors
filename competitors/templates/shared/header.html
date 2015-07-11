@@ -1,36 +1,21 @@
-<nav class="navbar" id="navbar-container" ng-controller="login">
-	    <div class="navbar-header col-sm-offset-1 col-sm-3 col-md-offset-1 " id="logo-wrapper">
-	    	<span class="helper"></span>
-	      	<a href="/" id="logo"><img ng-href="/" src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo"></a>
+<nav class="navbar" id="navbar-container">
+  	<div class="container-fluid">
+	    <div class="navbar-header" id="logo-wrapper">
+	      <a class="navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
 	    </div>
-	    <div class="col-sm-4 col-md-4 cp-header-container">
-	    	{% if homepage != True %}
-	    	<form class="form cp-header-wrapper">
-				<div class="input-group">
-	      			<input type="text" class="form-control" placeholder="Search Your Favourite...">
-	      			<span class="input-group-btn">
-	        			<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-	      			</span>
-	      		</div>
-	      	</form>
-
-			{% endif %}
-	    </div>
-	    <div class="col-sm-3 col-md-3 cp-header-container pull-right">
-	    	<div class="cp-header-wrapper">
-	    	{% if signuppage == True %}
-					<a href="login" id="login"><small class="pull-right">Already have an account?</small></a>
+	    <div class="collapse navbar-collapse" id="sign">
+	    	{% if user.is_authenticated %} 
+		    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
+		    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
 			{% else %}
-		    	{% if user.is_authenticated %} 
-			    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger cp-header-content">sign out</button></a>
-			    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg cp-header-content">{{ user.username }}</button></a>
-				{% else %}
-					
-		    		<button type="button" class="btn btn-warning cp-header-content" data-toggle="modal" data-target="#loginbox"> Sign in </button>
-						<a href="{% url 'register' %}"><button type="button" class="btn btn-default cp-header-content"> Sign up </button></a>		
+				{% if homepage == True %}
+	    		<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#loginbox"> Sign in </button>
+					<a href="{% url 'register' %}"><button type="button" class="btn btn-default btn-sm"> Sign up </button></a>
+				{% endif %}
+				{% if signuppage == True %}
+					<a href="login" id="login"><small class="pull-right">Already have an account?</small></a>
 				{% endif %}
 			{% endif %}
-			</div>
 	    </div>
 	    <div class="modal fade" id="loginbox">
 		  	<div class="modal-dialog">
@@ -77,5 +62,5 @@
 		    	</div><!-- /.modal-content -->
 		  	</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-  	
+  	</div>
 </nav>
