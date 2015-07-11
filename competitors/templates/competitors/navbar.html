@@ -1,7 +1,8 @@
 <nav class="navbar" id="navbar-container" ng-controller="login">
-	    <div class="navbar-header col-sm-offset-1 col-sm-3 col-md-offset-1 " id="logo-wrapper">
-	    	<span class="helper"></span>
-	      	<a href="/" id="logo"><img ng-href="/" src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo"></a>
+	    <div class="navbar-header col-sm-offset-1 col-sm-3 col-md-offset-1 cp-header-container" id="logo-wrapper">
+	      	<a class="form cp-header-wrapper" href="/" id="logo">
+	      		<img ng-href="/" src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo">
+	      	</a>
 	    </div>
 	    <div class="col-sm-4 col-md-4 cp-header-container">
 	    	{% if homepage != True %}
