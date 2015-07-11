@@ -37,7 +37,7 @@
 
 		<div class="section" id="second-section" data-anchor="secondPage">
 			<div class="container-fluid" id="live-wrapper">
-				<div class="row">
+				<div>
 					<div class="col-md-4 col-sm-3 col-xs-2" id="live-text">
 						LIVE
 					</div>
@@ -48,10 +48,10 @@
 				</div>
 			</div>
 			<div class="container"  id="player-team-wrapper">
-				<div class="col-md-6 col-sm-12 col-xs-12" id="player-wrapper">
+				<div class="col-md-6 player-wraper-border" id="player-wrapper">
 					<h4>Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
 					{% for player in players %}
-						<div class="player-box player-left-column col-md-5 col-sm-5 col-xs-5 col-tn-5" id="player1">
+						<div class="player-box player-left-column col-md-5 col-sm-5 self-col-xs-5" id="player1">
 							<a href="{% url 'player_page' player.id %}">
 								<div class="player-image" id="img1"><img src="{{player.icon_url}}"></div>
 								<p>{{player.name}} <span class="pull-right"> {{player.followers.count}} </span></p>
@@ -61,7 +61,7 @@
 					{% endfor %}
 				</div>
 
-				<div class="col-md-6 col-sm-12" id="team-wrapper">
+				<div class="col-md-6 col-xs-12" id="team-wrapper">
 					<h4>Team<span class="pull-right"><a href="#">More</a></span></h4>
 					{% for team in teams %}
 					<div class="team-box">

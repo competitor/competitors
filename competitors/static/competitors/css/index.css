@@ -63,20 +63,10 @@
 as there is no such support in bootstrap for xs and tn
 responsive*/
 @media (min-width: 600px) and (max-width: 768px) {
-  .col-xs-5 {
+  .self-col-xs-5 {
     float: left;
     min-height: 1px;
     margin-left: 40px;
-    position: relative;
-    width: 41.66666667%;
-  }
-}
-
-@media (min-width: 450px) and (max-width: 600px) {
-  .col-tn-5 {
-    float: left;
-    min-height: 1px;
-    margin-left: 20px;
     position: relative;
     width: 41.66666667%;
   }
@@ -86,7 +76,7 @@ responsive*/
   height: auto;
   margin-bottom: 25px;
   padding: 5px !important;
-  http://127.0.0.1:8000/
+  background: white;
 }
 
 .player-image {
@@ -105,19 +95,16 @@ responsive*/
   padding: 2em 3em 2em 3em;
 }
 
-#player-wrapper {
-  border-right: 1px solid #ffffff;
+@media (min-width: 991px) {
+  .palyer-wrapper-border {
+    border-right: 1px solid #ffffff;
+  }
 }
 
 #player-wrapper p {
   margin-top: 1em;
   color: #C0C0C0;
   font-weight: bold;
-}
-
-#row2, #row3 {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
 }
 
 #team-wrapper {
@@ -131,7 +118,8 @@ responsive*/
 .team-box {
   height: 90px;
   margin-bottom: 20px;
-  padding: 5px, 0, 0, 3em;
+  padding-left: 3em;
+  padding-top: 5px;
   background: white;
   background: -webkit-linear-gradient(left,#A9A9A9, #ffffff); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(left, #A9A9A9, #ffffff); /* For Opera 11.1 to 12.0 */
