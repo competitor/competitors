@@ -148,7 +148,7 @@ body{
 
 
 /*For the container of navbar*/
-#navbar-container {
+#navbar-container{
 	position: absolute;
 	top: 1em;
 	left: 0;
@@ -200,7 +200,40 @@ body{
 
 /*For the competetitor logo*/
 #logo-wrapper {
-	margin: 0.5em 0 0 10%;
+	height: 100%;
+}
+
+#logo-wrapper .helper{
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#logo-wrapper img{
+	height: 30px;
+    vertical-align: middle;
+}
+
+
+.cp-header-searchbar{
+	height: 100%;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.cp-header-container{
+    display: table;
+    height: 100%;
+}
+
+.cp-header-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cp-header-content{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /*For the sign in and sign up button*/
