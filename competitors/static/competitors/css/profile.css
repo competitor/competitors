@@ -34,7 +34,6 @@ body {
   }
 #instruction{
 	margin: 20px 0 50px;
-	display: none;
 	height: 30px;
 	vertical-align: top;
 }

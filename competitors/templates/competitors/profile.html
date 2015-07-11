@@ -28,40 +28,51 @@
             {{ error }}
         </h4>
         {% endfor %}
+        <div class="modal fade" id="imgbox">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Change Ur Image</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="log">
 
-        <div id="log">
-
-            <canvas id="imageCanvas">
-            </canvas>
-            <div id="drag">
-            </div>
-            <div id="drag1">
-            </div>
-            <div id="drag2">
-            </div>
-            <div id="drag3">
-            </div>
-            <div id="drag4">
-            </div>
-            <canvas id="imageCanvas2"></canvas>
-            <input type="hidden" name="data" id="img_url" value=""/>
-            {% csrf_token %}
-            <button id="upload" onclick="save_pic()" class="btn btn-default">Upload</button>
-            <div id="hint">
-                <h4>Drag mouse to change the range of your image</h4>
-            </div>
-        </div>
-        <div id="instruction">
-                <label>
-                    Image File:
-                </label>
-                <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>
-        </div>
+                            <canvas id="imageCanvas">
+                            </canvas>
+                            <div id="drag">
+                            </div>
+                            <div id="drag1">
+                            </div>
+                            <div id="drag2">
+                            </div>
+                            <div id="drag3">
+                            </div>
+                            <div id="drag4">
+                            </div>
+                            <canvas id="imageCanvas2"></canvas>
+                            <input type="hidden" name="data" id="img_url" value=""/>
+                            {% csrf_token %}
+                            <button id="upload" ng-click="save()" class="btn btn-default">Upload</button>
+                            <div id="hint">
+                                <h4>Drag mouse to change the range of your image</h4>
+                            </div>
+                        </div>
+                        <div id="instruction">
+                                <label>
+                                    Image File:
+                                </label>
+                                <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 
         <div class="col-md-5" id="left-wrapper">
             <div id="img-wrapper">
-                <a href="#" ng-click="canvasarea()" disabled="false"/><img src="{{currentUser.img_url}}" width="190px" ></a>
+                <img  disable="true" src="{{currentUser.img_url}}" width="190px" ng-click="" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" data-toggle="modal" data-target="#imgbox"/>
             </div>
             <div class="text-center" id="left-text">
                 <h4>{{currentUser.user.username}}</h4>
@@ -181,6 +192,36 @@ competitorsApp.controller('MainCtl',['$scope', function($scope){
     {% if currentUser.user.username = user.username %}
         $scope.self = true;
     {% endif %}
+    $scope.hoverIn = function(){
+        console.log(13);
+    }
+
+    $scope.hoverOut = function(){
+        console.log(325);
+    }
+
+    $scope.save = function(){
+        console.log(6666);
+        var file = $("#img_url").attr('value')
+        $.ajax({
+            type: "post",
+            url: "/save_pic",
+            data: {
+                'userAdjustedImage': file,
+                'csrfmiddlewaretoken': token,
+                },
+
+            enctype: 'multipart/form-data',
+            success: function() {
+                alert("success")
+                location.reload(true)
+            },
+            error: function() {
+                    alert("Oh no! There seems to have been some problem with the picture you uploaded");
+                  },
+        })
+    }
+
 }])
     $('#tabs').click(function(e) {
         $('#tabs .active').removeClass('active');
@@ -193,5 +234,27 @@ competitorsApp.controller('MainCtl',['$scope', function($scope){
 
     $('.glyphicon-pencil').click(function(e) {
     });
+    function save_pic(){
+    console.log(name)
+    var file = $("#img_url").attr('value')
+        $.ajax({
+            type: "post",
+            url: "/save_pic",
+            data: {
+                'userAdjustedImage': file,
+                'csrfmiddlewaretoken': token,
+                },
+
+            enctype: 'multipart/form-data',
+
+            success: function() {
+                alert("Yea");
+                     location.reload(true)
+                 },
+            error: function(e) {
+                    alert(e);
+                  },
+        })
+}
 </script>
 </html>
