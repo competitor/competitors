@@ -10,7 +10,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 </head>
-<body ng-controller="MainCtl">
+<body ng-controller="register">
     <div id="header">
         {% include 'competitors/navbar.html' %}
     </div>
@@ -55,7 +55,7 @@
 <script src="{{STATIC_URL}}competitors/js/app.js"></script>
 <script src="{{STATIC_URL}}competitors/js/register.js"></script>
 <script>
-    competitorsApp.controller('MainCtl',['$scope','$http','$timeout',function($scope,$http,$timeout){
+    competitorsApp.controller('register',['$scope','$http','$timeout',function($scope,$http,$timeout){
 
 
             {% for field in form %}
