@@ -1,10 +1,10 @@
 <nav class="navbar" id="navbar-container" ng-controller="login">
-	    <div class="navbar-header col-sm-offset-1 col-sm-3 col-md-offset-1 cp-header-container" id="logo-wrapper">
+	    <div class="navbar-header col-xs-3 col-sm-offset-1 col-sm-3 col-md-offset-1 cp-header-container" id="logo-wrapper">
 	      	<a class="form cp-header-wrapper" href="/" id="logo">
 	      		<img ng-href="/" src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo">
 	      	</a>
 	    </div>
-	    <div class="col-sm-4 col-md-4 cp-header-container">
+	    <div class="col-xs-4 col-sm-4 col-md-4 cp-header-container">
 	    	{% if homepage != True %}
 	    	<form class="form cp-header-wrapper">
 				<div class="input-group">
@@ -17,8 +17,11 @@
 
 			{% endif %}
 	    </div>
-	    <div class="col-sm-3 col-md-3 cp-header-container pull-right">
-	    	<div class="cp-header-wrapper">
+	    <div class="col-xs-3 col-sm-3 col-md-3 cp-header-container pull-right">
+	    	<div class="visible-xs-inline cp-header-wrapper">
+				<span>Collapse</span>
+			</div>
+	    	<div class="hidden-xs cp-header-wrapper">
 	    	{% if signuppage == True %}
 					<a href="login" id="login"><small class="pull-right">Already have an account?</small></a>
 			{% else %}
@@ -32,6 +35,7 @@
 				{% endif %}
 			{% endif %}
 			</div>
+
 	    </div>
 	    <div class="modal fade" id="loginbox">
 		  	<div class="modal-dialog">
