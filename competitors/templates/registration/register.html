@@ -31,22 +31,23 @@
                      </div>
                 </div>
                 {% endfor %}
-                <!-- <input type="text" ng-model="usernamee" checkusernamee/> -->
-            <div class="form-group">
-                <div class="agreement radio col-sm-offset-2">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios" value="agree">
-                        I have read and agree with the <a href="javascript:;">Agreement</a>
-                    </label>
+                <div class="form-group">
+                    <div class="agreement col-sm-offset-2">
+                        <label>
+                            <input ng-model="register_agreement" required name="agreement" type="checkbox"/>
+                            I have read and agree with the <a href="javascript:;">Agreement</a>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div id="form-action">
-                <div class="col-sm-2"></div>
-                <button type="submit" ng-disabled="signupform.$invalid" class="btn btn-warning">Register</button>
-            </div>
-            {% csrf_token %}
+                <div id="form-action">
+                    <div class="col-sm-2"></div>
+                    <button type="submit" ng-disabled="signupform.$invalid" class="btn btn-warning">Register</button>
+                </div>
+                {% csrf_token %}
+            </form>
         </div>
     </div>
+
 {% include 'competitors/footer.html' %}
 <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -96,7 +97,6 @@
                                     $scope.register_password2_error = "Not match/incorrect";
                                 }
                             }
-
                         },1000);
                     }
                 );

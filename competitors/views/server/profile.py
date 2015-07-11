@@ -1,5 +1,10 @@
+import base64
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from competitors.models import *
+from base64 import b64decode
+from django.core.files.base import ContentFile
+from django.shortcuts import render_to_response,redirect,get_object_or_404
 
 @login_required
 @transaction.atomic
@@ -90,7 +95,7 @@ def save_pic(request):
         newfile.save()
         path = newfile.fileuploaded.path
         path = path.split("/")[-1]
-        user.img_url="/static/competitors/img/users/"+path
+        user.img_url="/media/img/users/"+path
         print user.img_url
         user.save() 
 	return redirect('home')

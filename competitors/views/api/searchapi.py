@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from competitors.models import *
 from django.http import HttpResponseRedirect,HttpResponse,HttpResponseForbidden
 from django.shortcuts import render_to_response,redirect,get_object_or_404
@@ -56,22 +57,27 @@ def search(request):
 	context = {}
 	print request.POST
 	print 1111
+	teamInDB = False
 	if 'search' in request.POST and request.POST['search']:
 		name = request.POST['search'].strip()
 		teams = Team.objects.filter(name__contains=name)
 		players = Player.objects.filter(name__contains=name)
-
-		response = api('api.football-data.org','/alpha/teams?name=',name)
-		if response["teams"]:
-			for team in response["teams"]:
-				if team["name"] == name and not name in teams :
-					print ("addnewteam")
-					cat = Category.objects.get(name="Soccer")
-					info = api('api.football-data.org','/alpha/teams/',str(team["id"]))
-					print info
-					new_team = Team(id=team["id"],name=name,category=cat,icon_url=info["crestUrl"])
-					new_team.save()
-					teams = Team.objects.filter(name__contains=name)
+		for team in teams:
+			if team.name == name:
+				teamInDB = True
+				break
+		if not teamInDB:
+			response = api('api.football-data.org','/alpha/teams?name=',name)
+			if response["teams"]:
+				for team in response["teams"]:
+					if team["name"] == name:
+						print ("addnewteam")
+						cat = Category.objects.get(name="Soccer")
+						info = api('api.football-data.org','/alpha/teams/',str(team["id"]))
+						print info
+						new_team = Team(id=team["id"],name=name,category=cat,icon_url=info["crestUrl"])
+						new_team.save()
+						teams = Team.objects.filter(name__contains=name)
 
 
 
