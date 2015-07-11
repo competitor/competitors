@@ -96,7 +96,7 @@ responsive*/
 }
 
 @media (min-width: 991px) {
-  .palyer-wrapper-border {
+  .player-wrapper-border {
     border-right: 1px solid #ffffff;
   }
 }
