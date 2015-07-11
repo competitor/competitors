@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Your Profile</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="static/person.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="container-fluid" id="header-wrapper">
+			<div class="container">
+				<div class="navbar-header" id="logo-wrapper">
+			      <a class="navbar-brand" href="index.html" id="logo"><img src="media/logo1.png" alt="logo" width="150" height="25"></a>
+			    </div>
+		      	<div class="input-group input-group-sm col-sm-3 pull-right" id="header-search-bar">
+			      	<input type="text" class="form-control" placeholder="Search Your Favourite...">
+			      	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+			      	</span>
+				</div><!-- /input-group -->
+
+			</div>	
+		</div>
+	</div>
+	<div class="row" id="body">
+		<div class="col-md-6" id="left-wrapper">
+			<div id="img-wrapper">
+			</div>
+			<div class="text-center" id="left-text">
+				<h4>maot</h4>
+				<br>
+				<p>2015.6.10 Singed in</p>
+				<p>Position</p>
+				<br>
+				<p>Personal Slogan:</p>
+			</div>
+		</div>
+		<div class="col-md-6" id="right-wrapper">
+			<ul class="nav nav-tabs" id="tabs">
+ 				<li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+  				<li role="presentation"><a href="#tab-2"><span class="glyphicon glyphicon-star" aria-hidden="true"></a></li>
+  				<li role="presentation"><a href="#tab-3"><span class="glyphicon glyphicon-time" aria-hidden="true"></a></li>
+			</ul>			
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-1">
+					<p>Essential Info &nbsp;&nbsp;&nbsp;
+						<a class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+					</p>
+					<hr>
+					<div class="text-center">
+						<p>Username: </p>
+						<p>First Name: </p>
+						<p>Last Name: </p>
+						<p>Age: </p>
+						<p>Location: </p>
+						<p>Registration Time:</p>
+					</div>
+					<p>Contact Info &nbsp;&nbsp;&nbsp;
+						<a class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+					</p>
+					<hr>
+					<div class="text-center">
+						<p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Email: </p>
+						<p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Blog: </p>
+						<p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Facebook: </p>
+						<p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Instagram: </p>
+						<p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Twitter: </p>
+						<p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  MSN: </p>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-2"></div>
+				<div class="tab-pane" id="tab-3"></div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" id="footer">
+		<div class="container">
+			<div class="col-md-6 col-sm-12" id="footer-text">
+				<p>anchors: (default []) Defines the anchor links (#example) to be shown on the URL for each section. The position of the anchors in the array will define to which sections the anchor is applied. (second position for second section and so on). Using anchors forward and backward navigation will also be possible through the browser.</p>
+				<br>
+				<div id="social-wrapper">
+					<span id="facebook-wrapper">
+						<a href="https://facebook.com" target="_blank" id="facebook"><img src="media/Facebook.png" alt="facebook" width="40" height="40"></a>
+					</span>
+					<span id="twitter-wrapper">
+						<a href="https://twitter.com" target="_blank" id="facebook"><img src="media/Twitter.png" alt="twitter" width="40" height="40"></a>
+					</span>
+					<span id="rss-wrapper">
+						<a href="https://rss.com" target="_blank" id="rss"><img src="media/Rss.png" alt="facebook" width="40" height="40"></a>
+					</span>
+				</div>
+				<br>
+				<p>maot@Copyright</p>
+
+			</div>
+		</div>	
+	</div>
+</body>
+<script type="text/javascript">
+	$('#tabs').click(function(e) {
+		$('#tabs .active').removeClass('active');
+		$(e.target).parents().addClass('active');
+	});
+
+	$("#tabs a").click(function (e) {
+        $(this).tab('show');
+    });
+
+	$('.glyphicon-pencil').click(function(e) {
+	});
+</script>
+</html>
