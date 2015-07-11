@@ -1,4 +1,4 @@
-competitorsApp.controller('MainCtl',['$scope','$http',function($scope,$http){
+competitorsApp.controller('login',['$scope','$http',function($scope,$http){
 	$scope.submit = function(){
 	var data = $('#signinForm').serialize();
 	console.log(data);
