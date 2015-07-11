@@ -17,11 +17,11 @@
 
 </head>
 <body ng-controller="MainCtl">
-    <div id="header" style="margin-bottom:200px;">
+    <div id="header">
         {% include 'competitors/navbar.html' %}
         {% csrf_token %}
     </div>
-    </div>
+    <div id="body" style="height:1200px;">
     
         {% for error in errors %}
         <h4 style="color: red">
@@ -58,13 +58,63 @@
                 <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>
         </div>
 
-        <div id="info" class="panel">
+
+        <div class="col-md-5" id="left-wrapper">
+            <div id="img-wrapper">
+                <a href="#" ng-click="canvasarea()" disabled="false"/><img src="{{currentUser.img_url}}" width="190px" ></a>
+            </div>
+            <div class="text-center" id="left-text">
+                <h4>{{currentUser.user.username}}</h4>
+                <br>
+                <p>2015.6.10 Singed in</p>
+                <p>Position</p>
+                <br>
+                <p>Personal Slogan:</p>
+            </div>
+        </div>
+        <div class="col-md-7" id="right-wrapper">
+            <ul class="nav nav-tabs" id="tabs">
+                <li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+                <li role="presentation"><a href="#tab-2"><span class="glyphicon glyphicon-star" aria-hidden="true"></a></li>
+                <li role="presentation"><a href="#tab-3"><span class="glyphicon glyphicon-time" aria-hidden="true"></a></li>
+            </ul>           
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab-1">
+                    <h4>Essential Info &nbsp;&nbsp;&nbsp;
+                        <a class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+                    </h4>
+                    <hr>
+                    <div class="text-left">
+                        <p>Username: </p>
+                        <p>First Name: </p>
+                        <p>Last Name: </p>
+                        <p>Age: </p>
+                        <p>Location: </p>
+                        <p>Registration Time:</p>
+                    </div>
+                    <h4>Contact Info &nbsp;&nbsp;&nbsp;
+                        <a class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+                    </h4>
+                    <hr>
+                    <div class="text-left">
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Email: </p>
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Blog: </p>
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Facebook: </p>
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Instagram: </p>
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Twitter: </p>
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  MSN: </p>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab-2"></div>
+                <div class="tab-pane" id="tab-3"></div>
+            </div>
+        </div>
+
+<!--         <div id="info" class="panel">
 
              <div id="image" >
                 <img src="{{currentUser.img_url}}" width="150px"/>
-            {% if currentUser.user.username = user.username %}
-                <button onclick="canvasarea()" class="btn btn-primary btn-lg">Change Picture</button>
-            {% endif %}
+
             </div>
 
             <div id="personal">
@@ -82,9 +132,9 @@
                      <a href="{% url 'edit' %}">Edit Profile</a>
                 {% endif %}
             </div>
-        </div>
+        </div> -->
 
-        <div class="personal_follows">
+<!--         <div class="personal_follows">
             {% for team in teamfollows %}
 
                 <div class="recommend_each">
@@ -118,9 +168,8 @@
                         </div>
                     </a>
                 </div>
-            {% endfor %}
-        </div>
-        </div>
+            {% endfor %}-->
+        </div> 
     {% include 'competitors/footer.html' %}
 </body>
 <script src="{{STATIC_URL}}competitors/js/app.js"></script>
@@ -128,6 +177,11 @@
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/login.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
 <script type="text/javascript">
+competitorsApp.controller('MainCtl',['$scope', function($scope){
+    {% if currentUser.user.username = user.username %}
+        $scope.self = true;
+    {% endif %}
+}])
     $('#tabs').click(function(e) {
         $('#tabs .active').removeClass('active');
         $(e.target).parents().addClass('active');
