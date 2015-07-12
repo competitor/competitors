@@ -270,3 +270,41 @@ body{
 	margin-left: 1em;
 }
 
+
+/*For the navbar collapse*/
+@media (max-width: 768px) {
+  .cp-regular-navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .cp-smaller-navbar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .cp-smaller-navbar {
+  	width: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(192,192,192, 0.3);
+  }
+}
+
+.cp-navbar-a {
+  	color: orange;
+}
+
+.cp-navbar-button {
+  	color: orange;
+}
+
+.cp-navbar-brand {
+	  float: left;
+		height: 100%;
+  	padding: 20px 15px 0 16px;
+  	font-size: 18px;
+  	line-height: 20px;
+}
