@@ -28,6 +28,7 @@ from django.utils import timezone
 from random import randint
 
 
+
 # Create your views here.
 
 # def home(request):
@@ -50,6 +51,14 @@ from random import randint
 # 	context['players'] = players
 # 	context['homepage'] = True
 # 	return render(request,'competitors/index.html',context)
+
+def staticView(request,page):
+	print page
+	try:
+		return render(request, "competitors/"+page+".html")
+	except ObjectDoesNotExist:
+		raise Http404
+
 
 def loginself(request):
 	context = []

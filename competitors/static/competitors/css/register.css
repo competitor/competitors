@@ -28,7 +28,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 #form-head {
 	font-weight: bold;
-	padding-left: 1em;
 	padding-bottom: 2em;
 }
 
@@ -46,7 +45,7 @@ input[type="text"],input[type="password"]{
 }
 
 .form-group {
-	padding: 2em 2em;
+	padding: 2em 0;
 }
 
 .form-group a, .form-group a:hover {
@@ -54,8 +53,10 @@ input[type="text"],input[type="password"]{
 	color: #FF8C00;
 }
 
-#body {
-	margin-top: 150px;
+.cp-container{
+	margin: 150px 0 10% 0!important;
+	padding: 0!important;
+	width: 100%;
 }
 
 #form-wrapper {
@@ -64,6 +65,6 @@ input[type="text"],input[type="password"]{
 	border: 2px solid rgba(255, 255, 255, 0.8);
 	border-radius: 1em;
 	box-shadow: 5px 5px 5px #888888;
-	padding: 10% 20% 10% 10%;
+	padding: 5% 5%;
 	margin-bottom: 10%;
 }
