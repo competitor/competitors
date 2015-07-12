@@ -14,12 +14,12 @@
     <div id="header">
         {% include 'competitors/navbar.html' %}
     </div>
-    <div id="body">
-        <div class="container" id="form-wrapper">
+    <div id="body" class="row cp-container">
+        <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" id="form-wrapper">
             <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
             <form action="{% url 'register' %}" name="signupform" class="form-horizontal" method="POST">
                 {% for field in form %}
-                <div class="signupfield form-group has-feedback" ng-class="{'has-error':register_{{field.name}}_init && register_{{field.name}}_has_error,'has-success':register_{{field.name}}_init &&  !register_{{field.name}}_has_error}">
+                <div class="row signupfield form-group has-feedback" ng-class="{'has-error':register_{{field.name}}_init && register_{{field.name}}_has_error,'has-success':register_{{field.name}}_init &&  !register_{{field.name}}_has_error}">
                     <label class="col-sm-2 control-label">{{field.label}}</label>
                     <div class="col-sm-6">
                         {{field}}
@@ -34,7 +34,7 @@
                     <div class="agreement col-sm-offset-2">
                         <label>
                             <input ng-model="register_agreement" required name="agreement" type="checkbox"/>
-                            I have read and agree with the <a href="javascript:;">Agreement</a>
+                            I have read and agree with the <a href="javascript:;" data-toggle="modal" data-target="#agreementbox">Agreement</a>
                         </label>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
             </form>
         </div>
     </div>
-
+{% include 'competitors/agreement.html'%}
 {% include 'competitors/footer.html' %}
 <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -58,7 +58,7 @@
 <script>
     competitorsApp.controller('register',['$scope','$http','$timeout',function($scope,$http,$timeout){
 
-
+            $scope.register_agreement = false;
             {% for field in form %}
                 var {{field.name}}_timer;
                 var timer;
