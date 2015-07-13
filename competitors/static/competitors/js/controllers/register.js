@@ -7,20 +7,17 @@ competitorsApp.controller('register',['$scope','$http','$timeout',function($scop
             $scope.$watch('signupform.'+field+'.$viewValue',
             function(newVal){
                 var field = $(this)[0].exp.split('.')[1];
-                console.log(field);
+                // console.log(field);
                 $timeout.cancel($scope.register[field].timer);
                 $scope.register[field].timer = $timeout(function() {
                     var input = $scope.signupform[field];
-                    console.log(newVal);
+                    // console.log(newVal);
                     if (newVal){
                         $scope.register[field].init = true;
-                        console.log(field + $scope.register[field].init);
                     }else if (newVal == undefined && $scope.register[field].init == undefined){
                         $scope.register[field].init = false;
-                        console.log(field + $scope.register[field].init);
                     }else if ($scope.register[field].init == false){
                         $scope.register[field].init = true;
-                        console.log(field + $scope.register[field].init);
                     }
                     $scope.register[field].has_error = input.$invalid;
                     if (input.$invalid && $scope.register[field].init){
