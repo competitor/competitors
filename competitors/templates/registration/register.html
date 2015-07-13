@@ -67,7 +67,7 @@
 <script>
     competitorsApp.controller('register',['$scope','$http','$timeout',function($scope,$http,$timeout){
             $scope.register_agreement = false;
-            var list = ["first_name","last_name","username","email","password1","password2"];
+            var list = ["first_name","last_name","username","email","password2","password1"];
 
             // $scope.$watch("register", function(){
             //     console.log($scope.register);
@@ -75,12 +75,14 @@
             //         console.log(field)
             //     }
             // })
-            $timeout(function(){
-                for (f1 in list){
-                    var field = list[f1]
-                console.log(field)
-                $scope.$watch('signupform.'+field+'.$viewValue',
+
+                {% for f1 in form %}
+                    var field = "{{f1.name}}";
+                    $timeout(function(){return;},1000);
+                    console.log(field)
+                    $scope.$watch('signupform.'+field+'.$viewValue',
                     function(newVal){
+
                         console.log(field);
                         $timeout.cancel($scope.register[field].timer);
                         $scope.register[field].timer = $timeout(function() {
@@ -119,8 +121,9 @@
                         },1000);
                     }
                 );
-            }
-        },5000);
+                {% endfor %}
+            
+
             
   
 
