@@ -36,18 +36,18 @@ class RegistrationForm(forms.Form):
     first_name = forms.CharField(max_length=20,
                                 label='Firstname',widget=forms.TextInput(attrs={
                                     'class':'form-control',
-                                    'ng-model':'register_first_name',
+                                    'ng-model':'register.first_name.value',
                                     'ng-pattern':'/^[a-zA-Z0-9]*$/',
                                     'ng-required':'true',}))
     last_name  = forms.CharField(max_length=20,label='Lastname',widget=forms.TextInput(attrs={
                                     'class':'form-control',
-                                    'ng-model':'register_last_name',
+                                    'ng-model':'register.last_name.value',
                                     'ng-pattern':'/^[a-zA-Z0-9]*$/',
                                     'ng-required':'true',
                                     }))
     username   = forms.CharField(max_length = 20,widget=forms.TextInput(attrs={
                                     'class':'form-control',
-                                    'ng-model':'register_username',
+                                    'ng-model':'register.username.value',
                                     'ng-pattern':'/^[a-zA-Z0-9]*$/',
                                     'ng-minlength':'4',
                                     'ng-maxlength':'20',
@@ -56,7 +56,7 @@ class RegistrationForm(forms.Form):
                                     }))
     email      = forms.CharField(max_length = 200,widget=forms.EmailInput(attrs={
                                     'class':'form-control',
-                                    'ng-model':'register_email',
+                                    'ng-model':'register.email.value',
                                     'ng-required':'true',
                                     'checkemail':'true',
                                     }))
@@ -64,7 +64,7 @@ class RegistrationForm(forms.Form):
                                  label='Password', 
                                  widget = forms.PasswordInput(attrs={
                                     'class':'form-control',
-                                    'ng-model':'register_password1',
+                                    'ng-model':'register.password1.value',
                                     'ng-required':'true',
                                     'ng-minlength':'8',
                                     'ng-maxlength':'20',
@@ -73,9 +73,9 @@ class RegistrationForm(forms.Form):
                                  label='Confirm password',  
                                  widget = forms.PasswordInput(attrs={
                                     'class':'form-control',
-                                    'ng-model':'register_password2',
+                                    'ng-model':'register.password2.value',
                                     'ng-required':'true',
-                                    'pw-match':'register_password1',
+                                    'pw-match':'register.password1.value',
                                     }))
    
     # Customizes form validation for properties that apply to more
