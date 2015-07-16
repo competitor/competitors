@@ -21,7 +21,7 @@
 		<div class="section" id="first-section" data-anchor="firstPage">
 			{% include 'competitors/navbar.html' %}
 			{% csrf_token %}
-			<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10 " id="search_bar">
+			<div class="col-md-offset-3 col-sm-offset-1 col-md-6 col-sm-10 col-xs-12 " id="search_bar">
 				<form role="search" method="POST" action="{% url 'search' %}">
 		    		<div class="input-group input-group-lg">
 		        		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
@@ -49,7 +49,7 @@
 			</div>
 			<div class="container"  id="player-team-wrapper">
 				<div class="col-sm-12 col-md-6 col-xs-12 player-wrapper-border" id="player-wrapper">
-					<h4>Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
+					<h4 class="cp-col-xs-offset-1">Player<span class="cp-pull-right"><a href="javascript:;">More</a></span></h4>
 					{% for player in players %}
 						<div class="player-box player-left-column col-md-5 col-sm-5 self-col-xs-5" id="player1">
 							<a href="{% url 'player_page' player.id %}">
