@@ -116,13 +116,63 @@
                     <li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
                     <li role="presentation"><a href="#tab-2"><span class="glyphicon glyphicon-star" aria-hidden="true"></a></li>
                     <li role="presentation"><a href="#tab-3"><span class="glyphicon glyphicon-time" aria-hidden="true"></a></li>
-                </ul>    
+                </ul>
+                <br/>
+                <div class="tab-content">
+                    <div class="tab-pane cp-profile-pane active" id="tab-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>Essential Info &nbsp;&nbsp;&nbsp;
+                                    <a class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+                                </h4>
+                            </div>
+                            
+                            <div class="text-left panel-body row">
+                                <p>Username: </p>
+                                <p>First Name: </p>
+                                <p>Last Name: </p>
+                                <p>Age: </p>
+                                <p>Location: </p>
+                                <p>Registration Time:</p>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> 
+                                <h4>Contact Info &nbsp;&nbsp;&nbsp;
+                                    <a class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+                                </h4>
+                            </div>
+                            <div class="panel-body text-left">
+                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Email: </p>
+                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Blog: </p>
+                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Facebook: </p>
+                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Instagram: </p>
+                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Twitter: </p>
+                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  MSN: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-2">asd</div>
+                    <div class="tab-pane" id="tab-3">123</div>
+                </div>     
             </div>
             <div class="" id="favorite" ng-show="favoriteshow">
                 <ul class="nav nav-tabs" id="tabs">
-                    <li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
-                    <li role="presentation"><a href="#tab-2"><span class="glyphicon glyphicon-star" aria-hidden="true"></a></li>
-                </ul>   
+                    <li role="presentation" class="active"><a href="#tab-21"><span class="glyphicon glyphicon-user" aria-hidden="true">Favorite Teams</a></li>
+                    <li role="presentation"><a href="#tab-22"><span class="glyphicon glyphicon-star" aria-hidden="true">Favorite Players</a></li>
+                </ul> 
+                <div class="tab-content">  
+                    <div class="tab-pane active" id="tab-21">
+                        {% for team in teamfollows %}
+                        {% endfor %}
+                    </div>
+                    <div class="tab-pane" id="tab-22">
+                        {% for player in playerfollows %}
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
             </div>
             <div class="" id="friends" ng-show="friendsshow">
                 axxx 

@@ -10,6 +10,15 @@
 	border-left: 1px solid #ccc;
 }
 
+.cp-profile-pane{
+	border-left:none;
+	border-right:none;
+	background: none;
+	padding: 0;
+	height: inherit;
+
+}
+
 #navbar-container{
 	background: #FF8C00 !important;
 }
