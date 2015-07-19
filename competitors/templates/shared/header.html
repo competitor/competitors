@@ -4,7 +4,7 @@
 	      <a class="navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo" width="150" height="25"></a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="sign">
-	    	{% if user.is_authenticated %} 
+	    	{% if user.is_authenticated %}
 		    	<a id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}"><button class="btn btn-danger">sign out</button></a>
 		    	<a id="redirect" href="{% url 'see_profile' user.username %}"><button class="btn btn-link btn-lg">{{ user.username }}</button></a>
 			{% else %}
