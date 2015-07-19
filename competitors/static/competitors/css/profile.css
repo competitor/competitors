@@ -1,3 +1,15 @@
+.cp-profile-nav{
+	padding-left: 0;
+}
+.cp-profile-nav-content{
+	text-align: center;
+	padding: 0 15px;
+}
+
+.cp-profile-nav-content:not(:first-child){
+	border-left: 1px solid #ccc;
+}
+
 #navbar-container{
 	background: #FF8C00 !important;
 }
