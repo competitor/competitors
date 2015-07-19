@@ -31,7 +31,7 @@
 	  	</div>
 	  	<div id="data">
 	  		<div id="basic_info">
-	    
+
 			</div>
 			<div id="player_list">
 				{% for player in players %}
@@ -47,7 +47,7 @@
 	                            </div>
 	                        </div>
 	                    </a>
-	                </div>  
+	                </div>
 				{% endfor %}
 			</div>
 			<div id="records">
@@ -59,12 +59,12 @@
 	  				<div>
 	  					<img id="match_img" src="{{match.home.icon_url}}">
 	  					<h5>{{match.home}}</h5>
-	  				</div> 
+	  				</div>
 	  				<div>
 	  					<p>vs</p>
 	  					<p>{{match.time}}</p>
 	  					<a href="{% url 'live_page' match.id %}">Watch LIVE</a>
-	  				</div> 
+	  				</div>
 	  				<div>
 	  					<img id="match_img" src="{{match.away.icon_url}}">
 	  					<h5>{{match.away}}<h5>
@@ -101,7 +101,7 @@
 				{% endif %}
 				{{form}}
 				{% csrf_token %}
-				{% if user.is_authenticated %} 
+				{% if user.is_authenticated %}
 					<button type="submit" class="btn btn-success">POST</button>
 				{% else %}
 					<button type="submit" class="btn btn-success" disabled>SIGN IN TO POST</button>
@@ -110,7 +110,7 @@
 	  	</div>
 	</div>
 </div>
-	
+
 	<script>
 		$( "#tabs" ).tabs();
 	</script>
