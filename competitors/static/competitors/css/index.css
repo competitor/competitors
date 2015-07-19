@@ -72,6 +72,38 @@ responsive*/
   }
 }
 
+@media (min-width: 769px) {
+  .cp-pull-right {
+    float: right;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .cp-pull-right {
+    margin-left: 88%;
+  }
+}
+
+@media (max-width: 600px) {
+  .cp-pull-right {
+    float: right;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .cp-col-xs-offset-1 {
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 600px) {
+  .cp-col-xs-offset-1 {
+    margin-left: 5.33333%;
+    margin-right: 7%;
+  }
+}
+
 .player-box {
   height: auto;
   margin-bottom: 25px;
