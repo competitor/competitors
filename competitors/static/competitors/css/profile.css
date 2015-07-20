@@ -19,6 +19,10 @@
 
 }
 
+.cp-profile-form-label{
+	text-align: left!important;
+}
+
 #navbar-container{
 	background: #FF8C00 !important;
 }

@@ -123,17 +123,52 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Essential Info &nbsp;&nbsp;&nbsp;
-                                <a href="javascript:;" class="glyphicon glyphicon-pencil" aria-hidden="true"></a> 
+                                <a ng-show="!edit" href="javascript:;" ng-click="edit=!edit" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                                <a ng-show="edit" href="javascript:;" ng-click="edit=!edit" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>  
                                 
                             </div>
                             
                             <div class="text-left panel-body">
-                                <p>Username: </p>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label cp-profile-form-label">Username</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static" ng-show="!edit">{{currentUser.user.username}}</p>
+                                            <input ng-show="edit" type="email" class="form-control input" value="{{currentUser.user.username}}" id="inputEmail3" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Firstname</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static" ng-show="!edit">{{currentUser.user.first_name}}</p>
+                                            <input type="password" ng-show="edit" class="form-control" value="{{currentUser.user.first_name}}" id="inputPassword3" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Lastname</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static" ng-show="!edit">{{currentUser.user.last_name}}</p>
+                                            <input type="password" ng-show="edit" value="{{currentUser.user.last_name}}" class="form-control" id="inputPassword3" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Birthday</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static" ng-show="!edit">{{currentUser.user.username}}</p>
+                                            <input type="date" ng-show="edit" class="form-control" id="inputPassword3" placeholder="Password">
+                                        </div>
+                                    </div>
+                                </form>
+<!--                                                     <h4>Username: {{currentUser.user.username}}</h4>
+                    <h4>Fisrtname: {{currentUser.user.first_name}}</h4>
+                    <h4>Last Name: {{currentUser.user.last_name}}</h4>
+                    <h4>Age: {{currentUser.age}}</h4> -->
+                            <!--     <p>Username: </p>
                                 <p>First Name: </p>
                                 <p>Last Name: </p>
                                 <p>Age: </p>
                                 <p>Location: </p>
-                                <p>Registration Time:</p>
+                                <p>Registration Time:</p> -->
                             </div>
                         </div>
                         
@@ -295,6 +330,7 @@
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
 <script type="text/javascript">
 competitorsApp.controller('profile',['$scope', function($scope){
+    $scope.edit = false;
     $scope.personalshow = true;
     $scope.favoriteshow =false;
     $scope.friendsshow =false;
