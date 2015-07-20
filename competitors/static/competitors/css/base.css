@@ -52,6 +52,7 @@
 /*For the competetitor logo*/
 #logo-wrapper {
 	height: 100%;
+  padding-top: 0;
 }
 
 #logo-wrapper .helper{
@@ -62,7 +63,7 @@
 
 #logo-wrapper img{
 	height: 30px;
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 
@@ -73,8 +74,8 @@
 }
 
 .cp-header-container{
-    display: table;
-    height: 100%;
+  display: table;
+  height: 100%;
 }
 
 .cp-header-wrapper{
@@ -113,9 +114,13 @@
 	margin-left: 1em;
 }
 
+.cp-sign-right {
+  text-align: right;
+  vertical-align: middle;
+}
 
 /*For the navbar collapse*/
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .cp-regular-navbar {
     display: none;
   }
@@ -127,7 +132,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .cp-smaller-navbar {
   	width: 100%;
     position: absolute;
