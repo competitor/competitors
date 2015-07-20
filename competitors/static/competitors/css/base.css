@@ -76,7 +76,6 @@
 .cp-header-container{
   display: table;
   height: 100%;
-  padding-top: 18px;
 }
 
 .cp-header-wrapper{
@@ -116,7 +115,7 @@
 }
 
 .cp-sign-right {
-  float: right!important;
+  text-align: right;
   vertical-align: middle;
 }
 
