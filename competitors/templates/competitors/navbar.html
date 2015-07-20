@@ -18,7 +18,6 @@
 		            <li><a class="cp-navbar-a" id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}">sign out</a></li>
 		            <li><a class="cp-navbar-a" id="redirect" href="{% url 'see_profile' user.username %}">{{ user.username }}</a></li>
 		        {% else %}
-
 		            <li><a class="cp-navbar-a" data-toggle="modal" data-target="#loginbox"> Sign in </a></li>
 		            <li><a class="cp-navbar-a" href="{% url 'register' %}"> Sign up</a></li>
 		        {% endif %}
