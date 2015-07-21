@@ -1,0 +1,44 @@
+<div class="modal fade" id="imgbox">
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Change Ur Image</h4>
+            </div>
+            <div class="modal-body" style="padding:0 0; margin:15px 15px;";>
+                <div id="log" class="row">
+                    <div class="col-md-8" style="padding-left:0">
+                        <canvas id="imageCanvas" >
+                        </canvas>
+                        <div id="drag">
+                        </div>
+                        <div id="drag1">
+                        </div>
+                        <div id="drag2">
+                        </div>
+                        <div id="drag3">
+                        </div>
+                        <div id="drag4">
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="padding:0;">
+                        <canvas id="imageCanvas2"></canvas>
+                        <input type="hidden" name="data" id="img_url" value=""/>
+                        {% csrf_token %}
+                        <button id="upload" ng-click="save()" class="btn btn-default">Upload</button>
+                        <div id="hint">
+                            <h4>Drag mouse to change the range of your image</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="instruction">
+                        <label>
+                            Image File:
+                        </label>
+                        <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    <script type="text/javascript" src="{{STATIC_URL}}competitors/js/profile.js"></script>
+</div><!-- /.modal -->

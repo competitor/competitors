@@ -15,6 +15,6 @@ competitorsApp.directive('modalDialog', function() {
 		};
 
 	}		,
-	templateUrl:"foo/agreement.html" 
+	templateUrl:"/foo/agreement.html" 
 	}
 });  
