@@ -1,5 +1,5 @@
 /*For the first section in index page*/
-#first-section {
+#cp-first-section {
 /*  height: 1000px;*/
   background-image: url("/static/competitors/img/index-2.jpg");
   height: 600px;
@@ -9,7 +9,7 @@
 }
 
 /*For live score*/
-#live-wrapper {
+#cp-live-wrapper {
   height: 40px;
   width: 100%;
   margin: 2em 0 0 0;
@@ -17,7 +17,7 @@
   background: #FF8C00;
 }
 
-#live-text {
+#cp-live-text {
   margin-top: 8px;
   padding-right: 2em;
   text-align: right;
@@ -27,27 +27,27 @@
 }
 
 /*For match info in live wrapper*/
-#live-match {
+#cp-live-match {
   padding-left: 2em;
   margin-top: 8px;
   color: white;
   font-weight: bold;
 }
 
-#live-match a {
+#cp-live-match a {
   color: white;
   text-decoration: none;
 }
 
-#live-match a:hover {
+#cp-live-match a:hover {
   color: #000;
 }
 
-#live-score {
+#cp-live-score {
   margin-left: 4em;
 }
 
-#player-team-wrapper a {
+#cp-player-team-wrapper a {
   font-size: 0.7em;
 /*  position: absolute;
   right: 1em;*/
@@ -55,7 +55,7 @@
   position: relative;
 }
 
-#player-team-wrapper h4 {
+#cp-player-team-wrapper h4 {
   color: white;
 }
 
@@ -63,7 +63,7 @@
 as there is no such support in bootstrap for xs and tn
 responsive*/
 @media (min-width: 600px) and (max-width: 768px) {
-  .self-col-xs-5 {
+  .cp-col-xs-5 {
     float: left;
     min-height: 1px;
     margin-left: 40px;
@@ -91,7 +91,7 @@ responsive*/
 }
 
 @media (min-width: 601px) and (max-width: 768px) {
-  .cp-col-xs-offset-1 {
+  .cp-col-md-offset-1 {
     margin-left: 7%;
     margin-right: 7%;
   }
@@ -104,50 +104,42 @@ responsive*/
   }
 }
 
-.player-box {
+.cp-player-box {
   height: auto;
   margin-bottom: 25px;
   padding: 5px !important;
   background: white;
 }
 
-.player-image {
+.cp-player-image {
   width: 100%;
   height: 80%;
   background-size: cover;
 }
 
-.player-image img{
+.cp-player-image img{
   width: 100%;
   height: 100%;
 }
 
-#player-wrapper, #team-wrapper {
+#cp-player-wrapper, #cp-team-wrapper {
   margin: 2em 0 2em 0;
   padding: 2em 3em 2em 3em;
 }
 
 @media (min-width: 991px) {
-  .player-wrapper-border {
+  .cp-player-wrapper-border {
     border-right: 1px solid #ffffff;
   }
 }
 
-#player-wrapper p {
+#cp-player-wrapper p {
   margin-top: 1em;
   color: #C0C0C0;
   font-weight: bold;
 }
 
-#team-wrapper {
-  padding-left: 0;
-}
-
-#team-wrapper h4 {
-  padding-left: 1em;
-}
-
-.team-box {
+.cp-team-box {
   height: 90px;
   margin-bottom: 20px;
   padding-left: 3em;
@@ -159,7 +151,7 @@ responsive*/
     background: linear-gradient(left, #A9A9A9, #ffffff); /* Standard syntax */
 }
 
-.team-image p {
+.cp-team-image p {
   padding: 30px;
   color: #C0C0C0;
   font-weight: bold;
