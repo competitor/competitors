@@ -18,8 +18,9 @@
 	<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
 	<div id="fullpage">
 	<!-- New Nav area -->
-		<div class="section" id="first-section" data-anchor="firstPage" ng-controller="login">
+		<div class="section" id="cp-first-section" data-anchor="firstPage" ng-controller="login">
 			{% include 'competitors/navbar.html' %}
+			{% csrf_token %}
 			<div class="col-md-offset-3 col-sm-offset-1 col-md-6 col-sm-10 col-xs-12 " id="search_bar">
 				<form role="search" method="POST" action="{% url 'search' %}">
 		    		<div class="input-group input-group-lg">
@@ -100,7 +101,6 @@
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/app.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/index.js"></script>
-<script src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
 <script type="text/javascript">
 
   $(document).ready(function() {
