@@ -1,69 +1,32 @@
-<!-- <nav class="cp-smaller-navbar navbar-static-top">
-
-  <div class="container-fluid">
-    <div class="cp-smaller-navbar-header">
-        <a class="navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" color="red" alt="logo" width="150" height="25"></a>
-        <button type="button" class="btn btn-lg navbar-toggle collapsed cp-navbar-button" data-toggle="collapse" data-target="#cp-navbar-collapse">
-          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-        </button>
-    </div>
-    <div class="navbar-collapse collapse" id="cp-navbar-collapse" aria-expanded="false" style="height: 1px;">
-      <ul>
-          <li><a href="/">Sign In</a></li>
-          <li><a href="/">Sign Up</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
-<!-- <nav class="navbar-static-top cp-smaller-navbar">
-  <div class="container-fluid">
-    <div class="cp-navbar-header">
-      <a class="cp-navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" color="red" alt="logo" width="150" height="25"></a>
-        <button type="button" class="btn btn-lg navbar-toggle collapsed cp-navbar-button" data-toggle="collapse" data-target="#cp-navbar-collapse">
-          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-        </button>
-    </div>
-    <div class="navbar-collapse collapse in" id="cp-navbar-collapse" aria-expanded="false" style="height: 1px;">
-
-      <ul class="nav navbar-nav">
-          <li><a class="cp-navbar-a" href="/users/sign_in">Sign In</a></li>
-          <li><a class="cp-navbar-a" href="/users/sign_up">Sign Up</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
 <nav class="cp-smaller-navbar navbar-static-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="cp-navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" color="red" alt="logo" width="150" height="25"></a>
-        <button type="button" class="btn btn-lg navbar-toggle collapsed cp-navbar-button" data-toggle="collapse" data-target="#cp-navbar-collapse">
-          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-        </button>
-    </div>
+	 <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+			    <a class="cp-navbar-brand" href="/" id="logo"><img src="{{STATIC_URL}}competitors/img/logo1.png" color="red" alt="logo" width="150" height="25"></a>
+			    <button type="button" class="btn btn-lg navbar-toggle collapsed cp-navbar-button" data-toggle="collapse" data-target="#cp-navbar-collapse">
+			          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			    </button>
+		    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="cp-navbar-collapse" aria-expanded="false" style="height: 1px;">
-      <ul class="nav navbar-nav navbar-right">
-          {% if signuppage == True %}
-          <li><a class="cp-navbar-a" href="login" id="login"><small class="pull-right">Already have an account?</small></a></li>
-      {% else %}
-          {% if user.is_authenticated %}
-            <li><a class="cp-navbar-a" id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}">sign out</a></li>
-            <li><a class="cp-navbar-a" id="redirect" href="{% url 'see_profile' user.username %}">{{ user.username }}</a></li>
-        {% else %}
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="navbar-collapse collapse" id="cp-navbar-collapse" aria-expanded="false" style="height: 1px;">
+		      <ul class="nav navbar-nav navbar-right">
+		          {% if signuppage == True %}
+		          <li><a class="cp-navbar-a" href="login" id="login"><small class="pull-right">Already have an account?</small></a></li>
+		      {% else %}
+		          {% if user.is_authenticated %}
+		            <li><a class="cp-navbar-a" id="signnnnnnnnnnn" href="{% url 'django.contrib.auth.views.logout' %}?next={% firstof request.path %}">sign out</a></li>
+		            <li><a class="cp-navbar-a" id="redirect" href="{% url 'see_profile' user.username %}">{{ user.username }}</a></li>
+		        {% else %}
+		            <li><a class="cp-navbar-a" data-toggle="modal" data-target="#loginbox"> Sign in </a></li>
+		            <li><a class="cp-navbar-a" href="{% url 'register' %}"> Sign up</a></li>
+		        {% endif %}
+		      {% endif %}
 
-            <li><a class="cp-navbar-a" data-toggle="modal" data-target="#loginbox"> Sign in </a></li>
-            <li><a class="cp-navbar-a" href="{% url 'register' %}"> Sign up</a></li>
-        {% endif %}
-      {% endif %}
+		      </ul>
 
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+		    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
 </nav>
 
 <div class="container">
@@ -104,51 +67,6 @@
 			</div>
 
 	    </div>
-	    <div class="modal fade" id="loginbox">
-		  	<div class="modal-dialog">
-		    	<div class="modal-content">
-		      		<div class="modal-header">
-		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        		<h4 class="modal-title">SignIn</h4>
-		      		</div>
-		      		<div class="modal-body">
-		      			<form class="form-horizontal" ng-submit="submit()" id="signinForm">
-									<div class="form-group">
-									    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-									    <div class="col-sm-10">
-									      	<input type="text" name="username" class="form-control" id="inputEmail3" placeholder="username">
-									    </div>
-									</div>
-									<div class="form-group">
-									    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-									    <div class="col-sm-10">
-									      	<input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
-									    </div>
-									</div>
-									<div class="form-group">
-									    <div class="col-sm-offset-2 col-sm-10">
-									      	<div class="checkbox">
-									        	<label>
-									          		<input type="checkbox"> Remember me
-									        	</label>
-									      	</div>
-										</div>
-									</div>
-									<div class="form-group">
-									    <div class="col-sm-offset-2 col-sm-10">
-									      	<button type="submit" class="btn btn-default">Sign in</button>
-									    </div>
-									</div>
-									{% csrf_token %}
-								</form>
-		      		</div>
-		      		<div class="modal-footer">
-		        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        		<button type="button" class="btn btn-primary">Save changes</button>
-		      		</div>
-		    	</div><!-- /.modal-content -->
-		  	</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-
 </nav>
+<login-pop></login-pop>
 </div>
