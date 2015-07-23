@@ -48,28 +48,31 @@
 				</div>
 			</div>
 			<div class="container"  id="cp-player-team-wrapper">
-				<div class="col-sm-12 col-md-6 col-xs-12 cp-player-wrapper-border" id="cp-player-wrapper">
-					<h4 class="cp-col-md-offset-1">Player<span class="cp-pull-right"><a href="javascript:;">More</a></span></h4>
+				<div class="col-sm-12 col-md-6 col-xs-12 cp-player-wrapper-border row" id="cp-player-wrapper">
+					<h4 class="col-sm-12 col-md-12 col-xs-12">Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
 					{% for player in players %}
-						<div class="cp-player-box col-md-6 col-sm-6 cp-col-xs-5" id="player1">
+					<div class="col-md-6 col-sm-6 col-xs-6">  
+						<div class="cp-player-box" id="player1">
 							<a href="{% url 'player_page' player.id %}">
 								<div class="cp-player-image" id="img1"><img src="{{player.icon_url}}"></div>
 								<p>{{player.name}} <span class="cp-pull-right"> {{player.followers.count}} </span></p>
 							</a>
 						</div>
-
+					</div>	
 					{% endfor %}
 				</div>
 
-				<div class="col-sm-12 col-md-6 col-xs-12" id="cp-team-wrapper">
-					<h4>Team<span class="cp-pull-right"><a href="#">More</a></span></h4>
+				<div class="col-sm-12 col-md-6 col-xs-12 row" id="cp-team-wrapper">
+					<h4 class="col-sm-12 col-md-12 col-xs-12">Team<span class="pull-right"><a href="#">More</a></span></h4>
 					{% for team in teams %}
-					<div class="cp-team-box">
-						<div class="cp-team-image" id="team1">
-							<a href="{% url 'team_page' team.id %}">
-								<img src="{{team.icon_url}}" alt="" width="80" height="80">
-								<p class="pull-right">{{team.name}}</p>
-							</a>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="cp-team-box">
+							<div class="cp-team-image" id="team1">
+								<a href="{% url 'team_page' team.id %}">
+									<img src="{{team.icon_url}}" alt="" width="80" height="80">
+									<p class="pull-right">{{team.name}}</p>
+								</a>
+							</div>
 						</div>
 					</div>
 					{% endfor %}
