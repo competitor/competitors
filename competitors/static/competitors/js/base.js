@@ -1,6 +1,6 @@
 $(function() {
-  	$("#nav_search").autocomplete({
-    source: "api/autocomplete/",
+  	$(".cp-search-tp").autocomplete({
+    source: "/api/autocomplete/",
     minLength: 3,
     autoFill: true,
     mustMatch: true,

@@ -10,8 +10,8 @@
 	<!-- <link rel="stylesheet" href="{{STATIC_URL}}competitors/bootstrap-3.3.4/css/bootstrap.min.css"> -->
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
-  <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/index.css">
+  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
+  	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/index.css">
 </head>
 
 <body ng-controller="index">
@@ -25,7 +25,7 @@
 				<form role="search" method="POST" action="{% url 'search' %}">
 		    		<div class="input-group input-group-lg">
 		        		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-			    		<input type="text" class="form-control" id="search" name="search" required placeholder="Search Your Favourite...">
+			    		<input type="text" class="form-control cp-search-tp" id="search" name="search" required placeholder="Search Your Favourite...">
 			    		<span class="input-group-btn">
 			    			<button type="submit" class="btn btn-warning" type="button">Find!</button>
 			    		</span>
