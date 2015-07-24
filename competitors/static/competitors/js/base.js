@@ -1,4 +1,4 @@
-$(function() {
+(function() {
   	$(".cp-search-tp").autocomplete({
     source: "/api/autocomplete/",
     minLength: 3,

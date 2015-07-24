@@ -69,6 +69,6 @@
 
 	    </div>
 </nav>
-<login-pop ng-controller="login"></login-pop>
+<login-pop ng-controller="login" ng-init="redirect = '{% firstof request.path %}'"></login-pop>
 </div>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>

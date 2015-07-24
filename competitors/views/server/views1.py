@@ -64,11 +64,7 @@ def loginself(request):
 	context = []
 	username = request.POST.get('username')
 	password = request.POST.get('password')
-	user = authenticate(username=username, password=password)
-	print user                                                                              
-	# if login_form.is_valid():                                                                                                           
-	#     if request.is_ajax:                                                                                                             
-	#         user = django_login(request, login_form.get_user())                                                                         
+	user = authenticate(username=username, password=password)                                                                                                                                 
 	if user is not None: #Verify form's content existence
 	    if user.is_active: #Verify validity
 	        login(request, user)
