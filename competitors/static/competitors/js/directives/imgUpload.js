@@ -1,4 +1,4 @@
-competitorsApp.directive('loginPop', function() {
+competitorsApp.directive('imgUpload', function() {
 	return {
 		restrict: 'E',
 		scope: false,
@@ -13,8 +13,7 @@ competitorsApp.directive('loginPop', function() {
 			scope.hideModal = function() {
     			scope.show = true;
 			};
-
-		},
-		templateUrl:"/foo/login_pop.html" 
+		}		,
+	templateUrl:"/foo/imgUpload.html" 
 	}
 });  

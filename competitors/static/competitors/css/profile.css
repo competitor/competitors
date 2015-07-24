@@ -1,3 +1,28 @@
+.cp-profile-nav{
+	padding-left: 0;
+}
+.cp-profile-nav-content{
+	text-align: center;
+	padding: 0 15px;
+}
+
+.cp-profile-nav-content:not(:first-child){
+	border-left: 1px solid #ccc;
+}
+
+.cp-profile-pane{
+	border-left:none;
+	border-right:none;
+	background: none;
+	padding: 0;
+	height: inherit;
+
+}
+
+.cp-profile-form-label{
+	text-align: left!important;
+}
+
 #navbar-container{
 	background: #FF8C00 !important;
 }
@@ -13,22 +38,22 @@ body {
 	z-index: 1;
 }
 #imageCanvas2{
-	position: absolute;
+/*	position: absolute;*/
 	top:0;
-	left: 500px;
+/*	left: 500px;*/
 	width: 200px;
 	height: 200px;
 	z-index: 10;
 	display: inline-block;
-	margin-left: 300px;
+	/*margin-left: 300px;*/
 }
 
 #log {
 	display: none;
 	margin: 20px 0 50px;
     position: relative;
-    width: 500px;
-    height: 500px;
+/*    width: 500px;
+    height: 500px;*/
     left: 0;
     top: 0;
   }
@@ -99,12 +124,12 @@ body {
 }
 
 #upload{
-	position: absolute;
-	top:210px;
-	left: 500px;
+/*	position: absolute;*/
+/*	top:210px;*/
+/*	left: 500px;*/
 	width: 200px;
 	z-index: 10;
-	margin-left: 300px;
+/*	margin-left: 300px;*/
 }
 
 #hint{

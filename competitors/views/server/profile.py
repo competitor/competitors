@@ -5,6 +5,7 @@ from competitors.models import *
 from base64 import b64decode
 from django.core.files.base import ContentFile
 from django.shortcuts import render_to_response,redirect,get_object_or_404
+from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 @transaction.atomic
