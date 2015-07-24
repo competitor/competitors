@@ -18,8 +18,9 @@
 	<input type="hidden" name="redirect" value="{% firstof request.path '/' %}">
 	<div id="fullpage">
 	<!-- New Nav area -->
-		<div class="section" id="first-section" data-anchor="firstPage">
+		<div class="section" id="cp-first-section" data-anchor="firstPage">
 			{% include 'competitors/navbar.html' %}
+			{% csrf_token %}
 			<div class="col-md-offset-3 col-sm-offset-1 col-md-6 col-sm-10 col-xs-12 " id="search_bar">
 				<form role="search" method="POST" action="{% url 'search' %}">
 		    		<div class="input-group input-group-lg">
@@ -35,40 +36,43 @@
 		</div>
 
 		<div class="section" id="second-section" data-anchor="secondPage">
-			<div class="container-fluid" id="live-wrapper">
+			<div class="container-fluid" id="cp-live-wrapper">
 				<div>
-					<div class="col-md-4 col-sm-3 col-xs-2" id="live-text">
+					<div class="col-md-4 col-sm-3 col-xs-2" id="cp-live-text">
 						LIVE
 					</div>
-					<div class="col-md-8 col-sm-9 col-xs-10" id="live-match">
+					<div class="col-md-8 col-sm-9 col-xs-10" id="cp-live-match">
 						<a href="javascript:;">Washington Wizard vs Atlanta Hawks</a>
-						<span id="live-score">90:106</span>
+						<span id="cp-live-score">90:106</span>
 					</div>
 				</div>
 			</div>
-			<div class="container"  id="player-team-wrapper">
-				<div class="col-sm-12 col-md-6 col-xs-12 player-wrapper-border" id="player-wrapper">
-					<h4 class="cp-col-xs-offset-1">Player<span class="cp-pull-right"><a href="javascript:;">More</a></span></h4>
+			<div class="container"  id="cp-player-team-wrapper">
+				<div class="col-sm-12 col-md-6 col-xs-12 cp-player-wrapper-border row" id="cp-player-wrapper">
+					<h4 class="col-sm-12 col-md-12 col-xs-12">Player<span class="pull-right"><a href="javascript:;">More</a></span></h4>
 					{% for player in players %}
-						<div class="player-box player-left-column col-md-5 col-sm-5 self-col-xs-5" id="player1">
+					<div class="col-md-6 col-sm-6 col-xs-6">  
+						<div class="cp-player-box" id="player1">
 							<a href="{% url 'player_page' player.id %}">
-								<div class="player-image" id="img1"><img src="{{player.icon_url}}"></div>
-								<p>{{player.name}} <span class="pull-right"> {{player.followers.count}} </span></p>
+								<div class="cp-player-image" id="img1"><img src="{{player.icon_url}}"></div>
+								<p>{{player.name}} <span class="cp-pull-right"> {{player.followers.count}} </span></p>
 							</a>
 						</div>
-
+					</div>	
 					{% endfor %}
 				</div>
 
-				<div class="col-sm-10 col-md-6 col-xs-12" id="team-wrapper">
-					<h4>Team<span class="pull-right"><a href="#">More</a></span></h4>
+				<div class="col-sm-12 col-md-6 col-xs-12 row" id="cp-team-wrapper">
+					<h4 class="col-sm-12 col-md-12 col-xs-12">Team<span class="pull-right"><a href="#">More</a></span></h4>
 					{% for team in teams %}
-					<div class="team-box">
-						<div class="team-image" id="team1">
-							<a href="{% url 'team_page' team.id %}">
-								<img src="{{team.icon_url}}" alt="" width="80" height="80">
-								<p class="pull-right">{{team.name}}</p>
-							</a>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="cp-team-box">
+							<div class="cp-team-image" id="team1">
+								<a href="{% url 'team_page' team.id %}">
+									<img src="{{team.icon_url}}" alt="" width="80" height="80">
+									<p class="pull-right">{{team.name}}</p>
+								</a>
+							</div>
 						</div>
 					</div>
 					{% endfor %}
@@ -97,7 +101,7 @@
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/app.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/index.js"></script>
-<script src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
 <script type="text/javascript">
 
   $(document).ready(function() {
