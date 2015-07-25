@@ -30,6 +30,7 @@
             {{ error }}
         </h4>
         {% endfor %}
+        <!-- Image Upload html starts/ Please replace them with <img-upload></img-upload>-->
         <div class="modal fade" id="imgbox">
             <div class="modal-dialog" style="width:80%;">
                 <div class="modal-content" >
@@ -70,9 +71,10 @@
                                 <input type="file" id="imageLoader" name="imageLoader" size="60" value=="Select Your Image"/>
                         </div>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
+        <!-- Image Upload html ends. Please replace them with <img-upload></img-upload>-->
 
 
         <div class="col-md-5" id="left-wrapper">
@@ -422,7 +424,7 @@ competitorsApp.controller('profile',['$scope', function($scope){
         })
     }
 
-
+// Image Upload js starts
 
 function canvasarea(){
     $("#instruction").css("display","block")
@@ -688,7 +690,7 @@ function generate(x,y,w,h){
             })
     }
 
-
+// Image Upload js ends
 
 
 
