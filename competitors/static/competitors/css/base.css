@@ -1,166 +1,97 @@
-/** {
-	margin: 0;
-}
-body{
-	margin: 0;
+/*For the container of navbar*/
+#navbar-container{
+	position: absolute;
+	top: 1em;
+	left: 0;
+	height: 70px;
+/*	z-index: 70;*/
 	width: 100%;
-}
-
-#main{
-	width: 1024px;
-	margin: 0 auto;
-}
-#navbar{
-	width: 100%;
-	height: 55px;
-	background: rgba(150,205,205,0.3);
-}
-
-#nav_search{
-  width: 300px;
-}
-*/
-/*.navbar_search input:hover{
-	color: black;
-}*/
-
-/*#title{
-	height: 50px;
-	margin: 0 auto;
-	width: 1024px;
-	text-align: left;
-}
-
-#title a, #title h2,#title>div{
-	text-decoration: none;
-	color: rgb(255,255,255);
-	display: inline;
-	vertical-align: middle;
-	padding: auto;
-}
-#title *:hover{
-	color: rgba(0,0,0,0.4);
-}
-
-#search_link{
-	font-size: 20px;
-	line-height: 50px;
-	vertical-align: middle;
+	padding: 0;
 	margin: 0;
-}
-#sign,#redirect{
-	float: right;
-	line-height: 50px;
-	vertical-align: middle;
-	margin: 0;
+	background: rgba(192,192,192, 0.3);
 }
 
-#title h2{
-	height: 50px;
-	line-height: 50px;
-	vertical-align: middle;
+#navbar-container li {
+	display:inline-block;
+	margin: 10px;
+	color: #000;
+	background: rgba(255,255,255, 0.1);
+	-webkit-border-radius: 10px;
+          border-radius: 10px;
 }
 
-#title>div{
-	margin-left: 50px;
+#navbar-container li.active{
+	background:#666;
+	background: rgba(0,0,0, 0.5);
+	color: #fff;
 }
 
-#title>div>form{
-	display: inline;
-	vertical-align: middle;
+#navbar-container li a{
+  color: #000;
+	text-decoration:none;
 }
 
-#title>div>form input{
-	vertical-align: middle;
+#navbar-container li.active a:hover{
+	color: #000;
 }
 
-#signdiv{
-	margin: 0 auto;
+#navbar-container li:hover{
+	background: rgba(255,255,255, 0.8);
 }
 
-#login_window{
-	background: rgba(0,0,0,0.1);
-	margin: 0 auto;
-	width: 400px;
-	height: 250px;
-	text-align: center;
+#navbar-container li a,
+#navbar-container li.active a{
+	padding: 9px 18px;
+	display:block;
 }
 
-
-#login_header{
-	height: 50px;
+#navbar-container li.active a{
+	color: #fff;
 }
 
-#login_header>h3{
-	display: inline;
-	margin-left:20px;
-	width: 155px;
-	height: 50px;
-	line-height: 50px;
-	vertical-align: middle;
-}
-
-#login_header>a{
-	margin-right: 10px;
-}
-
-#login_cancel,#login_cancel *{
-	float: right;
-	line-height: 50px;
-}
-
-#login_window>div:nth-child(n+1){
-	clear: both;
-}
-
-#login_window input[type=text],#login_window input[type=password]{
-	clear: both;
-	margin: 7px auto;
-	width: 300px;
-	height: 30px;
-	text-align: center;
-}
-
-#login_window_buttons{
-	clear: both;
-	margin: 10px auto;
-	width: 300px;
-	text-align: center;
-}
-
-#signin,#signup{
-	width: 145px;
-	margin-top:5px;
-}
-
-#main{
-	min-height: 700px;
-}
-
-#forget{
-	width: 295px;
-	margin-top:5px;
-}*/
-
-
-
-
-
-
-
-
-
-
+/*For the competetitor logo*/
 #logo-wrapper {
-	margin-top: 0.5em;
-	margin-left: 10%;
+	height: 100%;
+  padding-top: 0;
 }
 
+#logo-wrapper .helper{
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#logo-wrapper img{
+	height: 30px;
+  vertical-align: middle;
+}
+
+
+.cp-header-searchbar{
+	height: 100%;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.cp-header-container{
+  display: table;
+  height: 100%;
+}
+
+.cp-header-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cp-header-content{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*For the sign in and sign up button*/
 #sign {
-	text-align: right;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	margin-right: 5%;
+	float: right;
+	margin: 1% 5% 1%;
 	line-height: 49px;
 }
 
@@ -168,55 +99,10 @@ body{
 	/*line-height: 70px;*/
 }
 
-#menu{
-	position: absolute;
-	top: 1em;
-	left:0;
-	height: 70px;
-/*	z-index: 70;*/
-	width: 100%;
-	padding: 0;
-	margin:0;
-	background: rgba(192,192,192, 0.3);
-}
-
-#menu li {
-	display:inline-block;
-	margin: 10px;
-	color: #000;
-	background: rgba(255,255,255, 0.1);
-	-webkit-border-radius: 10px;
-            border-radius: 10px;
-}
-
-#menu li.active{
-	background:#666;
-	background: rgba(0,0,0, 0.5);
-	color: #fff;
-}
-#menu li a{
-	text-decoration:none;
-	color: #000;
-}
-#menu li.active a:hover{
-	color: #000;
-}
-#menu li:hover{
-	background: rgba(255,255,255, 0.8);
-}
-#menu li a,
-#menu li.active a{
-	padding: 9px 18px;
-	display:block;
-}
-#menu li.active a{
-	color: #fff;
-}
-
 #footer {
 	font-weight: bold;
+  background: #494949;
 	color: white;
-	background: #494949;
 }
 
 #footer-text {
@@ -224,16 +110,49 @@ body{
 }
 
 
-/*#team1 {
-	margin-top: 10px;
-	padding-left: 20px;
-	width: 100px;
-	height: 90px;
-	background-image: url("../media/whu.png");
-	background-repeat: no-repeat;
-}*/
-
 #facebool-wrapper, #twitter-wrapper, #rss-wrapper {
 	margin-left: 1em;
 }
 
+.cp-sign-right {
+  text-align: right;
+  vertical-align: middle;
+}
+
+/*For the navbar collapse*/
+@media (max-width: 767px) {
+  .cp-regular-navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .cp-smaller-navbar {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .cp-smaller-navbar {
+  	width: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(192,192,192, 0.3);
+  }
+}
+
+.cp-navbar-a {
+  	color: orange;
+}
+
+.cp-navbar-button {
+  	color: orange;
+}
+
+.cp-navbar-brand {
+	  float: left;
+		height: 100%;
+  	padding: 20px 15px 0 16px;
+  	font-size: 18px;
+  	line-height: 20px;
+}

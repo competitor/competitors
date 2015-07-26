@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
 	url(r'^$','competitors.views.home',name = 'home'),
+	url(r'^foo/(?P<page>\w+).html$', 'competitors.views.staticView', name = 'my_static_wrapper'),
 	url(r'^api/checkusername','competitors.views.check_username',name = 'check_username'),
 	url(r'^api/checkemail','competitors.views.check_email',name = 'check_email'),
 	url(r'^team/(?P<id>\d+)$','competitors.views.team_page',name = 'team_page'),

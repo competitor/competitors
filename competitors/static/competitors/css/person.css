@@ -1,0 +1,87 @@
+body {
+	background-color: #A9A9A9 !important;
+}
+
+/*#navbar-container{
+	background: #FF8C00 !important;
+}
+
+#header-wrapper {
+	height: 70px;
+	width: 100%;
+	padding: 0;
+	margin: 1em 0 0 0;
+	background: #FF8C00;
+	color: white;
+}
+*/
+#header {
+	position: absolute;
+	top: 0;
+	height: 280px;
+	width: 100%;
+	background: #FFDAB9;
+}
+
+/*#header-wrapper small {
+	height: 70px;
+  	line-height: 70px;
+ 	white-space: nowrap;
+}
+
+#header-search-bar {
+	margin-top: 20px;
+	margin-top: 20px;
+}
+*/
+/*#logo-wrapper {
+	margin-top: 0.5em;	
+}*/
+
+.radio {
+	padding-left: 1em;
+}
+
+#right-wrapper {
+	margin-top: 238px;
+	margin-bottom: 10%;
+	width: 600px;
+}
+
+#left-wrapper {
+	margin-top: 150px;
+}
+
+#footer {
+	font-weight: bold;
+	color: white;
+	background: #494949;
+}
+
+#footer-text {
+	padding-top: 2em;
+}
+
+#facebool-wrapper, #twitter-wrapper, #rss-wrapper {
+	margin-left: 1em;
+}
+
+.tab-pane {
+	height: 600px;
+	background: white;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 5% 10%;
+}
+
+
+#img-wrapper {
+	margin: 10px auto;
+	border: 5px solid white;
+	box-shadow: 5px 5px 5px #888888;
+	height: 200px;
+	width: 200px;
+	/*background-image: url('../media/JohnTerry.jpg');*/
+	background-repeat: no-repeat;
+	background-size: cover;
+}
