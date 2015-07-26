@@ -77,7 +77,7 @@
         <!-- Image Upload html ends. Please replace them with <img-upload></img-upload>-->
 
 
-        <div class="col-md-5" id="left-wrapper">
+        <div class="col-sm-12 col-md-5" id="left-wrapper">
             <div id="img-wrapper">
                 <img  src="{{currentUser.img_url}}" width="190px" ng-click="" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" data-toggle="modal" data-target="#imgbox"/>
             </div>
@@ -88,17 +88,23 @@
                 
             <div class="panel panel-default col-md-offset-2 col-md-8 cp-profile-nav">
                 <div class="panel-body row ">
-                    <div class="col-md-4 cp-profile-nav-content">
-                        <a href="javascript:;" ng-click="personalshow=true;favoriteshow=false;friendsshow=false;">Personal</a>
+                    <div class="col-xs-4 col-sm-4 col-md-4 cp-profile-nav-content" ng-click="personalshow=true;favoriteshow=false;friendsshow=false;">
+                        <a href="javascript:;" ng-class="{'cp-proflie-nav-content-active':personalshow}">Personal</a>
                     </div>
-                    <div class="col-md-4 cp-profile-nav-content">
-                        <a href="javascript:;" ng-click="personalshow=false;favoriteshow=true;friendsshow=false;">Favorite</a>
+                    <div class="col-xs-4 col-sm-4 col-md-4 cp-profile-nav-content" ng-click="personalshow=false;favoriteshow=true;friendsshow=false;">
+                        <a href="javascript:;" ng-class="{'cp-proflie-nav-content-active':favoriteshow}">Favorite</a>
                     </div>
-                    <div class="col-md-4 cp-profile-nav-content">
-                        <a href="javascript:;" ng-click="personalshow=false;favoriteshow=false;friendsshow=true;">Friends</a>
+                    <div class="col-xs-4 col-sm-4 col-md-4 cp-profile-nav-content" ng-click="personalshow=false;favoriteshow=false;friendsshow=true;">
+                        <a href="javascript:;" ng-class="{'cp-proflie-nav-content-active':friendsshow}">Friends</a>
                     </div>
                 </div>
             </div>
+
+<!--             <ul class="nav nav-pills nav-justified" style="border:none;font-color:white">
+                <li role="presentation" ng-class="{'active':personalshow}" class="col-xs-4 col-sm-4 col-md-4" style="padding-left:0;padding-right:0;font-color:white" ng-click="personalshow=true;favoriteshow=false;friendsshow=false;"><a href="#">Personal</a></li>
+                <li role="presentation" ng-class="{'active':favoriteshow}" class="col-xs-4 col-sm-4 col-md-4" style="padding-left:0;padding-right:0;font-color:white" ng-click="personalshow=false;favoriteshow=true;friendsshow=false;"><a href="#">Favorite</a></li>
+                <li role="presentation" ng-class="{'active':friendsshow}"class="col-xs-4 col-sm-4 col-md-4" style="padding-left:0;padding-right:0;font-color:white" ng-click="personalshow=false;favoriteshow=false;friendsshow=true;"><a href="#">Friends</a></li>
+            </ul> -->
 
 
 
@@ -117,7 +123,7 @@
 
 
 
-        <div class="col-md-7" id="right-wrapper">
+        <div class="col-sm-12 col-md-7" id="right-wrapper">
             <div class="" id="personal" ng-show="personalshow">
                 <ul class="nav nav-tabs" id="tabs">
                     <li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
