@@ -31,7 +31,8 @@
         </h4>
         {% endfor %}
         <!-- Image Upload html starts/ Please replace them with <img-upload></img-upload>-->
-        <div class="modal fade" id="imgbox">
+        <img-upload></img-upload>
+        <!-- <div class="modal fade" id="imgbox">
             <div class="modal-dialog" style="width:80%;">
                 <div class="modal-content" >
                     <div class="modal-header">
@@ -73,7 +74,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Image Upload html ends. Please replace them with <img-upload></img-upload>-->
 
 
@@ -396,33 +397,35 @@ competitorsApp.controller('profile',['$scope', function($scope){
     {% endif %}
     $scope.hoverIn = function(){
         console.log(13);
-    }
+    };
 
     $scope.hoverOut = function(){
         console.log(325);
-    }
+    };
 
-    $scope.save = function(){
-        console.log(6666);
-        var file = $("#img_url").attr('value')
-        $.ajax({
-            type: "post",
-            url: "/save_pic",
-            data: {
-                'userAdjustedImage': file,
-                'csrfmiddlewaretoken': token,
-                },
+    // $scope.save = function(){
+    //     console.log(6666);
+    //     var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
+    //     console.log(token);
+    //     var file = $("#img_url").attr('value');
+    //     $.ajax({
+    //         type: "post",
+    //         url: "/save_pic",
+    //         data: {
+    //             'userAdjustedImage': file,
+    //             'csrfmiddlewaretoken': token,
+    //             },
 
-            enctype: 'multipart/form-data',
-            success: function() {
-                alert("success")
-                location.reload(true)
-            },
-            error: function() {
-                    alert("Oh no! There seems to have been some problem with the picture you uploaded");
-                  },
-        })
-    }
+    //         enctype: 'multipart/form-data',
+    //         success: function() {
+    //             alert("success");
+    //             location.reload(true);
+    //         },
+    //         error: function() {
+    //                 alert("Oh no! There seems to have been some problem with the picture you uploaded");
+    //               },
+    //     });
+    // };
 
 // Image Upload js starts
 
