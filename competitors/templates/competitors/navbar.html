@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all">
-<nav class="cp-smaller-navbar navbar-static-top">
+<nav class="cp-smaller-navbar navbar-static-top" style="z-index:10">
 	 <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -30,8 +30,7 @@
 	  </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-<nav class="navbar cp-regular-navbar" id="navbar-container">
+<nav class="navbar cp-regular-navbar" id="navbar-container" style="z-index:10">
 	    <div class="navbar-header col-xs-3 col-sm-offset-1 col-sm-3 col-md-offset-1 cp-header-container" id="logo-wrapper">
 	      	<a class="form cp-header-wrapper" href="/" id="logo">
 	      		<img ng-href="/" src="{{STATIC_URL}}competitors/img/logo1.png" alt="logo">
@@ -70,5 +69,4 @@
 	    </div>
 </nav>
 <login-pop ng-controller="login" ng-init="redirect = '{% firstof request.path %}'"></login-pop>
-</div>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
