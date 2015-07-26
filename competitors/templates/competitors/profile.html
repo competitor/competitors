@@ -444,27 +444,27 @@ competitorsApp.controller('profile',['$scope', function($scope){
 
     $('.glyphicon-pencil').click(function(e) {
     });
-    function save_pic(){
-    console.log(name)
-    var file = $("#img_url").attr('value')
-        $.ajax({
-            type: "post",
-            url: "/save_pic",
-            data: {
-                'userAdjustedImage': file,
-                'csrfmiddlewaretoken': token,
-                },
+//     function save_pic(){
+//     console.log(name)
+//     var file = $("#img_url").attr('value')
+//         $.ajax({
+//             type: "post",
+//             url: "/save_pic",
+//             data: {
+//                 'userAdjustedImage': file,
+//                 'csrfmiddlewaretoken': token,
+//                 },
 
-            enctype: 'multipart/form-data',
+//             enctype: 'multipart/form-data',
 
-            success: function() {
-                alert("Yea");
-                     location.reload(true)
-                 },
-            error: function(e) {
-                    alert(e);
-                  },
-        })
-}
+//             success: function() {
+//                 alert("Yea");
+//                      location.reload(true)
+//                  },
+//             error: function(e) {
+//                     alert(e);
+//                   },
+//         })
+// }
 </script>
 </html>

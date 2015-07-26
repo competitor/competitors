@@ -9,6 +9,18 @@ class UserProfile(models.Model):
 	age = models.DecimalField(max_digits=3,decimal_places=0,null=True,blank=True)
 	bio = models.CharField(max_length=1000,blank=True)
 	img_url = models.CharField(max_length=99999,default="/static/competitors/img/admin.jpg")
+
+	# facebook char
+	# twitter char
+	# instagram char
+	# weibo char
+	# wechat char
+
+	# birthday Date
+
+	# friend manytomany User add_relation_name
+
+
 	
 	def natural_key(self):
 		return self.user.username
