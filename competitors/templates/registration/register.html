@@ -15,13 +15,15 @@
         {% include 'competitors/navbar.html' %}
     </div>
     <div id="body" class="row cp-container">
-        <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" id="form-wrapper">
-            <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
-            <form action="{% url 'register' %}" name="signupform" ng-model="register" ng-init="register=[]" class="form-horizontal" method="POST">
+        <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" id="form-wrapper">
+            <div class="col-md-offset-1 col-sm-offset-2 cp-col-xs-offset-1">
+                <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
+            </div>
+            <form action="{% url 'register' %}" name="signupform" ng-model="register" ng-init="register=[]" class="form-horizontal col-md-offset-1 col-sm-offset-2 cp-col-xs-offset-1" method="POST">
                 {% for field in form %}
                 <div class="row signupfield form-group has-feedback" ng-class="{'has-error':register.{{field.name}}.init && register.{{field.name}}.has_error,'has-success':register.{{field.name}}.init &&  !register.{{field.name}}.has_error}">
                     <label class="col-sm-2 control-label">{{field.label}}</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         {{field}}
 
                         <div ng-model="register.{{field.name}}" ng-init="register.{{field.name}} = []"></div>
@@ -32,14 +34,12 @@
                      </div>
                 </div>
                 {% endfor %}
-                <div class="form-group">
-                    <div class="agreement col-sm-offset-2">
+                    <div class="cp-agreement col-sm-offset-2">
                         <label>
                             <input ng-model="register.agreement" required name="agreement" type="checkbox"/>
                             I have read and agree with the <a href="" data-toggle="modal" data-target="#agreementbox">Agreement</a>
                         </label>
                     </div>
-                </div>
                 <div id="form-action">
                     <div class="col-sm-2"></div>
                     <button type="submit" ng-disabled="signupform.$invalid" class="btn btn-warning">Register</button>
