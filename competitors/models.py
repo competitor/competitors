@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 class UserProfile(models.Model):
 	user = models.ForeignKey(User)
 	age = models.DecimalField(max_digits=3,decimal_places=0,null=True,blank=True)
+	birthday = models.DateField(auto_now_add=False,auto_now=False)
 	bio = models.CharField(max_length=1000,blank=True)
 	facebook = models.CharField(max_length=1000,blank=True)
 	twitter = models.CharField(max_length=1000,blank=True)
