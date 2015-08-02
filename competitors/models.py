@@ -8,6 +8,11 @@ class UserProfile(models.Model):
 	user = models.ForeignKey(User)
 	age = models.DecimalField(max_digits=3,decimal_places=0,null=True,blank=True)
 	bio = models.CharField(max_length=1000,blank=True)
+	facebook = models.CharField(max_length=1000,blank=True)
+	twitter = models.CharField(max_length=1000,blank=True)
+	instagram = models.CharField(max_length=1000,blank=True)
+	googleplus = models.CharField(max_length=1000,blank=True)
+	linkedin = models.CharField(max_length=1000,blank=True)
 	img_url = models.CharField(max_length=99999,default="/static/competitors/img/admin.jpg")
 
 	# facebook char
@@ -22,9 +27,10 @@ class UserProfile(models.Model):
 
 
 	
+
 	def natural_key(self):
 		return self.user.username
-	
+
 	def __unicode__(self):
 		return self.user.username
 
