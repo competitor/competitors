@@ -122,6 +122,24 @@ def player_page(request,id):
 
 	return render(request,'competitors/player.html',context)
 
+def update_profile(request):
+    theUser = UserProfile.objects.get(user=request.user)
+    username = request.POST.get('oldusername')
+    djuser = User.objects.get(username = username)
+
+    if request.is_ajax() and request.POST:
+        # djuser.username = request.POST.get("username");
+        djuser.first_name = request.POST.get("firstName");
+        djuser.last_name = request.POST.get("lastName");
+        theUser.birthday = request.POST.get("birthday");
+        # print(user.username)
+        # print(user.first_name)
+        # print(user.last_name)
+        print(theUser.birthday)
+        djuser.save()
+        theUser.save()
+    return redirect('home')
+
 # GET profile page
 def see_profile(request, username):
     errors = []
@@ -133,7 +151,7 @@ def see_profile(request, username):
         currentUser = UserProfile.objects.get(user__username=username)
     except ObjectDoesNotExist:
         errors.append('The user did not exist.')
-    try:    
+    try:
     	user = User.objects.get(username = request.user.username);
     except ObjectDoesNotExist:
     	user = None

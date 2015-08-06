@@ -26,9 +26,9 @@ def edit(request):
         form.save()
         errors = {}
         # form = EditForm(instance=user)
-        
-        context = {'user' : user, 
-                    'errors' : errors, 
+
+        context = {'user' : user,
+                    'errors' : errors,
                     'currentUser':currentUser}
         return render(request, 'competitors/profile.html', context)
     except User.DoesNotExist:
@@ -66,8 +66,8 @@ def follow(request,tp,id):
 @transaction.atomic
 def change_img(request):
 #     context = {}
-#     user = UserProfile.objects.get(user__username = request.user.username) 
-#     currentUser = UserProfile.objects.get(user__username=request.user.username)                     
+#     user = UserProfile.objects.get(user__username = request.user.username)
+#     currentUser = UserProfile.objects.get(user__username=request.user.username)
 #     form = ChangeImageForm(request.POST,request.FILES,instance=currentUser)
 #     print request.POST
 #     if request.POST['data']:
@@ -98,7 +98,7 @@ def save_pic(request):
         path = path.split("/")[-1]
         user.img_url="/media/img/users/"+path
         print user.img_url
-        user.save() 
+        user.save()
 	return redirect('home')
 
 @login_required

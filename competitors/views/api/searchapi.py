@@ -8,7 +8,7 @@ import httplib
 # search bar autocomplete
 
 def api(domain,url,q):
-	
+
 	apiquerystr = url+str(q.replace(" ","%20"))
 	dbquerystr = q
 	connection = httplib.HTTPConnection(domain)
@@ -16,7 +16,6 @@ def api(domain,url,q):
 	connection.request('GET', apiquerystr, None, headers )
 	response = json.loads(connection.getresponse().read().decode('latin-1'))
 	return response
-
 
 def search_autocomplete(request):
 	q = request.GET.get('term', '')
@@ -93,7 +92,7 @@ def search(request):
 			else:
 				for player in players:
 					return redirect('player/'+str(player.id))
-				
+
 		else:
 			context['teams'] = teams
 			context['players'] = players
@@ -162,7 +161,7 @@ def get_nation_list(request):
 					teams = Team.objects.filter(league__in=leagues)
 					players = Player.objects.filter(team__in=teams)
 					nations = nations.filter(player__in=players)
-		
+
 	print nations
 	response_text = serializers.serialize('json',nations)
 	return HttpResponse(response_text,content_type='application/json')
@@ -188,7 +187,7 @@ def get_team_list(request):
 
 
 	response_text = serializers.serialize('json',teams)
-	return HttpResponse(response_text,content_type='application/json')	
+	return HttpResponse(response_text,content_type='application/json')
 
 def get_player_list(request):
 	teamid = []
@@ -217,10 +216,8 @@ def get_player_list(request):
 	if 'nation' in request.POST and request.POST['nation']:
 		nationid = request.POST['nation']
 		if nationid != '0':
-			players = players.filter(nationality__id=nationid)	
-				
-	
+			players = players.filter(nationality__id=nationid)
+
+
 	response_text = serializers.serialize('json',players)
 	return HttpResponse(response_text,content_type='application/json')
-
-

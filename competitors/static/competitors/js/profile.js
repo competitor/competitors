@@ -2,7 +2,6 @@ function canvasarea(){
 	$("#instruction").css("display","block")
 }
 
-
 var imageLoader = document.getElementById('imageLoader');
     imageLoader.addEventListener('change', handleImage, false);
 var canvas = document.getElementById('imageCanvas');
@@ -12,12 +11,11 @@ var ctx2 = canvas2.getContext('2d');
 var len = 500;
 var source = "";
 function handleImage(e){
-	
 
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
-        
+
         img.onload = function(){
         	var ratio = img.height/img.width;
             var reduce = img.height/500;
@@ -33,14 +31,14 @@ function handleImage(e){
         }
         img.src = event.target.result;
         source = img.src;
-        
+
     }
-    
-    reader.readAsDataURL(e.target.files[0]); 
-    $("#log").css("display","block");    
+
+    reader.readAsDataURL(e.target.files[0]);
+    $("#log").css("display","block");
 }
 function generate(x,y,w,h){
-	
+
 	var img2 = new Image();
 	img2.onload = function(){
 		var ratio = img2.height/img2.width;
@@ -61,7 +59,7 @@ function generate(x,y,w,h){
 }
 
 
-  
+
 
 var state = 0;
 var down = false;
@@ -79,7 +77,7 @@ $(document).mouseup(function(){
         // console.log(down);
 });
 $("#log").mousemove(function(e){
-	
+
 	console.log(len)
     $('html,body').css('cursor','default');
     var vertical="";
@@ -87,7 +85,7 @@ $("#log").mousemove(function(e){
     var position = $("#drag").position();
     var width = $("#drag").width();
     var height = $("#drag").height();
-   var parentOffset = $(this).parent().offset(); 
+   var parentOffset = $(this).parent().offset();
    var top = position.top;
     var left = position.left;
    // console.log(e.pageX+ " "+e.pageY);
@@ -98,36 +96,36 @@ $("#log").mousemove(function(e){
    // console.log(top+ " "+left);
    if (down == true)
         change(state,relX,relY);
-   
+
    if (Math.abs(top-relY)<5 && relX>=left && relX<=left+width){
         vertical = 'top';
         if (down == false)
-            state = 1; 
-        
+            state = 1;
+
     }
    if (Math.abs(top+height-relY)<5 && relX>=left && relX<=left+width){
         vertical = 'bottom';
         if (down == false)
-            state = 2; 
-        
+            state = 2;
+
     }
    if (Math.abs(left-relX)<5 && relY>=top && relY<=top+height){
         horizontal = "left";
         if (down == false)
-            state = 1; 
-        
+            state = 1;
+
     }
    if (Math.abs(left+width-relX)<5 && relY>=top && relY<=top+height){
         horizontal = "right";
         if (down == false)
-            state = 2; 
-        
-       } 
+            state = 2;
+
+       }
     if (relX<=left+width-5 && relX>=left+5 && relY>=top+5 && relY<=top+height-5){
         if (down == false)
             state = 3;
         $('html,body').css('cursor','all-scroll');
-      
+
     }
     if ((vertical == 'top' && horizontal == 'left') || (vertical == 'bottom' && horizontal == 'right'))
         $('html,body').css('cursor','nwse-resize');
@@ -140,9 +138,9 @@ $("#log").mousemove(function(e){
 
 });
 function change(state,relX,relY){
-   
+
     if (state == 1 ){
-        
+
         var vtop = parseInt($("#drag3").height());
         var hleft= parseInt($("#drag1").width());
         var width = parseInt($("#drag").width());
@@ -172,7 +170,7 @@ function change(state,relX,relY){
         $("#drag4").width(parseInt($("#drag").width()) + "px");
     }
     if (state == 2 ){
-        
+
         var vtop = parseInt($("#drag3").height());
         var hleft= parseInt($("#drag1").width());
         var width = parseInt($("#drag").width());
