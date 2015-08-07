@@ -95,29 +95,30 @@
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label cp-profile-form-label">Username</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary">{{userprofile.user.username}}</p>
-                                            <input ng-show="editPrimary" type="text" class="form-control input userName" value="{{userprofile.user.username}}" id="inputEmail3" placeholder="{{userprofile.user.username}}">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theUsername"></p>
+                                            <!-- <input ng-show="editPrimary" type="text" class="form-control input userName" value="{{userprofile.user.username}}" id="inputEmail3" placeholder="{{userprofile.user.username}}"> -->
+                                            <input ng-show="editPrimary" type="text" class="form-control input userName" ng-model="theUsername" id="inputEmail3" placeholder="{{theUsername}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Firstname</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary">{{userprofile.user.first_name}}</p>
-                                            <input type="text" ng-show="editPrimary" class="form-control firstName" value="{{userprofile.user.first_name}}" id="inputPassword3" placeholder="{{userprofile.user.first_name}}">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theFirstName"></p>
+                                            <input type="text" ng-show="editPrimary" class="form-control firstName" ng-model="theFirstName" id="inputPassword3" placeholder="{{theFirstName}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Lastname</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary">{{userprofile.user.last_name}}</p>
-                                            <input type="text" ng-show="editPrimary" value="{{userprofile.user.last_name}}" class="form-control lastName" id="inputPassword3" placeholder="{{userprofile.user.last_name}}">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theLastName"></p>
+                                            <input type="text" ng-show="editPrimary" ng-model="theLastName" class="form-control lastName" id="inputPassword3" placeholder="{{theLastName}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Birthday</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary">{{userprofile.birthday}}</p>
-                                            <input type="date" ng-show="editPrimary" class="birthday form-control" id="inputPassword3">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theBirthday" placeholder="yyyy-MM-dd"></p>
+                                            <input type="date" ng-show="editPrimary" class="birthday form-control" id="inputPassword3" ng-model="dateForDatePicker">
                                         </div>
                                     </div>
                                 </form>
@@ -347,11 +348,16 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
     $scope.personalshow = true;
     $scope.favoriteshow =false;
     $scope.friendsshow =false;
-    $scope.birthday = "{{userprofile.birthday}}";
-    var time = new Date($scope.birthday);
-    $scope.dateForDatePicker = $filter('date')(time, "yyyy-MM-dd");
-    console.log($scope.birthday);
-    console.log($scope.dateForDatePicker);
+    $scope.theBirthday = "{{userprofile.birthday}}";
+    $scope.theOlduserName = "{{userprofile.user.username}}";
+    $scope.theUsername = "{{userprofile.user.username}}";
+    $scope.theFirstName = "{{userprofile.user.first_name}}";
+    $scope.theLastName = "{{userprofile.user.last_name}}";
+    var time = new Date($scope.theBirthday);
+    $scope.dateForDatePicker = time;
+    $scope.theBirthday = $filter('date')(time, "yyyy-MM-dd");
+    console.log($scope.theBirthday);
+    console.log("dateForDatePicker" + $scope.dateForDatePicker);
     $scope.social = {
         "facebook":"{{userprofile.facebook}}",
         "google+":"{{userprofile.googleplus}}",
@@ -363,6 +369,7 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
     {% if currentUser.user.username = user.username %}
         $scope.self = true;
     {% endif %}
+
     $scope.hoverIn = function(){
         console.log(13);
     };
@@ -376,33 +383,33 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
         //document.getElementsByClassName("birthday")[0].datepicker({ dateFormat: 'yy-mm-dd' });
         // angular.element("birthday").css("date-format", 'yy-mm-dd');
         // console.log(angular.element("birthday").css);
-        document.getElementsByClassName("birthday")[0].value = $scope.dateForDatePicker;
-        console.log($scope.dateForDatePicker);
+        // document.getElementsByClassName("birthday")[0].value = $scope.dateForDatePicker;
+        // console.log($scope.dateForDatePicker);
     };
 
     $scope.updateUserProfile = function(){
         $scope.editPrimary = !$scope.editPrimary;
-        $scope.olduserName = "{{userprofile.user.username}}"
-        $scope.userName = document.getElementsByClassName("userName")[0].value;
-        $scope.firstName = document.getElementsByClassName("firstName")[0].value;
-        $scope.lastName = document.getElementsByClassName("lastName")[0].value;
-        $scope.birthday = document.getElementsByClassName("birthday")[0].value;
-        console.log($scope.olduserName);
-        console.log($scope.userName);
-        console.log($scope.firstName);
-        console.log($scope.lastName);
-        console.log($scope.birthday);
+        //$scope.userName = document.getElementsByClassName("userName")[0].value;
+        // $scope.firstName = document.getElementsByClassName("firstName")[0].value;
+        // $scope.lastName = document.getElementsByClassName("lastName")[0].value;
+        // $scope.birthday = document.getElementsByClassName("birthday")[0].value;
+        $scope.theBirthday = $filter('date')($scope.dateForDatePicker, "yyyy-MM-dd");
+        console.log($scope.theOlduserName);
+        console.log($scope.theUsername);
+        console.log($scope.theFirstName);
+        console.log($scope.theLastName);
+        console.log($scope.dateForDatePicker);
         var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
         angular.element.ajax({
                   type: "post",
                   url: "/update_profile",
                   data: {
                       'csrfmiddlewaretoken': token,
-                      'oldusername': $scope.olduserName,
-                      'userName': $scope.userName,
-                      'firstName':$scope.firstName,
-                      'lastName': $scope.lastName,
-                      'birthday': $scope.birthday,
+                      'oldusername': $scope.theOlduserName,
+                      'userName': $scope.theUsername,
+                      'firstName':$scope.theFirstName,
+                      'lastName': $scope.theLastName,
+                      'birthday': $scope.theBirthday,
                       },
 
                   enctype: 'multipart/form-data',
