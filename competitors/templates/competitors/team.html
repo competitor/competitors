@@ -1,19 +1,114 @@
-{% extends "competitors/tpbase.html" %}
-{% block tp %}
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/team.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Team</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/team.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="header">
+		{% include 'competitors/navbar.html' %}
+	</div>
+	
+	<div class="container cp-box" id="row1">
+		<div class="col-sm-12 col-md-4" id="img-wrapper">
+		</div>
+		<div class="col-sm-12 col-md-2 cp-pull-down">
+			<h3>Team Name</h3>
+			<button class="btn btn-warning"> Follow + </button>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-sm-12 col-md-5 pull-right">
+			<p>Team description Team descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam description</p>
+		</div>
+	</div>
+	
+	<div class="container" id="row2">
+		<div class="btn-group btn-group-justified" role="group" aria-label="...">
+	 			<a href="#news1" class="btn btn-default">News</a>
+				<a href="#schedules" class="btn btn-default">Schedule</a>
+				<a href="#" class="btn btn-default">Data</a>
+				<a href="#" class="btn btn-default">Forum</a>
+		</div>
+	</div>
 
-<div id="logo">
-{% if team %}
-	<img id="icon_img" src="{{team.icon_url}}">
-	<h4>{{ team.name }}</h4>
-	{% if not_follow %}
-		<a href="{% url 'follow' 'team' team.id %}"><button class="btn btn-danger">Follow</button></a>
-	{% endif %}
-	{% if follow %}
-		<a href="#"><button class="btn-success">{{follow.credits}}</button></a>
-		<a href="#"><button class="btn-success">APPLY TO BE THE MANAGER</button></a>
-	{% endif %}
-</div>
-{% endif %}
+	<div class="container cp-box" id="news1">
+		<div class="col-sm-12 col-md-4" id="news1-img"></div>
+	</div>
+	<div class="container cp-box" id="news2">
+		<div class="col-sm-12 col-md-4" id="news2-img"></div>
+	</div>
+	<div class="container" id="pagination">
+		<nav class="pull-right">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+	</div>
 
-{% endblock %}
+	<div class="container" id="schedules">
+		<div class="col-sm-12 col-md-5 cp-box cp-schedule-box" id="schedule1">
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-sm-12 col-md-5 cp-box cp-schedule-box" id="schedule2">
+		</div>	
+	</div>
+	<div class="container" id="pagination">
+		<nav class="pull-right">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+	</div>
+	{% include 'competitors/footer.html' %}
+</body>
+<script type="text/javascript">
+	$('#tabs').click(function(e) {
+		$('#tabs .active').removeClass('active');
+		$(e.target).parents().addClass('active');
+	});
+
+	$("#tabs a").click(function (e) {
+        $(this).tab('show');
+    });
+
+	$('.cp-pull-down').each(function() {
+		$(this).css('margin-top', $(this).parent().height()-$(this).height())
+});
+</script>
+</html>
