@@ -64,6 +64,16 @@ body {
 
 .cp-box {
 	background-color: rgba(255,255,255,0.7);
+  	padding: 15px;
+  	margin-top:15px;
+}
+
+.cp-box-flex{
+	display: -moz-box;
+  	display: -webkit-box;
+  	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
 }
 
 .cp-box-schedule:nth-child(2n+1){

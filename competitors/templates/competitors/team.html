@@ -27,8 +27,9 @@
 		{% include 'competitors/navbar.html' %}
 	</div>
 	<div class="container">
-		<div class="cp-box cp-box-header" id="row1" style="height:330px">
+		<div class="cp-box cp-box-flex" id="row1">
 			<div class="col-sm-12 col-md-4" id="img-wrapper">
+				<img style="width:100%;height:100%"src="/static/competitors/img/soccer/england/t_manchesterunited.png">
 			</div>
 			<div class="col-sm-12 col-md-2 cp-pull-down">
 				<h3>Team Name</h3>
@@ -71,7 +72,7 @@
 		</div>
 		<div class="" id="schedule" ng-show="currentTab=='schedule'" style="padding:-15px;">
 			<div class="col-sm-6 col-md-6 cp-box-schedule" id="schedule1" style="">
-				<div class="cp-box cp-schedule-box">
+				<div class="cp-box cp-box-flex">
 					<div class="col-sm-4">
 						<img style="width:100%;height:100%" src="/static/competitors/img/soccer/england/t_manchesterunited.png">
 						<h5 style="text-align:center">Manchester United</h5>
@@ -89,7 +90,7 @@
 				</div>
 			</div>
 			<div class="col-sm-6 col-md-6 cp-box-schedule" id="schedule2" style="">
-				<div class="cp-box cp-schedule-box">
+				<div class="cp-box cp-box-flex">
 					<div class="col-sm-4">
 						<img style="width:100%;height:100%" src="/static/competitors/img/soccer/england/t_manchesterunited.png">
 						<h5 style="text-align:center">Manchester United</h5>
@@ -124,7 +125,7 @@
 
 				</div>
 			</div>
-			<div class="cp-box" id="news1" style="padding:15px;">
+			<div class="cp-box cp-box-flex" style="padding:15px;">
 					<span>Manchester United Football Club is a professional football club based in Old Trafford, Greater Manchester, England. The club currently play in the Premier League, the top flight of English football. Founded as Newton Heath LYR Football Club in 1878, the club changed its name to Manchester United in 1902 and moved to Old Trafford in 1910.
 
 					Manchester United have won 20 league titles, the most of any English club, 11 FA Cups, four League Cups and a record 20 FA Community Shields. The club has also won three European Cups, one UEFA Cup Winners' Cup, one UEFA Super Cup, one Intercontinental Cup and one FIFA Club World Cup. In 1998–99, the club achieved a treble of the Premier League, the FA Cup and the UEFA Champions League.
@@ -133,7 +134,7 @@
 
 					Manchester United was the second highest-earning football club in the world for 2013–14, with annual revenue of €518 million,[5][6] and the world's third most valuable football club in 2015, valued at $1.98 billion.[7] As of June 2015, it is the world's most valuable football brand, estimated to be worth $1.2 billion.[8][9] It is one of the most widely supported football teams in the world.[10][11] After being floated on the London Stock Exchange in 1991, the club was purchased by Malcolm Glazer in May 2005 in a deal valuing the club at almost £800 million, after which the company was taken private again. In August 2012, Manchester United made an initial public offering on the New York Stock Exchange.</span>
 			</div>
-			<div class="cp-box" id="news1" style="padding:15px">
+			<div class="cp-box"  style="padding:15px">
 				<h2>HONORS</h2>
 				<p>Premier League Champions: 2010-2011 2009-2010</p>
 				<p>Champions League:2007-2008,1998-1999</p>
@@ -192,7 +193,7 @@
 				</div>
 			{% endfor %}
 			</div>
-			<form method="POST" action="{% url 'add_post' %}" class="cp-box" style="margin:15px 0;padding:15px">
+			<form method="POST" action="{% url 'add_post' %}" class="cp-box">
 				<input type="hidden" name="redirecturl" value="{% firstof request.path '/' %}">
 				{% if team %}
 					<input type="hidden" name="cat" value="team">
