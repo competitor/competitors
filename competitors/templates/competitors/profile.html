@@ -95,9 +95,7 @@
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label cp-profile-form-label">Username</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theUsername"></p>
-                                            <!-- <input ng-show="editPrimary" type="text" class="form-control input userName" value="{{userprofile.user.username}}" id="inputEmail3" placeholder="{{userprofile.user.username}}"> -->
-                                            <input ng-show="editPrimary" type="text" class="form-control input userName" ng-model="theUsername" id="inputEmail3" placeholder="{{theUsername}}">
+                                            <p class="form-control-static" ng-bind="theUsername"></p>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -122,63 +120,53 @@
                                         </div>
                                     </div>
                                 </form>
-<!--                                                     <h4>Username: {{currentUser.user.username}}</h4>
-                    <h4>Fisrtname: {{currentUser.user.first_name}}</h4>
-                    <h4>Last Name: {{currentUser.user.last_name}}</h4>
-                    <h4>Age: {{currentUser.age}}</h4> -->
-                            <!--     <p>Username: </p>
-                                <p>First Name: </p>
-                                <p>Last Name: </p>
-                                <p>Age: </p>
-                                <p>Location: </p>
-                                <p>Registration Time:</p> -->
                             </div>
                         </div>
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Contact Info &nbsp;&nbsp;&nbsp;
-                                <a ng-show="!editSocial" href="javascript:;" ng-click="editSocial=!editSocial" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                                <a ng-show="editSocial" href="javascript:;" ng-click="editSocial=!editSocial" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
+                                <a ng-show="!editSocial" href="javascript:;" ng-click="startUpdateSocialProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                                <a ng-show="editSocial" href="javascript:;" ng-click="updateSocialProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
                             </div>
                             <div class="panel-body text-left">
                                 <form class="form-horizontal">
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-envelope-o fa-fw"></i> Email</p></label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static">//social.email//</p>
-                                            <!-- input ng-show="edit" type="email" class="form-control input" value="//social.email//" id="inputEmail3" placeholder="Email"> -->
+                                            <p class="form-control-static" ng-show="!editSocial" ng-bind="social.email"></p>
+                                            <input type="email" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.email" placeholder="{{social.email}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-facebook-official fa-fw"></i> Facebook</p></label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial">//social.facebook//</p>
-                                            <input ng-show="editSocial" type="email" class="form-control input" value="//social.facebook//" id="inputEmail3" placeholder="Email">
+                                            <p class="form-control-static" ng-show="!editSocial" ng-bind="social.facebook"></p>
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.facebook" placeholder="{{social.facebook}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-google fa-fw"></i> Google+</p></label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.google"></p>
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.google" placeholder="{{social.google}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-twitter fa-fw"></i> Twitter</p></label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial">//social.twitter//</p>
-                                            <input ng-show="editSocial" type="email" class="form-control input" value="//social.twitter//" id="inputEmail3" placeholder="Email">
+                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.twitter"></p>
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.twitter" placeholder="{{social.twitter}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-instagram fa-fw"></i> Intsagram</p></label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial">//social.instagram//</p>
-                                            <input ng-show="editSocial" type="email" class="form-control input" value="//social.instagram//" id="inputEmail3" placeholder="Email">
+                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.instagram"></p>
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.instagram" placeholder="{{social.instagram}}">
                                         </div>
                                     </div>
-
                                 </form>
-                     <!--            <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Email: </p>
-                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Blog: </p>
-                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Facebook: </p>
-                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Instagram: </p>
-                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Twitter: </p>
-                                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  MSN: </p> -->
                             </div>
                         </div>
                     </div>
@@ -207,7 +195,6 @@
                                         {{team.followers.count}}
                                     </div>
                                 </div>
-
                             </div>
                         {% endfor %}
                     </div>
@@ -225,7 +212,6 @@
                                         {{player.followers.count}}
                                     </div>
                                 </div>
-
                             </div>
                         {% endfor %}
                     </div>
@@ -349,7 +335,6 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
     $scope.favoriteshow =false;
     $scope.friendsshow =false;
     $scope.theBirthday = "{{userprofile.birthday}}";
-    $scope.theOlduserName = "{{userprofile.user.username}}";
     $scope.theUsername = "{{userprofile.user.username}}";
     $scope.theFirstName = "{{userprofile.user.first_name}}";
     $scope.theLastName = "{{userprofile.user.last_name}}";
@@ -360,7 +345,7 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
     console.log("dateForDatePicker" + $scope.dateForDatePicker);
     $scope.social = {
         "facebook":"{{userprofile.facebook}}",
-        "google+":"{{userprofile.googleplus}}",
+        "google":"{{userprofile.googleplus}}",
         "email":"{{userprofile.user.email}}",
         "twitter":"{{userprofile.twitter}}",
         "instagram":"{{userprofile.instagram}}"
@@ -380,22 +365,12 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
 
     $scope.startUpdateUserProfile = function(){
         $scope.editPrimary=! $scope.editPrimary;
-        //document.getElementsByClassName("birthday")[0].datepicker({ dateFormat: 'yy-mm-dd' });
-        // angular.element("birthday").css("date-format", 'yy-mm-dd');
-        // console.log(angular.element("birthday").css);
-        // document.getElementsByClassName("birthday")[0].value = $scope.dateForDatePicker;
-        // console.log($scope.dateForDatePicker);
     };
 
     $scope.updateUserProfile = function(){
         $scope.editPrimary = !$scope.editPrimary;
-        //$scope.userName = document.getElementsByClassName("userName")[0].value;
-        // $scope.firstName = document.getElementsByClassName("firstName")[0].value;
-        // $scope.lastName = document.getElementsByClassName("lastName")[0].value;
-        // $scope.birthday = document.getElementsByClassName("birthday")[0].value;
         $scope.theBirthday = $filter('date')($scope.dateForDatePicker, "yyyy-MM-dd");
-        console.log($scope.theOlduserName);
-        console.log($scope.theUsername);
+        console.log("userName " + $scope.theUsername);
         console.log($scope.theFirstName);
         console.log($scope.theLastName);
         console.log($scope.dateForDatePicker);
@@ -405,7 +380,6 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
                   url: "/update_profile",
                   data: {
                       'csrfmiddlewaretoken': token,
-                      'oldusername': $scope.theOlduserName,
                       'userName': $scope.theUsername,
                       'firstName':$scope.theFirstName,
                       'lastName': $scope.theLastName,
@@ -420,7 +394,37 @@ competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filt
                   },
                   error: function(e) {
                     console.log(e);
-                          alert("fail");
+                        },
+              });
+    };
+
+    $scope.startUpdateSocialProfile = function(){
+        $scope.editSocial=! $scope.editSocial;
+    };
+
+    $scope.updateSocialProfile = function(){
+        $scope.editSocial = !$scope.editSocial;
+        var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
+        angular.element.ajax({
+                  type: "post",
+                  url: "/update_social_profile",
+                  data: {
+                      'csrfmiddlewaretoken': token,
+                      'email': $scope.social.email,
+                      'facebook':$scope.social.facebook,
+                      'twitter': $scope.social.twitter,
+                      'googleplus': $scope.social.google,
+                      'instagram': $scope.social.instagram,
+                      },
+
+                  enctype: 'multipart/form-data',
+
+                  success: function() {
+                      alert("success");
+                      location.reload(true);
+                  },
+                  error: function(e) {
+                    console.log(e);
                         },
               });
 
