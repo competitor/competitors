@@ -41,38 +41,6 @@ body {
 	background-color: #A9A9A9 !important;
 }
 
-#header-wrapper {
-	height: 70px;
-	width: 100%;
-	padding: 0;
-	margin: 1em 0 0 0;
-	background: #FF8C00;
-	color: white;
-}
-
-#header {
-	position: absolute;
-	top: 0;
-	height: 280px;
-	width: 100%;
-	background: #FFDAB9;
-	z-index: -1;
-}
-
-#header-wrapper small {
-	height: 70px;
-  	line-height: 70px;
- 	white-space: nowrap;
-}
-
-#header-search-bar {
-	margin-top: 20px;
-	margin-top: 20px;
-}
-
-#logo-wrapper {
-	margin-top: 0.5em;	
-}
 
 .radio {
 	padding-left: 1em;
@@ -112,20 +80,6 @@ body {
 
 #schedule2 {
 	padding-left: 10px;
-}
-
-#footer {
-	font-weight: bold;
-	color: white;
-	background: #494949;
-}
-
-#footer-text {
-	padding-top: 2em;
-}
-
-#facebool-wrapper, #twitter-wrapper, #rss-wrapper {
-	margin-left: 1em;
 }
 
 .tab-pane {

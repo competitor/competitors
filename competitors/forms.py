@@ -146,7 +146,8 @@ class PostForm(forms.ModelForm):
             'postuser',
         }
         widgets = {
-            'content':forms.Textarea,
+            'title':forms.TextInput(attrs={'class':'form-control container'}),
+            'content':forms.Textarea(attrs={'class':'form-control container'}),
         }
     def clean(self):
         # Calls our parent (forms.Form) .clean function, gets a dictionary

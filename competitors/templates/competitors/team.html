@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="competitorsApp">
 <head>
 	<title>Team</title>
 	<meta charset="UTF-8">
@@ -9,10 +9,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- For Icons -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
 	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body ng-controller="team">
 	<div id="header">
 		{% include 'competitors/navbar.html' %}
 	</div>
@@ -32,48 +42,77 @@
 	
 	<div class="container" id="row2">
 		<div class="btn-group btn-group-justified" role="group" aria-label="...">
-	 			<a href="#news1" class="btn btn-default">News</a>
-				<a href="#schedules" class="btn btn-default">Schedule</a>
-				<a href="#" class="btn btn-default">Data</a>
-				<a href="#" class="btn btn-default">Forum</a>
+	 			<a href="#news" class="btn btn-default" ng-click="currentTab='news'" ng-class="{active:currentTab=='news'}">News</a>
+				<a href="#schedule" class="btn btn-default" ng-click="currentTab='schedule'" ng-class="{active:currentTab=='schedule'}">Schedule</a>
+				<a href="#data" class="btn btn-default" ng-click="currentTab='data'" ng-class="{active:currentTab=='data'}">Data</a>
+				<a href="#forum" class="btn btn-default" ng-click="currentTab='forum'" ng-class="{active:currentTab=='forum'}">Forum</a>
 		</div>
 	</div>
 
-	<div class="container cp-box" id="news1">
-		<div class="col-sm-12 col-md-4" id="news1-img"></div>
+	<div id="news" ng-show="currentTab=='news'">
+		<div class="container cp-box" id="news1">
+			<div class="col-sm-12 col-md-4" id="news1-img"></div>
+		</div>
+		<div class="container cp-box" id="news2">
+			<div class="col-sm-12 col-md-4" id="news2-img"></div>
+		</div>
 	</div>
-	<div class="container cp-box" id="news2">
-		<div class="col-sm-12 col-md-4" id="news2-img"></div>
-	</div>
-	<div class="container" id="pagination">
-		<nav class="pull-right">
-		  <ul class="pagination">
-		    <li>
-		      <a href="#" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">5</a></li>
-		    <li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
-	</div>
-
-	<div class="container" id="schedules">
+	<div class="container" id="schedule" ng-show="currentTab=='schedule'">
 		<div class="col-sm-12 col-md-5 cp-box cp-schedule-box" id="schedule1">
 		</div>
 		<div class="col-md-2"></div>
 		<div class="col-sm-12 col-md-5 cp-box cp-schedule-box" id="schedule2">
 		</div>	
 	</div>
+	<div id="data" ng-show="currentTab=='data'">
+		<div class="container cp-box" id="news1">
+			<div class="col-sm-12 col-md-4" id="news1-img"></div>
+		</div>
+	</div>
+
+	<div id="forum" ng-show="currentTab=='forum'">
+		<div id="forum-posts">
+		{% for post in posts %}
+			<div class="panel container">
+				<div class="panel">
+					{{post.comments.count}}
+				</div>
+				<a href="{% url 'get_post' post.id %}" target="_blank">{{post.title}}</a>
+				<div class="postinfo">
+					<p>{{post.user}}</p>
+					{% if can_manage == True %}
+						<a class="btn btn-link" onclick="deleteit({{post.id}})"><p>Delete</p></a>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+		<form method="POST" action="{% url 'add_post' %}">
+			<input type="hidden" name="redirecturl" value="{% firstof request.path '/' %}">
+			{% if team %}
+				<input type="hidden" name="cat" value="team">
+				<input type="hidden" name="id" value="{{ team.id }}">
+			{% endif %}
+			{% if player %}
+				<input type="hidden" name="cat" value="player">
+				<input type="hidden" name="id" value="{{player.id}}">
+			{% endif %}
+			{% for field in form %}
+			<div class="form-group container">
+				{{field}}
+			</div>
+			{% endfor %}
+			{% csrf_token %}
+			<div class="container">
+				{% if user.is_authenticated %}
+					<button type="submit" class="btn btn-success">POST</button>
+				{% else %}
+					<button type="submit" class="btn btn-success" disabled>SIGN IN TO POST</button>
+				{% endif %}
+			</div>
+		</form>
+	</div>
+
 	<div class="container" id="pagination">
 		<nav class="pull-right">
 		  <ul class="pagination">
@@ -97,7 +136,21 @@
 	</div>
 	{% include 'competitors/footer.html' %}
 </body>
+<script src="{{STATIC_URL}}competitors/js/app.js"></script>
+
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
+<script src="{{STATIC_URL}}competitors/js/directives/imgUpload.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
+<script src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
 <script type="text/javascript">
+competitorsApp.controller('team',['$scope', function($scope){
+	$scope.currentTab = window.location.hash.substr(1);
+	if ($scope.currentTab == "")
+		$scope.currentTab = "news";
+	console.log($scope.currentTab);
+	
+}])
 	$('#tabs').click(function(e) {
 		$('#tabs .active').removeClass('active');
 		$(e.target).parents().addClass('active');
