@@ -66,20 +66,21 @@ body {
 	background-color: rgba(255,255,255,0.7);
 }
 
+.cp-box-schedule:nth-child(2n+1){
+	padding-left: 0;
+}
+
+.cp-box-schedule:nth-child(2n){
+	padding-right: 0;
+}
+
 .cp-schedule-box {
 	height: 250px;
+	padding: 15px;
 }
 
 #schedules {
 	padding: 0;
-}
-
-#shcedule1 {
-	padding-right: 10px;
-}
-
-#schedule2 {
-	padding-left: 10px;
 }
 
 .tab-pane {
