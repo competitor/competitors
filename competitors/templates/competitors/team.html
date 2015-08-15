@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" ng-app="competitorsApp">
 <head>
 	<title>Team</title>
@@ -29,11 +29,16 @@
 	<div class="container">
 		<div class="cp-box cp-box-flex" id="row1">
 			<div class="col-sm-4 col-md-4" id="img-wrapper">
-				<img style="width:100%;height:100%"src="/static/competitors/img/soccer/england/t_manchesterunited.png">
+				<img style="width:100%;height:100%" src="{{team.icon_url}}">
 			</div>
 			<div class="col-sm-4 col-md-4 cp-pull-down">
 				<h3>Manchester United</h3>
-				<button class="btn btn-warning"> Follow + </button>
+				{% if follow %}
+					<button class="btn btn-warning"> {{follow.credits}} </button>
+				{% else %}
+					<a href="{% url 'follow' 'team' team.id %}"><button class="btn btn-warning"> Follow + </button></a>
+				{% endif %}
+				
 			</div>
 			<div class="col-sm-4 col-md-4 pull-right">
 				<p>Team description Team descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam description</p>
@@ -50,7 +55,7 @@
 		</div>
 
 		<div id="news" ng-show="currentTab=='news'">
-			<div class="cp-box" id="news1" style="padding:15px">
+			<!-- <div class="cp-box" id="news1" style="padding:15px">
 				<div id="news1-img" style="width:220px;height:100%;float:left;margin-right:15px;">
 					<img style="height:100%" src="http://m.tiebaimg.com/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=ddafcc20ce58163843836ed0b446f589&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F241f95cad1c8a786a27631bf6609c93d70cf5026.jpg">
 				</div>
@@ -67,10 +72,21 @@
 					<h3 style="margin-top:0;">Breaking News</h3>
 					<h5>中新网8月13日电 综合消息，8月12日23时30分许，天津港国际物流中心区域内瑞海公司所属危险品仓库发生的爆炸，截至目前已造成多人死亡。[详细]</h5>
 				</div>
+			</div> -->
+			{% for item in news %}
+			<div class="cp-box" id="news2" style="padding:15px">
+				<div id="news1-img" style="width:220px;height:100%;float:left;margin-right:15px;">
+					<img style="height:100%" src="http://m.tiebaimg.com/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=ddafcc20ce58163843836ed0b446f589&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F241f95cad1c8a786a27631bf6609c93d70cf5026.jpg">
+				</div>
+				<div style="display:inline;">
+					<h3 style="margin-top:0;">{{item.title}}</h3>
+					<h5>{{item.content}}</h5>
+				</div>
 			</div>
+			{% endfor %}
 		</div>
 		<div class="" id="schedule" ng-show="currentTab=='schedule'" style="padding:-15px;">
-			<div class="col-sm-6 col-md-6 cp-box-schedule" id="schedule1" style="">
+			<!-- <div class="col-sm-6 col-md-6 cp-box-schedule" id="schedule1" style="">
 				<div class="cp-box cp-box-flex">
 					<div class="col-sm-4">
 						<img style="width:100%;height:100%" src="/static/competitors/img/soccer/england/t_manchesterunited.png">
@@ -105,7 +121,27 @@
 						<h5 style="text-align:center">Chelsea</h5>
 					</div>
 				</div>
+			</div> -->
+			{% for match in matches %}
+			<div class="col-sm-6 col-md-6 cp-box-schedule" id="schedule2" style="">
+				<div class="cp-box cp-box-flex">
+					<div class="col-sm-4">
+						<img style="width:100%;height:100%" src="{{match.home.icon_url}}">
+						<h5 style="text-align:center">{{match.home}}</h5>
+					</div>
+					<div class="col-sm-4" style="text-align:center">
+						<h1>VS</h1>
+						<h5>Premier League</h5>
+						<h5>Old Traford</h5>
+						<h5>{{match.time}}</h5>
+					</div>
+					<div class="col-sm-4">
+						<img style="width:100%;height:100%" src="{{match.away.icon_url}}">
+						<h5 style="text-align:center">{{match.away}}</h5>
+					</div>
+				</div>
 			</div>
+			{% endfor %}
 		</div>
 		<div id="data" ng-show="currentTab=='data'">
 			<div class="cp-box" id="news1" style="padding:15px">
@@ -174,7 +210,37 @@
 					</div>
 				</div>
 			{% for post in posts %}
-				<div class="cp-box" style="padding:15px">
+				<div class="cp-box row" style="padding:15px;margin-left:0;margin-right:0;margin-bottom:10px;">
+					<div class="col-sm-9">
+						<div>
+							<a href="{% url 'get_post' post.id %}" target="_blank"><h4 style="margin-top:0;;display:inline">{{post.title}}</h4></a>
+							
+						</div>
+	<!-- 					<div class="">
+							{{post.comments.count}}
+						</div> -->
+						<div style="margin:10px 0">
+							<span>Manchester United Football Club is a professional football club based in Old Trafford, Greater Manchester, England. The club currently play in the Premier League, the top flight of English football. Founded as Newton Heath LYR Football Club in 1878, the club changed its name to Manchester United in 1902 and moved to Old Trafford in 1910.</span>
+						</div>
+						<div style="height:130px;margin-top:15px">
+							<img style="width:100px;height:100px" src="http://m.tiebaimg.com/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=ddafcc20ce58163843836ed0b446f589&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F241f95cad1c8a786a27631bf6609c93d70cf5026.jpg">
+							<img style="width:100px;height:100px" src="http://m.tiebaimg.com/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=ddafcc20ce58163843836ed0b446f589&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F241f95cad1c8a786a27631bf6609c93d70cf5026.jpg">
+							<img style="width:100px;height:100px" src="http://m.tiebaimg.com/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=ddafcc20ce58163843836ed0b446f589&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F241f95cad1c8a786a27631bf6609c93d70cf5026.jpg">
+						</div>
+					</div>
+					<div class="col-sm-3" style="text-align:right;position:relative;height:226px;">
+						<h5 style="">{{post.user}}</h5>
+						<h5 style="">2 hours ago</h5>
+
+						<h5 style="vertical-align:bottom;position:absolute;bottom:0;right:15px;"><i class="fa fa-commenting fa-lg"></i>{{post.comments.count}}<span>  </span><i class="fa fa-heart fa-lg"></i>21</h5>
+						<div class="postinfo">
+							{% if can_manage == True %}
+								<a class="btn btn-link" onclick="deleteit({{post.id}})"><p>Delete</p></a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<!-- <div class="cp-box" style="padding:15px">
 					<div>
 						<a href="{% url 'get_post' post.id %}" target="_blank"><h4 style="margin:0;display:inline">{{post.title}}</h4></a>
 						<h5 style="float:right;">{{post.user}}</h5>
@@ -189,7 +255,7 @@
 							<a class="btn btn-link" onclick="deleteit({{post.id}})"><p>Delete</p></a>
 						{% endif %}
 					</div>
-				</div>
+				</div> -->
 			{% endfor %}
 			</div>
 			<form method="POST" action="{% url 'add_post' %}" class="cp-box">
