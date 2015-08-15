@@ -79,7 +79,7 @@
 				<form role="search" method="POST" action="{% url 'search' %}">
 		    		<div class="input-group input-group-lg">
 		        		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-			    		<input type="text" class="form-control cp-search-tp" id="search" name="search" required placeholder="Search Your Favourite...">
+			    		<input type="text" class="form-control cp-search-tp" id="search" name="search" ng-model="val" ng-change="search()" required placeholder="Search Your Favourite...">
 			    		<span class="input-group-btn">
 			    			<button type="submit" class="btn btn-warning" type="button">Find!</button>
 			    		</span>
@@ -141,10 +141,11 @@
 
 
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/index.js"></script>
-
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/app.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/services/autocompleteService.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/services/loginService.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/index.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/header.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
 </html>
