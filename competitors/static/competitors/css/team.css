@@ -37,3 +37,78 @@
 	text-align: center;
 		
 }*/
+body {
+	background-color: #A9A9A9 !important;
+}
+
+
+.radio {
+	padding-left: 1em;
+}
+
+#row1 {
+	margin-top: 150px;
+	margin-bottom: 10px;
+	padding: 20px 10px;
+}
+
+#row2, #pagination {
+	margin: 10px auto;
+	padding: 0;
+}
+
+#news1, #news2 {
+	height: 250px;
+	margin: 10px auto;
+}
+
+.cp-box {
+	background-color: rgba(255,255,255,0.7);
+  	padding: 15px;
+  	margin-top:15px;
+}
+
+.cp-box-flex{
+	display: -moz-box;
+  	display: -webkit-box;
+  	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+}
+
+.cp-box-schedule:nth-child(2n+1){
+	padding-left: 0;
+}
+
+.cp-box-schedule:nth-child(2n){
+	padding-right: 0;
+}
+
+.cp-schedule-box {
+	height: 250px;
+	padding: 15px;
+}
+
+#schedules {
+	padding: 0;
+}
+
+.tab-pane {
+	height: 600px;
+	background: white;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10% 20%;
+}
+
+
+#img-wrapper {
+	margin: 0px 10px;
+	border: 5px solid white;
+	box-shadow: 5px 5px 5px #888888;
+	height: 300px;
+	width: 300px;
+	background-image: url('../media/JohnTerry.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
