@@ -1,4 +1,4 @@
-    competitorsApp.controller('index',['$scope','$http','$timeout',function($scope,$http,$timeout){
-
-        }
-    ])
+competitorsApp.controller('index',['$scope','$http','$timeout','autocompleteService',function($scope,$http,$timeout,autocompleteService){
+	$scope.val = "";
+    }
+])
