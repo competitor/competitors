@@ -1,32 +1,7 @@
- <!DOCTYPE html>
-<html lang="en" ng-app="competitorsApp">
-<head>
-	<title>Team</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "competitors/base.html" %}
+{% block main %}
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/team.css">
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <!-- For Icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
-	<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
-<body ng-controller="team">
-	<div id="header">
-		{% include 'competitors/navbar.html' %}
-	</div>
-	<div class="container">
+	<div class="container" ng-controller="team">
 		<div class="cp-box cp-box-flex" id="row1">
 			<div class="col-sm-4 col-md-4" id="img-wrapper">
 				<img style="width:100%;height:100%" src="{{team.icon_url}}">
@@ -306,14 +281,6 @@
 			</nav>
 		</div>
 	</div>
-	{% include 'competitors/footer.html' %}
-</body>
-<script src="{{STATIC_URL}}competitors/js/app.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/services/autocompleteservice.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/services/loginservice.js"></script>
-<script src="{{STATIC_URL}}competitors/js/directives/imgUpload.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/header.js"></script>
-<script src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
 <script type="text/javascript">
 competitorsApp.controller('team',['$scope', function($scope){
 	$scope.currentTab = window.location.hash.substr(1);
@@ -335,4 +302,4 @@ competitorsApp.controller('team',['$scope', function($scope){
 		$(this).css('margin-top', $(this).parent().height()-$(this).height())
 });
 </script>
-</html>
+{% endblock %}
