@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect,HttpResponse,HttpResponseForbidden
 from django.shortcuts import render_to_response,redirect,get_object_or_404
 import json
 import httplib
+from django.core import serializers
 
 # search bar autocomplete
 
@@ -102,6 +103,44 @@ def search(request):
 		print 222
 		context['errors'] = 'request fault'
 		return render(request,'competitors/index.html',context)
+
+def get_user_profile(request):
+	userprofile = {}
+	currentUser = {}
+	result = {}
+	if 'username' in request.GET and request.GET['username']:
+		user = User.objects.get(username=request.GET['username'])
+		userprofile = UserProfile.objects.get(user__username = request.GET['username']);
+		print userprofile
+		result["username"] = user.username
+		result["first_name"] = user.first_name
+		result["last_name"] = user.last_name
+		result["birthday"] = json.dumps(userprofile.birthday.strftime('%Y,%m,%d'))
+		result["social"] = {
+			"email":user.email,
+			"facebook":userprofile.facebook,
+			"twitter":userprofile.twitter,
+			"instagram":userprofile.instagram
+		}
+	data = json.dumps(result)
+	return HttpResponse(data,content_type='application/json')
+
+def get_favorite_teams(request):
+	teamfollows = []
+	if 'username' in request.GET and request.GET['username']:
+		userprofile = UserProfile.objects.get(user__username = request.GET['username']);
+		teamfollows = Team.objects.filter(followers__user=userprofile,followers__is_active=True)
+	response_text = serializers.serialize('json',teamfollows)
+	return HttpResponse(response_text,content_type='application/json')
+
+def get_favorite_players(request):
+	playerollows = []
+	if 'username' in request.GET and request.GET['username']:
+		userprofile = UserProfile.objects.get(user__username = request.GET['username']);
+		playerfollows = Player.objects.filter(followers__user=userprofile,followers__is_active=True)
+		print playerfollows
+	response_text = serializers.serialize('json',playerfollows)
+	return HttpResponse(response_text,content_type='application/json')		
 
 def get_country_list(request):
 	countries = Country.objects.all()
