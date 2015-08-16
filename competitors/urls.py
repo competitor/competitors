@@ -45,4 +45,7 @@ urlpatterns = patterns('',
 
 	# api
 	url(r'^api/autocomplete/', 'competitors.views.search_autocomplete',name = 'search_autocomplete'),
+	url(r'^api/getuserprofile', 'competitors.views.get_user_profile',name = 'search_get_user_profile'),
+	url(r'^api/getfavoriteteams', 'competitors.views.get_favorite_teams',name = 'search_get_favorite_teams'),
+	url(r'^api/getfavoriteplayers', 'competitors.views.get_favorite_players',name = 'search_get_favorite_players'),
 	)

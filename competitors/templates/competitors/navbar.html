@@ -69,4 +69,7 @@
 	    </div>
 </nav>
 <login-pop ng-controller="header" ng-init="redirect = '{% firstof request.path %}'"></login-pop>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/services/autocompleteService.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/services/loginService.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/header.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>

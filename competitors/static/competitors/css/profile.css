@@ -1,3 +1,25 @@
+.cp-img:hover{
+	cursor: pointer;
+}
+
+.cp-img-wrapper {
+	margin: 10px auto;
+	border: 5px solid white;
+	box-shadow: 5px 5px 5px #888888;
+	height: 200px;
+	width: 200px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#header {
+	position: absolute;
+	top: 0;
+	height: 280px;
+	width: 100%;
+	background: #FFDAB9;
+}
+
 .cp-profile-nav{
 	padding-left: 0;
 }
@@ -200,6 +222,22 @@ body {
   width: 80px;
   height: 80px;
 }
+
+.radio {
+	padding-left: 1em;
+}
+
+#right-wrapper {
+	margin-top: 238px;
+	margin-bottom: 10%;
+	width: 600px;
+}
+
+#left-wrapper {
+	margin-top: 150px;
+}
+
+
 
 
 
