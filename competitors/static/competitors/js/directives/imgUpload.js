@@ -257,8 +257,8 @@ competitorsApp.directive('imgUpload', function() {
       }
       var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
       scope.save = function (){
-          console.log(name);
-          var file = $("#img_url").attr('value');
+          console.log(name)
+          var file = $("#img_url").attr('value')
               $.ajax({
                   type: "post",
                   url: "/save_pic",
@@ -276,11 +276,11 @@ competitorsApp.directive('imgUpload', function() {
                   error: function() {
                           alert("Oh no! There seems to have been some problem with the picture you uploaded");
                         },
-              });
-      };
+              })
+      }
 		},
 	templateUrl:"/foo/imgUpload.html"
-	};
+	}
 });
 
 /*

@@ -64,21 +64,21 @@ def loginself(request):
 	context = []
 	username = request.POST.get('username')
 	password = request.POST.get('password')
-	user = authenticate(username=username, password=password)
+	user = authenticate(username=username, password=password)                                                                                                                                 
 	if user is not None: #Verify form's content existence
 	    if user.is_active: #Verify validity
 	        login(request, user)
 	        print True
-	        data = json.dumps({ 'next' : request.REQUEST.get('next', '/') , 'success' : 'True'})
+	        data = json.dumps({ 'next' : request.REQUEST.get('next', '/') , 'success' : 'True'})    
 	        return HttpResponse(data,content_type='application/json')  #It's ok, so go to index
 	    else:
 	    	print False
 	        return HttpResponseForbidden()  #call the login view
-	print "FFFFFalse"
-	data = json.dumps({ 'next' : request.REQUEST.get('next', '/') , 'success' : 'False'})
-	return HttpResponse(data,content_type='application/json')   #It's ok, so go to index
-	# catch invalid ajax and all non ajax
-
+	print "FFFFFalse"                                                                                                        
+	data = json.dumps({ 'next' : request.REQUEST.get('next', '/') , 'success' : 'False'})    
+	return HttpResponse(data,content_type='application/json')   #It's ok, so go to index          
+	# catch invalid ajax and all non ajax 
+  
 	# context = []
 	# # print request
 	# print request.POST['username']
@@ -86,7 +86,7 @@ def loginself(request):
 
 	# # return render(request,'competitors/index.html',context)
 	# # return render_to_response('login.html', c, context_instance=RequestContext(request))
-	# return HttpResponse(request.REQUEST.get('next', '/'))
+	# return HttpResponse(request.REQUEST.get('next', '/')) 
 
 # def getCountryList(request):
 
@@ -97,7 +97,7 @@ def loginself(request):
 # 	# print request
 # 	# data = "hahahahh"
 # 	username = request.POST["username"]
-# 	try:
+# 	try: 
 # 		user = User.objects.get(username=username)
 # 		data = "username has been taken"
 # 	except ObjectDoesNotExist:
@@ -113,7 +113,7 @@ def loginself(request):
 # 	# print request
 # 	# data = "hahahahh"
 # 	email = request.POST["email"]
-# 	try:
+# 	try: 
 # 		user = User.objects.get(email=email)
 # 		data = "This email is already registered"
 # 	except ObjectDoesNotExist:
@@ -130,7 +130,7 @@ def loginself(request):
 #         context['form'] = RegistrationForm()
 #         return render(request, 'registration/register.html', context)
 
-#     # Creates a bound form from the request POST parameters and makes the
+#     # Creates a bound form from the request POST parameters and makes the 
 #     # form available in the request context dictionary.
 #     form = RegistrationForm(request.POST)
 #     context['form'] = form
@@ -138,16 +138,16 @@ def loginself(request):
 #     # Validates the form.
 #     if not form.is_valid():
 #         return render(request, 'registration/register.html', context)
+    
 
-
-
-#     new_user = User.objects.create_user(username = form.cleaned_data['username'],
+  
+#     new_user = User.objects.create_user(username = form.cleaned_data['username'], 
 #                                         password = form.cleaned_data['password1'],
 #                                         first_name = form.cleaned_data['first_name'],
 #                                         email = form.cleaned_data['email'],
 #                                         last_name=form.cleaned_data['last_name']
 #                                       )
-
+    
 #     # # new_user.UserInfo.age=form.cleaned_data['age']
 
 #     new_user.is_active = False
@@ -156,7 +156,7 @@ def loginself(request):
 
 #     user = UserProfile(user = new_user)
 
-#     user.save()
+#     user.save()   
 
 #     new_user = authenticate(username = request.POST['username'], \
 #                           password = request.POST['password1'])
@@ -169,7 +169,7 @@ def loginself(request):
 # verify your email address and complete the registration of your account:
 
 #   http://%s%s
-# """ % (request.get_host(),
+# """ % (request.get_host(), 
 #        reverse('confirm', args=(new_user.username, token)))
 
 #     send_mail(subject="Verify your email address",
@@ -180,7 +180,7 @@ def loginself(request):
 #     context['email'] = form.cleaned_data['email']
 
 #     print new_user.is_active
-
+ 
 #     return render(request, 'registration/needs-confirmation.html', context)
 
 # @transaction.atomic
@@ -220,7 +220,7 @@ def loginself(request):
 # 	email_body = """Your username is:"""+ new_user.username+""".
 # 	If you would like to reset your password, please click the link below to change your password:
 # 	http://%s%s
-# """ % (request.get_host(),
+# """ % (request.get_host(), 
 # 	reverse('confirm_change', args=(new_user.username,token)))
 # 	print new_user.email
 # 	send_mail(subject="Password Change",
@@ -269,11 +269,11 @@ def loginself(request):
 # 		form = ChangePasswordForm(initial={'username': username})
 # 		context['form'] = form
 # 		return render(request, 'registration/change_password_form.html', context)
-
+	
 # 	user.set_password(request.POST['password1'])
 # 	user.save()
-
-
+	
+	
 
 # 	return redirect(home)
 
@@ -452,7 +452,7 @@ def loginself(request):
 # 					teams = Team.objects.filter(league__in=leagues)
 # 					players = Player.objects.filter(team__in=teams)
 # 					nations = nations.filter(player__in=players)
-
+		
 # 	print nations
 # 	response_text = serializers.serialize('json',nations)
 # 	return HttpResponse(response_text,content_type='application/json')
@@ -478,7 +478,7 @@ def loginself(request):
 
 
 # 	response_text = serializers.serialize('json',teams)
-# 	return HttpResponse(response_text,content_type='application/json')
+# 	return HttpResponse(response_text,content_type='application/json')	
 
 # def get_player_list(request):
 # 	teamid = []
@@ -507,9 +507,9 @@ def loginself(request):
 # 	if 'nation' in request.POST and request.POST['nation']:
 # 		nationid = request.POST['nation']
 # 		if nationid != '0':
-# 			players = players.filter(nationality__id=nationid)
-
-
+# 			players = players.filter(nationality__id=nationid)	
+				
+	
 # 	response_text = serializers.serialize('json',players)
 # 	return HttpResponse(response_text,content_type='application/json')
 
@@ -528,7 +528,7 @@ def loginself(request):
 #         return redirect(next+"?cid=3")
 #     else:
 #     	user = UserProfile.objects.get(user=request.user)
-#     	new_post = Post(title = form.cleaned_data['title'],
+#     	new_post = Post(title = form.cleaned_data['title'], 
 #     					content = form.cleaned_data['content'],
 #     					user=user)
 #     	new_post.save()
@@ -556,7 +556,7 @@ def loginself(request):
 # @login_required
 # @transaction.atomic
 # def add_comment(request,id):
-
+    
 #     post = Post.objects.get(id = id)
 #     errors = []
 #     comments = {}
@@ -568,7 +568,7 @@ def loginself(request):
 #         return render(request, 'competitors/index.html', context)
 #     else:
 #     	user = UserProfile.objects.get(user=request.user)
-#         new_comment = Comment(
+#         new_comment = Comment( 
 #     					content = form.cleaned_data['content'],
 #     					user=user)
 #         new_comment.save()
@@ -633,7 +633,7 @@ def loginself(request):
 # 			post = Post.objects.get(comments=comment)
 # 			try:
 # 				team = Team.objects.get(posts=post)
-# 				if user.has_perm('can_manage',team):
+# 				if user.has_perm('can_manage',team):		
 # 					comment.delete()
 # 			except ObjectDoesNotExist:
 # 				try:
@@ -724,7 +724,7 @@ def getlivescore(request,id):
     match = Match.objects.get(id = id)
     score = match.score
     return HttpResponse(score,content_type='text/plain')
-
+    
 
 def get_post(request,id):
 	context = {}
@@ -864,7 +864,7 @@ def add_events(request,id):
 		try:
 			match = Match.objects.get(id=id)
 		except ObjectDoesNotExist:
-			return redirect(live_page,id=id)
+			return redirect(live_page,id=id)		
 		content = request.POST['content']
 		time = request.POST['time']
 		event = Event(content=content,time=time)
@@ -892,7 +892,7 @@ def add_events(request,id):
 # 			else:
 # 				for player in players:
 # 					return redirect('player/'+str(player.id))
-
+				
 # 		else:
 # 			context['teams'] = teams
 # 			context['players'] = players
@@ -935,7 +935,7 @@ def add_events(request,id):
 #         currentUser = UserProfile.objects.get(user__username=username)
 #     except ObjectDoesNotExist:
 #         errors.append('The user did not exist.')
-#     try:
+#     try:    
 #     	user = User.objects.get(username = request.user.username);
 #     except ObjectDoesNotExist:
 #     	user = None
@@ -968,9 +968,9 @@ def add_events(request,id):
 #         form.save()
 #         errors = {}
 #         # form = EditForm(instance=user)
-
-#         context = {'user' : user,
-#                     'errors' : errors,
+        
+#         context = {'user' : user, 
+#                     'errors' : errors, 
 #                     'currentUser':currentUser}
 #         return render(request, 'competitors/profile.html', context)
 #     except User.DoesNotExist:
@@ -1008,8 +1008,8 @@ def add_events(request,id):
 # @transaction.atomic
 # def change_img(request):
 #     context = {}
-#     user = UserProfile.objects.get(user__username = request.user.username)
-#     currentUser = UserProfile.objects.get(user__username=request.user.username)
+#     user = UserProfile.objects.get(user__username = request.user.username) 
+#     currentUser = UserProfile.objects.get(user__username=request.user.username)                     
 #     form = ChangeImageForm(request.POST,request.FILES,instance=currentUser)
 #     print request.POST
 #     if request.POST['data']:
@@ -1040,7 +1040,7 @@ def add_events(request,id):
 #         path = path.split("/")[-1]
 #         user.img_url="/static/competitors/img/users/"+path
 #         print user.img_url
-#         user.save()
+#         user.save() 
 # 	return redirect('home')
 
 # @login_required

@@ -1,5 +1,8 @@
+from competitors.models import *
+from competitors.forms import *
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.shortcuts import render_to_response,redirect,get_object_or_404
 
 @login_required
 @transaction.atomic

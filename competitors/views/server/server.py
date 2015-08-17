@@ -128,28 +128,23 @@ def update_profile(request):
     djuser = User.objects.get(username = username)
 
     if request.is_ajax() and request.POST:
-        # djuser.username = request.POST.get("username");
         djuser.first_name = request.POST.get("firstName");
         djuser.last_name = request.POST.get("lastName");
         djuser.save()
         theUser.birthday = request.POST.get("birthday");
-        # print(user.username)
-        # print(user.first_name)
-        # print(user.last_name)
         theUser.save()
 
 def update_social_profile(request):
     theUser = UserProfile.objects.get(user=request.user)
-
+    username = request.POST.get('userName')
+    djuser = User.objects.get(username = username)
     if request.is_ajax() and request.POST:
-        theUser.email = request.POST.get("email");
+        djuser.email = request.POST.get("email");
+        djuser.save()
         theUser.facebook = request.POST.get("facebook");
         theUser.googleplus = request.POST.get("googleplus");
         theUser.twitter = request.POST.get("twitter");
         theUser.instagram = request.POST.get("instagram");
-        # print(user.username)
-        # print(user.first_name)
-        # print(user.last_name)
         theUser.save()
 
 # GET profile page

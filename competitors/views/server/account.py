@@ -16,7 +16,7 @@ def register(request):
         context['form'] = RegistrationForm()
         return render(request, 'registration/register.html', context)
 
-    # Creates a bound form from the request POST parameters and makes the
+    # Creates a bound form from the request POST parameters and makes the 
     # form available in the request context dictionary.
     form = RegistrationForm(request.POST)
     context['form'] = form
@@ -24,16 +24,16 @@ def register(request):
     # Validates the form.
     if not form.is_valid():
         return render(request, 'registration/register.html', context)
+    
 
-
-
-    new_user = User.objects.create_user(username = form.cleaned_data['username'],
+  
+    new_user = User.objects.create_user(username = form.cleaned_data['username'], 
                                         password = form.cleaned_data['password1'],
                                         first_name = form.cleaned_data['first_name'],
                                         email = form.cleaned_data['email'],
                                         last_name=form.cleaned_data['last_name']
                                       )
-
+    
     # # new_user.UserInfo.age=form.cleaned_data['age']
 
     new_user.is_active = False
@@ -42,7 +42,7 @@ def register(request):
 
     user = UserProfile(user = new_user)
 
-    user.save()
+    user.save()   
 
     new_user = authenticate(username = request.POST['username'], \
                           password = request.POST['password1'])
@@ -55,7 +55,7 @@ Welcome to COMPETITORS.  Please click the link below to
 verify your email address and complete the registration of your account:
 
   http://%s%s
-""" % (request.get_host(),
+""" % (request.get_host(), 
        reverse('confirm', args=(new_user.username, token)))
 
     send_mail(subject="Verify your email address",
@@ -66,7 +66,7 @@ verify your email address and complete the registration of your account:
     context['email'] = form.cleaned_data['email']
 
     print new_user.is_active
-
+ 
     return render(request, 'registration/needs-confirmation.html', context)
 
 @transaction.atomic
@@ -106,7 +106,7 @@ def change_password(request):
 	email_body = """Your username is:"""+ new_user.username+""".
 	If you would like to reset your password, please click the link below to change your password:
 	http://%s%s
-""" % (request.get_host(),
+""" % (request.get_host(), 
 	reverse('confirm_change', args=(new_user.username,token)))
 	print new_user.email
 	send_mail(subject="Password Change",
@@ -155,10 +155,10 @@ def change_password_done(request):
 		form = ChangePasswordForm(initial={'username': username})
 		context['form'] = form
 		return render(request, 'registration/change_password_form.html', context)
-
+	
 	user.set_password(request.POST['password1'])
 	user.save()
-
-
+	
+	
 
 	return redirect(home)

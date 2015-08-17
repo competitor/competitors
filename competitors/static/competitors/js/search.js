@@ -14,10 +14,10 @@ if (cid != 0 && cid != "NaN"){
 		createSub(cat)
 		if(typeof(couid)!="undefined" & typeof(leaid)!="undefined" && typeof(natid)!="undefined" && typeof(teaid)!="undefined"){
 			console.log(couid+leaid+natid+teaid)
-
+			
 				$("#search_area_country_scroll").val(couid);
-
-				createSub_all('country')
+			
+				createSub_all('country')					
 				$("#search_area_league_scroll").val(leaid);
 				// alert(111)
 				createSub_all('league')
@@ -28,9 +28,9 @@ if (cid != 0 && cid != "NaN"){
 					$("#search_area_nation_scroll").val(natid);
 					createSub_all('nation')
 				}
+			
 
-
-				history.replaceState(null, "A new title!", 'http://localhost:8000/search_page?cid='+cid+'&cat='+cat+'&country='+couid+'&league='+leaid+'&nation='+natid+'&team='+teaid)
+				history.replaceState(null, "A new title!", 'http://localhost:8000/search_page?cid='+cid+'&cat='+cat+'&country='+couid+'&league='+leaid+'&nation='+natid+'&team='+teaid)		
 		}
 	}
 }
@@ -73,23 +73,23 @@ function createSub(category){
 	$("#"+cat+"_icon img").attr("style","background:rgba(230,230,230,0.6)")
 	listname = ['country','league','nation','team'];
 	createSub_all();
-
-
-
+	
+	
+	
 }
 
 
 
 function createSub_all(area){
 	$("#search_result").empty();
-
+	
 	var listname=['country','league','nation','team'];
 	if (tp=="team")
 		listname = ['country','league']
 	if (typeof(area) != "undefined"){
 		// for (var i in listname){
 		// 	if ($("#search_area_"+listname[i]+"_scroll").val()>0){
-
+				
 		// 		listname.splice(i,1);
 
 		// 	}
@@ -129,11 +129,11 @@ function createSub_all(area){
 	var country = parseInt($("#search_area_country_scroll").val());
 	$('#search_area_country p').remove();
 	message = message+"&country="+country;
-
+	
 	var league = parseInt($("#search_area_league_scroll").val());
 	$('#search_area_league p').remove();
 	message = message+"&league="+league;
-
+	
 	var nation = parseInt($("#search_area_nation_scroll").val());
 	$('#search_area_nation p').remove();
 	message = message+"&nation="+nation;
@@ -141,21 +141,21 @@ function createSub_all(area){
 	var team = parseInt($("#search_area_team_scroll").val());
 	$('#search_area_team p').remove();
 	message = message+"&team="+team;
-
-
+	
+	
 	history.replaceState(null, "A new title!", 'http://localhost:8000/search_page?cid='+cid+'&cat='+cat+'&country='+country+'&league='+league+'&nation='+nation+'&team='+team)
-
+	
 	token = $('input[name="csrfmiddlewaretoken"]').prop('value');
 
 	for (var i in listname){
 		query(listname[i]);
 	}
 	query(tp);
-
+	
 
 
 	function query(name){
-
+		
 		$.ajax({
 			type: method,
 		    url: "/get_"+name+"_list",
@@ -171,7 +171,7 @@ function createSub_all(area){
 
 	        		createpanel(items);
 		    	}
-
+		        
 		    }
 		})
 }
@@ -199,7 +199,7 @@ function createSub_all(area){
 	function createoption(items,name){
 		$("#search_area_"+listname+"_scroll").attr('dir','auto');
 		$(items).each(function(){
-
+		
 			// var display = this.fields.name;
 			// option = document.createElement("option")
 			// option.value = this.pk;
@@ -209,7 +209,7 @@ function createSub_all(area){
 		})
 	}
 
-
-
+		
+	
 };
 

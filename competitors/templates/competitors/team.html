@@ -1,19 +1,20 @@
 {% extends "competitors/tpbase.html" %}
 {% block tp %}
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/team.css">
-
-<div id="logo">
-{% if team %}
-	<img id="icon_img" src="{{team.icon_url}}">
-	<h4>{{ team.name }}</h4>
-	{% if not_follow %}
-		<a href="{% url 'follow' 'team' team.id %}"><button class="btn btn-danger">Follow</button></a>
-	{% endif %}
-	{% if follow %}
-		<a href="#"><button class="btn-success">{{follow.credits}}</button></a>
-		<a href="#"><button class="btn-success">APPLY TO BE THE MANAGER</button></a>
-	{% endif %}
+<div class="cp-box cp-box-flex" id="row1">
+	<div class="col-sm-4 col-md-4" id="img-wrapper">
+		<img style="width:100%;height:100%" src="{{team.icon_url}}">
+	</div>
+	<div class="col-sm-4 col-md-4 cp-pull-down">
+		<h3>{{team.name}}</h3>
+		{% if follow %}
+			<button class="btn btn-warning"> {{follow.credits}} </button>
+		{% else %}
+			<a href="{% url 'follow' 'team' team.id %}"><button class="btn btn-warning"> Follow + </button></a>
+		{% endif %}
+		
+	</div>
+	<div class="col-sm-4 col-md-4 pull-right">
+		<p>Team description Team descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam descriptionTeam description</p>
+	</div>
 </div>
-{% endif %}
-
 {% endblock %}

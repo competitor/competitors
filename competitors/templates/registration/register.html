@@ -1,67 +1,48 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="competitorsApp">
-<head>
-    <title>Sign Up for Competitors</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/register.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-</head>
-<body ng-controller="register">
+{% extends "competitors/base.html" %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/register.css">
+<div id="body" class="row cp-container" ng-controller="register">
     <div id="header">
-        {% include 'competitors/navbar.html' %}
     </div>
-    <div id="body" class="row cp-container">
-        <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" id="form-wrapper">
-            <div class="col-md-offset-1 col-sm-offset-2 cp-col-xs-offset-1">
-                <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
-            </div>
-            <form action="{% url 'register' %}" name="signupform" ng-model="register" ng-init="register=[]" class="form-horizontal col-md-offset-1 col-sm-offset-2 cp-col-xs-offset-1" method="POST">
-                {% for field in form %}
-                <div class="row signupfield form-group has-feedback" ng-class="{'has-error':register.{{field.name}}.init && register.{{field.name}}.has_error,'has-success':register.{{field.name}}.init &&  !register.{{field.name}}.has_error}">
-                    <label class="col-sm-2 control-label">{{field.label}}</label>
-                    <div class="col-sm-8">
-                        {{field}}
-
-                        <div ng-model="register.{{field.name}}" ng-init="register.{{field.name}} = []"></div>
-                        <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-sign':register.{{field.name}}.init &&  !register.{{field.name}}.has_error,'glyphicon-remove-sign':register.{{field.name}}.init && register.{{field.name}}.has_error}" aria-hidden="true"></span>
-                    </div>
-                     <div class="col-sm-4 error" ng-show="register.{{field.name}}.init && register.{{field.name}}.has_error">
-                        //register.{{field.name}}.error//
-                     </div>
-                </div>
-                {% endfor %}
-                    <div class="cp-agreement col-sm-offset-2">
-                        <label>
-                            <input ng-model="register.agreement" required name="agreement" type="checkbox"/>
-                            I have read and agree with the <a href="" data-toggle="modal" data-target="#agreementbox">Agreement</a>
-                        </label>
-                    </div>
-                <div id="form-action">
-                    <div class="col-sm-2"></div>
-                    <button type="submit" ng-disabled="signupform.$invalid" class="btn btn-warning">Register</button>
-                </div>
-                {% csrf_token %}
-            </form>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" id="form-wrapper">
+        <div class="col-md-offset-1 col-sm-offset-2 cp-col-xs-offset-1">
+            <h2 class="col-sm-offset-2" id="form-head"> Welcome! </h2>
         </div>
+        <form action="{% url 'register' %}" name="signupform" ng-model="register" ng-init="register=[]" class="form-horizontal col-md-offset-1 col-sm-offset-2 cp-col-xs-offset-1" method="POST">
+            {% for field in form %}
+            <div class="row signupfield form-group has-feedback" ng-class="{'has-error':register.{{field.name}}.init && register.{{field.name}}.has_error,'has-success':register.{{field.name}}.init &&  !register.{{field.name}}.has_error}">
+                <label class="col-sm-2 control-label">{{field.label}}</label>
+                <div class="col-sm-8">
+                    {{field}}
+
+                    <div ng-model="register.{{field.name}}" ng-init="register.{{field.name}} = []"></div>
+                    <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok-sign':register.{{field.name}}.init &&  !register.{{field.name}}.has_error,'glyphicon-remove-sign':register.{{field.name}}.init && register.{{field.name}}.has_error}" aria-hidden="true"></span>
+                </div>
+                 <div class="col-sm-4 error" ng-show="register.{{field.name}}.init && register.{{field.name}}.has_error">
+                    //register.{{field.name}}.error//
+                 </div>
+            </div>
+            {% endfor %}
+                <div class="cp-agreement col-sm-offset-2">
+                    <label>
+                        <input ng-model="register.agreement" required name="agreement" type="checkbox"/>
+                        I have read and agree with the <a href="" data-toggle="modal" data-target="#agreementbox">Agreement</a>
+                    </label>
+                </div>
+            <div id="form-action">
+                <div class="col-sm-2"></div>
+                <button type="submit" ng-disabled="signupform.$invalid" class="btn btn-warning">Register</button>
+            </div>
+            {% csrf_token %}
+        </form>
     </div>
-    {% include 'competitors/footer.html' %}
-    <modal-dialog></model-dialog>
-
-
-<script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
-<script src="{{STATIC_URL}}competitors/js/app.js"></script>
+</div>
+<modal-dialog></modal-dialog>
 <script src="{{STATIC_URL}}competitors/js/register.js"></script>
-<script src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
 <script src="{{STATIC_URL}}competitors/js/controllers/register.js"></script>
 <script src="{{STATIC_URL}}competitors/js/directives/agreement.js"></script>
 <script src="{{STATIC_URL}}competitors/js/directives/checkUsername.js"></script>
 <script src="{{STATIC_URL}}competitors/js/directives/checkEmail.js"></script>
 <script src="{{STATIC_URL}}competitors/js/directives/pwMatch.js"></script>
+{% endblock %}
 

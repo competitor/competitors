@@ -1,502 +1,184 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="competitorsApp">
-<head>
-    <title>Your Profile</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/base.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/person.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/profile.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <!-- For Icons -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="{{STATIC_URL}}competitors/js/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
-
-</head>
-<body ng-controller="profile">
+{% extends "competitors/base.html" %}
+{% block main %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}competitors/css/profile.css">
+<div id="body" style="height:1200px;" ng-controller="profile" ng-init="self='{{currentUser.user.username}}' == '{{user.username}}'">
     <div id="header">
-        {% include 'competitors/navbar.html' %}
-        {% csrf_token %}
     </div>
-    <div id="body" style="height:1200px;">
-
-        {% for error in errors %}
-        <h4 style="color: red">
-            {{ error }}
-        </h4>
-        {% endfor %}
-        <!-- Image Upload html starts/ Please replace them with <img-upload></img-upload>-->
-        <img-upload></img-upload>
-        <div class="col-md-5" id="left-wrapper">
-            <div id="img-wrapper">
-                <img  src="{{currentUser.img_url}}" width="190px" ng-click="" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" data-toggle="modal" data-target="#imgbox"/>
-            </div>
-            <div class="text-center" id="left-text">
-                <h4>{{currentUser.user.username}}</h4>
-            </div>
-
-
-            <div class="panel panel-default col-md-offset-2 col-md-8 cp-profile-nav">
-                <div class="panel-body row ">
-                    <div class="col-md-4 cp-profile-nav-content">
-                        <a href="javascript:;" ng-click="personalshow=true;favoriteshow=false;friendsshow=false;">Personal</a>
-                    </div>
-                    <div class="col-md-4 cp-profile-nav-content">
-                        <a href="javascript:;" ng-click="personalshow=false;favoriteshow=true;friendsshow=false;">Favorite</a>
-                    </div>
-                    <div class="col-md-4 cp-profile-nav-content">
-                        <a href="javascript:;" ng-click="personalshow=false;favoriteshow=false;friendsshow=true;">Friends</a>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-<!--             <div class="text-center" id="left-text">
-                <h4>{{currentUser.user.username}}</h4>
-                <br>
-                <p>2015.6.10 Singed in</p>
-                <p>Position</p>
-                <br>
-                <p>Personal Slogan:</p>
-            </div> -->
+    {% for error in errors %}
+    <h4 style="color: red">
+        {{ error }}
+    </h4>
+    {% endfor %}
+    <img-upload></img-upload>
+    <div class="col-md-5" id="left-wrapper">
+        <div class="cp-img-wrapper">
+            <img class="cp-img" src="{{currentUser.img_url}}" width="190px" ng-click="" data-toggle="modal" data-target="#imgbox"/>
+        </div>
+        <div class="text-center" id="left-text">
+            <h4>{{currentUser.user.username}}</h4>
         </div>
 
+        <div class="panel panel-default col-md-offset-2 col-md-8 cp-profile-nav">
+            <div class="panel-body row ">
+                <div class="col-md-4 cp-profile-nav-content">
+                    <a href="#personal" ng-click="currentTab='personal';change($event);getUserProfile()">Personal</a>
+                </div>
+                <div class="col-md-4 cp-profile-nav-content">
+                    <a href="#favorite#//currentFavoriteTab//" ng-click="currentTab='favorite';change($event);getFavorite()">Favorite</a>
+                </div>
+                <div class="col-md-4 cp-profile-nav-content">
+                    <a href="#friends" ng-click="currentTab='friends';change($event)">Friends</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7" id="right-wrapper">
+        <div class="" id="personal" ng-show="currentTab=='personal'">
+            <ul class="nav nav-tabs" id="tabs">
+                <li role="presentation" class="active"><a href="#personal-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+            </ul>
+            <br/>
+            <div class="tab-content">
+                <div class="tab-pane cp-profile-pane active" id="tab-1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Essential Info &nbsp;&nbsp;&nbsp;
+                            <a ng-show="!editPrimary" href="javascript:;" ng-click="startUpdateUserProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                            <a ng-show="editPrimary" href="javascript:;" ng-click="updateUserProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
+                        </div>
 
-
-
-        <div class="col-md-7" id="right-wrapper">
-            <div class="" id="personal" ng-show="personalshow">
-                <ul class="nav nav-tabs" id="tabs">
-                    <li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
-                    <li role="presentation"><a href="#tab-2"><span class="glyphicon glyphicon-star" aria-hidden="true"></a></li>
-                    <li role="presentation"><a href="#tab-3"><span class="glyphicon glyphicon-time" aria-hidden="true"></a></li>
-                </ul>
-                <br/>
-                <div class="tab-content">
-                    <div class="tab-pane cp-profile-pane active" id="tab-1">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Essential Info &nbsp;&nbsp;&nbsp;
-                                <a ng-show="!editPrimary" href="javascript:;" ng-click="startUpdateUserProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                                <a ng-show="editPrimary" href="javascript:;" ng-click="updateUserProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
-
-                            </div>
-
-                            <div class="text-left panel-body">
-                                <form class="form-horizontal">
+                        <div class="text-left panel-body">
+                            <form class="form-horizontal">
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label cp-profile-form-label">Username</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-bind="theUsername"></p>
+                                            <p class="form-control-static" ng-bind="username"></p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Firstname</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theFirstName"></p>
-                                            <input type="text" ng-show="editPrimary" class="form-control firstName" ng-model="theFirstName" id="inputPassword3" placeholder="{{theFirstName}}">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="first_name"></p>
+                                            <input type="text" ng-show="editPrimary" class="form-control firstName" ng-model="first_name" id="inputPassword3">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Lastname</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theLastName"></p>
-                                            <input type="text" ng-show="editPrimary" ng-model="theLastName" class="form-control lastName" id="inputPassword3" placeholder="{{theLastName}}">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="last_name"></p>
+                                            <input type="text" ng-show="editPrimary" class="form-control lastName" ng-model="last_name" id="inputPassword3">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Birthday</label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="theBirthday" placeholder="yyyy-MM-dd"></p>
-                                            <input type="date" ng-show="editPrimary" class="birthday form-control" id="inputPassword3" ng-model="dateForDatePicker">
+                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="birthday"></p>
+                                            <input type="date" ng-show="editPrimary" class="birthday form-control" id="inputPassword3" ng-model="datePicker">
                                         </div>
                                     </div>
                                 </form>
-                            </div>
                         </div>
+                    </div>
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Contact Info &nbsp;&nbsp;&nbsp;
-                                <a ng-show="!editSocial" href="javascript:;" ng-click="startUpdateSocialProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                                <a ng-show="editSocial" href="javascript:;" ng-click="updateSocialProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
-                            </div>
-                            <div class="panel-body text-left">
-                                <form class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Contact Info &nbsp;&nbsp;&nbsp;
+                            <a ng-show="!editSocial && self" href="javascript:;" ng-click="startUpdateSocialProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                            <a ng-show="editSocial && self" href="javascript:;" ng-click="updateSocialProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
+                        </div>
+                        <div class="panel-body text-left">
+                            <form class="form-horizontal">
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-envelope-o fa-fw"></i> Email</p></label>
                                         <div class="col-sm-9">
                                             <p class="form-control-static" ng-show="!editSocial" ng-bind="social.email"></p>
-                                            <input type="email" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.email" placeholder="{{social.email}}">
+                                            <input type="email" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.email">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-facebook-official fa-fw"></i> Facebook</p></label>
                                         <div class="col-sm-9">
                                             <p class="form-control-static" ng-show="!editSocial" ng-bind="social.facebook"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.facebook" placeholder="{{social.facebook}}">
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.facebook">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-google fa-fw"></i> Google+</p></label>
                                         <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.google"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.google" placeholder="{{social.google}}">
+                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.googleplus"></p>
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.googleplus">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-twitter fa-fw"></i> Twitter</p></label>
                                         <div class="col-sm-9">
                                             <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.twitter"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.twitter" placeholder="{{social.twitter}}">
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.twitter">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-instagram fa-fw"></i> Intsagram</p></label>
                                         <div class="col-sm-9">
                                             <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.instagram"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.instagram" placeholder="{{social.instagram}}">
+                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.instagram">
                                         </div>
                                     </div>
                                 </form>
-                            </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="tab-2">asd</div>
-                    <div class="tab-pane" id="tab-3">123</div>
                 </div>
+                <div class="tab-pane" id="tab-2">asd</div>
+                <div class="tab-pane" id="tab-3">123</div>
             </div>
-            <div class="" id="favorite" ng-show="favoriteshow">
-                <ul class="nav nav-tabs" id="tabs">
-                    <li role="presentation" class="active"><a href="#tab-21"><span class="glyphicon glyphicon-user" aria-hidden="true">Favorite Teams</a></li>
-                    <li role="presentation"><a href="#tab-22"><span class="glyphicon glyphicon-star" aria-hidden="true">Favorite Players</a></li>
-                </ul>
-                <br/>
-                <div class="tab-content">
-                    <div class="tab-pane active cp-profile-pane" id="tab-21">
-                        {% for team in teamfollows %}
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    {{team.name}}
-                                </div>
-                                <div class="panel-body row">
-                                    <div class="col-sm-3">
-                                        <img style="width:100%;" src="{{team.icon_url}}"/>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        {{team.followers.count}}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="tab-pane cp-profile-pane" id="tab-22">
-                        {% for player in playerfollows %}
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    {{player.name}}
-                                </div>
-                                <div class="panel-body row">
-                                    <div class="col-sm-3">
-                                        <img style="width:100%;" src="{{player.icon_url}}"/>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        {{player.followers.count}}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="" id="friends" ng-show="friendsshow">
-                axxx
-            </div>
-<!--             <ul class="nav nav-tabs" id="tabs">
-                <li role="presentation" class="active"><a href="#tab-1"><span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
-                <li role="presentation"><a href="#tab-2"><span class="glyphicon glyphicon-star" aria-hidden="true"></a></li>
-                <li role="presentation"><a href="#tab-3"><span class="glyphicon glyphicon-time" aria-hidden="true"></a></li>
+        </div>
+        <div class="" id="favorite" ng-show="currentTab=='favorite'">
+            <ul class="nav nav-tabs" id="tabs">
+                <li role="presentation" ng-class="{'active':currentFavoriteTab=='teams'}"><a href="#favorite#teams" ng-click="currentFavoriteTab='teams';getFavorite();"><span class="glyphicon glyphicon-user" aria-hidden="true">Favorite Teams</a></li>
+                <li role="presentation" ng-class="{'active':currentFavoriteTab=='players'}"><a href="#favorite#players" ng-click="currentFavoriteTab='players';getFavorite();"><span class="glyphicon glyphicon-star" aria-hidden="true">Favorite Players</a></li>
             </ul>
+            <br/>
             <div class="tab-content">
-                <div id="tab-1">
-                    <h4>Essential Info &nbsp;&nbsp;&nbsp;
-                        <a class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                    </h4>
-                    <hr>
-                    <div class="text-left">
-                        <p>Username: </p>
-                        <p>First Name: </p>
-                        <p>Last Name: </p>
-                        <p>Age: </p>
-                        <p>Location: </p>
-                        <p>Registration Time:</p>
-                    </div>
-                    <h4>Contact Info &nbsp;&nbsp;&nbsp;
-                        <a class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                    </h4>
-                    <hr>
-                    <div class="text-left">
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Email: </p>
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Blog: </p>
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Facebook: </p>
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Instagram: </p>
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Twitter: </p>
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  MSN: </p>
-                    </div>
-                </div>
-                <div id="tab-2">asd</div>
-                <div id="tab-3">123</div>
-            </div> -->
-        </div>
+                <div class="tab-pane cp-profile-pane" id="teams" ng-class="{'active':currentFavoriteTab=='teams'}">
 
-<!--         <div id="info" class="panel">
-
-             <div id="image" >
-                <img src="{{currentUser.img_url}}" width="150px"/>
-
-            </div>
-
-            <div id="personal">
-                <div id="mainpanelbody" class="panel">
-                    <h4>Username: {{currentUser.user.username}}</h4>
-                    <h4>Fisrtname: {{currentUser.user.first_name}}</h4>
-                    <h4>Last Name: {{currentUser.user.last_name}}</h4>
-                    <h4>Age: {{currentUser.age}}</h4>
-                </div>
-            </div>
-            <div id="bio">
-                 <h4>Bio:</h4>
-                 <p>{{currentUser.bio}}</p>
-                {% if currentUser.user.username = user.username %}
-                     <a href="{% url 'edit' %}">Edit Profile</a>
-                {% endif %}
-            </div>
-        </div> -->
-
-<!--         <div class="personal_follows">
-            {% for team in teamfollows %}
-
-                <div class="recommend_each">
-                    <a href="{% url 'team_page' team.id %}">
-                        <div class="panel">
-                            <div class="recommend_each_img">
-                                <img src="{{team.icon_url}}"/>
+                        <div class="panel panel-default" ng-repeat="team in favoriteteams">
+                            <div class="panel-heading">
+                                //team.fields.name//
                             </div>
-                            <div class="recommend_each_info">
-                                <h6>{{team.name}}</h6>
-                                <h6>{{team.followers.count}}</h6>
+                            <div class="panel-body row">
+                                <div class="col-sm-3">
+                                    <img style="width:100%;" ng-src="//team.fields.icon_url//"/>
+                                </div>
+                                <div class="col-sm-9">
+                                    //team.fields.followers.length//
+                                </div>
                             </div>
                         </div>
-                    </a>
                 </div>
-            {% endfor %}
-        </div>
-        <div class="personal_follows">
-            {% for player in playerfollows %}
+                <div class="tab-pane cp-profile-pane" id="players" ng-class="{'active':currentFavoriteTab=='players'}">
 
-                <div class="recommend_each">
-                    <a href="{% url 'player_page' player.id %}">
-                        <div class="panel">
-                            <div class="recommend_each_img">
-                                <img src="{{player.icon_url}}"/>
+                        <div class="panel panel-default" ng-repeat="player in favoriteplayers">
+                            <div class="panel-heading">
+                                //player.fields.name//
                             </div>
-                            <div class="recommend_each_info">
-                                <h6>{{player.name}}</h6>
-                                <h6>{{player.followers.count}}</h6>
+                            <div class="panel-body row">
+                                <div class="col-sm-3">
+                                    <img style="width:100%;" ng-src="//player.fields.icon_url//"/>
+                                </div>
+                                <div class="col-sm-9">
+                                    //player.fields.followers.length//
+                                </div>
                             </div>
+
                         </div>
-                    </a>
-                </div>
-            {% endfor %}-->
-        </div>
-    {% include 'competitors/footer.html' %}
-</body>
-<script src="{{STATIC_URL}}competitors/js/app.js"></script>
 
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/base.js"></script>
+                </div>
+            </div>
+        </div>
+        <div class="" id="friends" ng-show="currentTab=='friends'">
+            axxx
+        </div>
+    </div>
+</div>
 <script src="{{STATIC_URL}}competitors/js/directives/imgUpload.js"></script>
-<script type="text/javascript" src="{{STATIC_URL}}competitors/js/controllers/login.js"></script>
-<script src="{{STATIC_URL}}competitors/js/directives/login_pop.js"></script>
-<!-- <script type="text/javascript" src="{{STATIC_URL}}competitors/js/profile.js"></script> -->
-<script type="text/javascript">
-competitorsApp.controller('profile',['$scope', '$filter', function($scope, $filter){
-    $scope.editPrimary = false;
-    $scope.editSocial = false;
-    $scope.personalshow = true;
-    $scope.favoriteshow =false;
-    $scope.friendsshow =false;
-    $scope.theBirthday = "{{userprofile.birthday}}";
-    $scope.theUsername = "{{userprofile.user.username}}";
-    $scope.theFirstName = "{{userprofile.user.first_name}}";
-    $scope.theLastName = "{{userprofile.user.last_name}}";
-    var time = new Date($scope.theBirthday);
-    $scope.dateForDatePicker = time;
-    $scope.theBirthday = $filter('date')(time, "yyyy-MM-dd");
-    console.log($scope.theBirthday);
-    console.log("dateForDatePicker" + $scope.dateForDatePicker);
-    $scope.social = {
-        "facebook":"{{userprofile.facebook}}",
-        "google":"{{userprofile.googleplus}}",
-        "email":"{{userprofile.user.email}}",
-        "twitter":"{{userprofile.twitter}}",
-        "instagram":"{{userprofile.instagram}}"
-    }
-
-    {% if currentUser.user.username = user.username %}
-        $scope.self = true;
-    {% endif %}
-
-    $scope.hoverIn = function(){
-        console.log(13);
-    };
-
-    $scope.hoverOut = function(){
-        console.log(325);
-    };
-
-    $scope.startUpdateUserProfile = function(){
-        $scope.editPrimary=! $scope.editPrimary;
-    };
-
-    $scope.updateUserProfile = function(){
-        $scope.editPrimary = !$scope.editPrimary;
-        $scope.theBirthday = $filter('date')($scope.dateForDatePicker, "yyyy-MM-dd");
-        console.log("userName " + $scope.theUsername);
-        console.log($scope.theFirstName);
-        console.log($scope.theLastName);
-        console.log($scope.dateForDatePicker);
-        var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
-        angular.element.ajax({
-                  type: "post",
-                  url: "/update_profile",
-                  data: {
-                      'csrfmiddlewaretoken': token,
-                      'userName': $scope.theUsername,
-                      'firstName':$scope.theFirstName,
-                      'lastName': $scope.theLastName,
-                      'birthday': $scope.theBirthday,
-                      },
-
-                  enctype: 'multipart/form-data',
-
-                  success: function() {
-                      alert("success");
-                      location.reload(true);
-                  },
-                  error: function(e) {
-                    console.log(e);
-                        },
-              });
-    };
-
-    $scope.startUpdateSocialProfile = function(){
-        $scope.editSocial=! $scope.editSocial;
-    };
-
-    $scope.updateSocialProfile = function(){
-        $scope.editSocial = !$scope.editSocial;
-        var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
-        angular.element.ajax({
-                  type: "post",
-                  url: "/update_social_profile",
-                  data: {
-                      'csrfmiddlewaretoken': token,
-                      'email': $scope.social.email,
-                      'facebook':$scope.social.facebook,
-                      'twitter': $scope.social.twitter,
-                      'googleplus': $scope.social.google,
-                      'instagram': $scope.social.instagram,
-                      },
-
-                  enctype: 'multipart/form-data',
-
-                  success: function() {
-                      alert("success");
-                      location.reload(true);
-                  },
-                  error: function(e) {
-                    console.log(e);
-                        },
-              });
-
-
-    };
-
-    // $scope.save = function(){
-    //     console.log(6666);
-    //     var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
-    //     console.log(token);
-    //     var file = $("#img_url").attr('value');
-    //     $.ajax({
-    //         type: "post",
-    //         url: "/save_pic",
-    //         data: {
-    //             'userAdjustedImage': file,
-    //             'csrfmiddlewaretoken': token,
-    //             },
-
-    //         enctype: 'multipart/form-data',
-    //         success: function() {
-    //             alert("success");
-    //             location.reload(true);
-    //         },
-    //         error: function() {
-    //                 alert("Oh no! There seems to have been some problem with the picture you uploaded");
-    //               },
-    //     });
-    // };
-
-// Image Upload js starts
-
-
-
-// Image Upload js ends
-
-
-
-
-}])
-    $('#tabs').click(function(e) {
-        $('#tabs .active').removeClass('active');
-        $(e.target).parents().addClass('active');
-    });
-
-    $("#tabs a").click(function (e) {
-        $(this).tab('show');
-    });
-
-    $('.glyphicon-pencil').click(function(e) {
-    });
-    function save_pic(){
-    console.log(name)
-    var file = $("#img_url").attr('value')
-        $.ajax({
-            type: "post",
-            url: "/save_pic",
-            data: {
-                'userAdjustedImage': file,
-                'csrfmiddlewaretoken': token,
-                },
-
-            enctype: 'multipart/form-data',
-
-            success: function() {
-                alert("Yea");
-                     location.reload(true)
-                 },
-            error: function(e) {
-                    alert(e);
-                  },
-        })
-}
-</script>
-</html>
+<script src="{{STATIC_URL}}competitors/js/controllers/profile.js"></script>
+{% endblock %}
