@@ -51,3 +51,4 @@ urlpatterns = patterns('',
 	url(r'^api/getfavoriteteams', 'competitors.views.get_favorite_teams',name = 'search_get_favorite_teams'),
 	url(r'^api/getfavoriteplayers', 'competitors.views.get_favorite_players',name = 'search_get_favorite_players'),
 	)
+

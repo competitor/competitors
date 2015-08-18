@@ -9,6 +9,8 @@
         {{ error }}
     </h4>
     {% endfor %}
+    <!-- Image Upload html starts/ Please replace them with <img-upload></img-upload>-->
+
     <img-upload></img-upload>
     <div class="col-md-5" id="left-wrapper">
         <div class="cp-img-wrapper">
@@ -17,7 +19,6 @@
         <div class="text-center" id="left-text">
             <h4>{{currentUser.user.username}}</h4>
         </div>
-
         <div class="panel panel-default col-md-offset-2 col-md-8 cp-profile-nav">
             <div class="panel-body row ">
                 <div class="col-md-4 cp-profile-nav-content">
@@ -43,87 +44,84 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Essential Info &nbsp;&nbsp;&nbsp;
-                            <a ng-show="!editPrimary" href="javascript:;" ng-click="startUpdateUserProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                            <a ng-show="editPrimary" href="javascript:;" ng-click="updateUserProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
+                            <a ng-show="!editPrimary && self" href="javascript:;" ng-click="editPrimary=!editPrimary" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                            <a ng-show="editPrimary && self" href="javascript:;" ng-click="editPrimary=!editPrimary" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
                         </div>
+                    </div>
+
 
                         <div class="text-left panel-body">
                             <form class="form-horizontal">
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label cp-profile-form-label">Username</label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-bind="username"></p>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label cp-profile-form-label">Username</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editPrimary">{{currentUser.user.username}}</p>
+                                        <input ng-show="editPrimary" type="text" class="form-control input" value="{{currentUser.user.username}}" id="inputEmail3" placeholder="Email">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Firstname</label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="first_name"></p>
-                                            <input type="text" ng-show="editPrimary" class="form-control firstName" ng-model="first_name" id="inputPassword3">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Firstname</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editPrimary">{{currentUser.user.first_name}}</p>
+                                        <input type="text" ng-show="editPrimary" class="form-control" value="{{currentUser.user.first_name}}" id="inputPassword3" placeholder="Password">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Lastname</label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="last_name"></p>
-                                            <input type="text" ng-show="editPrimary" class="form-control lastName" ng-model="last_name" id="inputPassword3">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Lastname</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editPrimary">{{currentUser.user.last_name}}</p>
+                                        <input type="text" ng-show="editPrimary" value="{{currentUser.user.last_name}}" class="form-control" id="inputPassword3" placeholder="Password">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Birthday</label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editPrimary" ng-bind="birthday"></p>
-                                            <input type="date" ng-show="editPrimary" class="birthday form-control" id="inputPassword3" ng-model="datePicker">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label cp-profile-form-label">Birthday</label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editPrimary">//birthday//</p>
+                                        <input type="date" ng-show="editPrimary" value="{{userprofile.birthday}}" class="form-control" id="inputPassword3" placeholder="Password">
                                     </div>
-                                </form>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Contact Info &nbsp;&nbsp;&nbsp;
-                            <a ng-show="!editSocial && self" href="javascript:;" ng-click="startUpdateSocialProfile()" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
-                            <a ng-show="editSocial && self" href="javascript:;" ng-click="updateSocialProfile()" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
+                            <a ng-show="!editSocial && self" href="javascript:;" ng-click="editSocial=!editSocial" class="glyphicon glyphicon-pencil" aria-hidden="true"></a>
+                            <a ng-show="editSocial && self" href="javascript:;" ng-click="editSocial=!editSocial" class="glyphicon glyphicon-floppy-save" aria-hidden="true"></a>
                         </div>
                         <div class="panel-body text-left">
                             <form class="form-horizontal">
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-envelope-o fa-fw"></i> Email</p></label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial" ng-bind="social.email"></p>
-                                            <input type="email" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.email">
-                                        </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-envelope-o fa-fw"></i> Email</p></label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static">//social.email//</p>
+                                        <!-- input ng-show="edit" type="email" class="form-control input" value="//social.email//" id="inputEmail3" placeholder="Email"> -->
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-facebook-official fa-fw"></i> Facebook</p></label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial" ng-bind="social.facebook"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.facebook">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-facebook-official fa-fw"></i> Facebook</p></label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editSocial">//social.facebook//</p>
+                                        <input ng-show="editSocial" type="text" class="form-control input" value="//social.facebook//" id="inputEmail3" placeholder="Email">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-google fa-fw"></i> Google+</p></label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.googleplus"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.googleplus">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-twitter fa-fw"></i> Twitter</p></label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editSocial">//social.twitter//</p>
+                                        <input ng-show="editSocial" type="text" class="form-control input" value="//social.twitter//" id="inputEmail3" placeholder="Email">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-twitter fa-fw"></i> Twitter</p></label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.twitter"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.twitter">
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-instagram fa-fw"></i> Intsagram</p></label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static" ng-show="!editSocial">//social.instagram//</p>
+                                        <input ng-show="editSocial" type="text" class="form-control input" value="//social.instagram//" id="inputEmail3" placeholder="Email">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-3 control-label cp-profile-form-label"><p><i class="fa fa-instagram fa-fw"></i> Intsagram</p></label>
-                                        <div class="col-sm-9">
-                                            <p class="form-control-static" ng-show="!editSocial"  ng-bind="social.instagram"></p>
-                                            <input type="url" ng-show="editSocial" class="form-control input" id="inputEmail3" ng-model="social.instagram">
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -152,6 +150,7 @@
                                     //team.fields.followers.length//
                                 </div>
                             </div>
+
                         </div>
                 </div>
                 <div class="tab-pane cp-profile-pane" id="players" ng-class="{'active':currentFavoriteTab=='players'}">

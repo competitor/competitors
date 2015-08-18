@@ -120,8 +120,7 @@ def get_user_profile(request):
 			"email":user.email,
 			"facebook":userprofile.facebook,
 			"twitter":userprofile.twitter,
-			"googleplus":userprofile.googleplus,
-			"instagram":userprofile.instagram,
+			"instagram":userprofile.instagram
 		}
 	data = json.dumps(result)
 	return HttpResponse(data,content_type='application/json')
