@@ -122,6 +122,31 @@ def player_page(request,id):
 
 	return render(request,'competitors/player.html',context)
 
+def update_profile(request):
+    theUser = UserProfile.objects.get(user=request.user)
+    username = request.POST.get('userName')
+    djuser = User.objects.get(username = username)
+
+    if request.is_ajax() and request.POST:
+        djuser.first_name = request.POST.get("firstName");
+        djuser.last_name = request.POST.get("lastName");
+        djuser.save()
+        theUser.birthday = request.POST.get("birthday");
+        theUser.save()
+
+def update_social_profile(request):
+    theUser = UserProfile.objects.get(user=request.user)
+    username = request.POST.get('userName')
+    djuser = User.objects.get(username = username)
+    if request.is_ajax() and request.POST:
+        djuser.email = request.POST.get("email");
+        djuser.save()
+        theUser.facebook = request.POST.get("facebook");
+        theUser.googleplus = request.POST.get("googleplus");
+        theUser.twitter = request.POST.get("twitter");
+        theUser.instagram = request.POST.get("instagram");
+        theUser.save()
+
 # GET profile page
 def see_profile(request, username):
     errors = []
@@ -133,7 +158,7 @@ def see_profile(request, username):
         currentUser = UserProfile.objects.get(user__username=username)
     except ObjectDoesNotExist:
         errors.append('The user did not exist.')
-    try:    
+    try:
     	user = User.objects.get(username = request.user.username);
     except ObjectDoesNotExist:
     	user = None

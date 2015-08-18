@@ -32,6 +32,8 @@ urlpatterns = patterns('',
 	url(r'^change_score/(?P<id>\d+)$', 'competitors.views.change_score',name = 'change_score'),
 	url(r'^add_events/(?P<id>\d+)$', 'competitors.views.add_events',name = 'add_events'),
 	url(r'^edit$', 'competitors.views.edit',name = 'edit'),
+	url(r'^update_profile$', 'competitors.views.update_profile', name = 'update_profile'),
+	url(r'^update_social_profile$', 'competitors.views.update_social_profile', name = 'update_social_profile'),
 	url(r'^see_profile/([\s\S]*)$', 'competitors.views.see_profile', name = 'see_profile'),
 	url(r'^follow/(?P<tp>[\s\S]*)/(?P<id>\d+)/$', 'competitors.views.follow', name = 'follow'),
 	url(r'^get_post/([\s\S]*)$', 'competitors.views.get_post',name = 'get_post'),
@@ -49,3 +51,4 @@ urlpatterns = patterns('',
 	url(r'^api/getfavoriteteams', 'competitors.views.get_favorite_teams',name = 'search_get_favorite_teams'),
 	url(r'^api/getfavoriteplayers', 'competitors.views.get_favorite_players',name = 'search_get_favorite_players'),
 	)
+

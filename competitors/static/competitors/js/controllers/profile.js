@@ -53,7 +53,6 @@ competitorsApp.controller('profile',['$scope','$http', function($scope,$http){
                 def.reject();
         });
     }
-
     var getFavoritePlayers = function(){
         $http({
             method: 'GET',
@@ -87,8 +86,6 @@ competitorsApp.controller('profile',['$scope','$http', function($scope,$http){
             getFavoriteTeams(); 
         }
     }
-
-
     $scope.change = function($event){
 
     }
